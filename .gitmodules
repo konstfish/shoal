@@ -1,0 +1,6 @@
+[submodule "tetra"]
+	path = tetra
+	url = https://github.com/konstfish/tetra
+[submodule "guppy"]
+	path = guppy
+	url = https://github.com/konstfish/guppy
