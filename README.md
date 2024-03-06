@@ -2,6 +2,10 @@
 
 Infra stuff will expand this later
 
+https://en.wikipedia.org/wiki/Shoaling_and_schooling
+
+`git submodule init && git submodule update`
+
 ## Tetra
 https://en.wikipedia.org/wiki/Tetra
 hetzner cluster
