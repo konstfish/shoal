@@ -11,7 +11,7 @@ helm:
   values:
     replicaCount: 2
     vaultwarden:
-      domain: vaultwarden.konst.fish
+      domain: https://vaultwarden.konst.fish
     ingress:
       enabled: true
       className: nginx
