@@ -9,7 +9,6 @@ helm:
   force: false
 
   values:
-    replicaCount: 2
     vaultwarden:
       domain: https://vaultwarden.konst.fish
     ingress:
