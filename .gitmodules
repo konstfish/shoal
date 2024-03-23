@@ -1,8 +1,8 @@
 [submodule "tetra"]
 	path = tetra
-	url = https://github.com/konstfish/tetra
+	url = git@github.com:konstfish/tetra.git
 	branch = main
 [submodule "guppy"]
 	path = guppy
-	url = https://github.com/konstfish/guppy
+	url = git@github.com:konstfish/guppy.git
 	branch = main
