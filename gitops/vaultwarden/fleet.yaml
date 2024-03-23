@@ -18,6 +18,10 @@ helm:
       annotations:
         external-dns.alpha.kubernetes.io/hostname: vaultwarden.konst.fish
         cert-manager.io/cluster-issuer: letsencrypt-http
+      tls:
+        - secretName: vaultwarden-tls
+          hosts:
+            - vaultwarden.konst.fish
     persistence:
       enabled: true
       storageClass: longhorn
