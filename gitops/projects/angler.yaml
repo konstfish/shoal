@@ -1,0 +1,15 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: angler
+  namespace: fleet-default
+spec:
+  repo: https://github.com/konstfish/angler
+  branch: main
+  paths:
+  - kubernetes/components
+  targets:
+  - clusterName: guppy
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false
