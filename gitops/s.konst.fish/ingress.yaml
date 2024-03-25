@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: storagekf
+  namespace: storagekf
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-http"
     external-dns.alpha.kubernetes.io/hostname: "s.konst.fish"

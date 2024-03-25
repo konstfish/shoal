@@ -4,6 +4,7 @@ metadata:
   labels:
     app: storagekf
   name: storagekf
+  namespace: storagekf
 spec:
   progressDeadlineSeconds: 600
   replicas: 2
@@ -21,6 +22,9 @@ spec:
         app: storagekf
     spec:
       volumes:
+      - name: config-volume
+        configMap:
+          name: storagekf-config
       - name: nfs-mount
         hostPath:
           path: /stor/s.konst.fish
@@ -53,6 +57,8 @@ spec:
           initialDelaySeconds: 10
           periodSeconds: 10
         volumeMounts:
+        - name: config-volume
+          mountPath: /etc/nginx/conf.d
         - mountPath: /usr/share/nginx/html
           name: nfs-mount
       dnsPolicy: ClusterFirst
