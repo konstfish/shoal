@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: storagekf
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-http"
+    external-dns.alpha.kubernetes.io/hostname: "s.konst.fish"
+spec:
+  tls:
+  - hosts:
+    - s.konst.fish
+    secretName: storagekf-tls
+  ingressClassName: nginx
+  rules:
+  - host: "s.konst.fish"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: storagekf
+            port:
+              number: 80

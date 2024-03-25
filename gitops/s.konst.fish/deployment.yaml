@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: storagekf
+  name: storagekf
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: storagekf
+  template:
+    metadata:
+      labels:
+        app: storagekf
+    spec:
+      volumes:
+      - name: nfs-mount
+        hostPath:
+          path: /stor/s.konst.fish
+          type: Directory
+      containers:
+      - name: storagekf
+        image: nginx:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: http-tcp
+          protocol: TCP 
+        resources: 
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 50m
+            memory: 128Mi
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: nfs-mount
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
