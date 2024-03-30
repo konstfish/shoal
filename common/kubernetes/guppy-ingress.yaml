@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: istio-nginx-ingress
+  namespace: istio-ingress
+  annotations:
+    # cert-manager.io/cluster-issuer: "letsencrypt-http"
+    # cert-manager.io/issue-temporary-certificate: "true"
+    external-dns.alpha.kubernetes.io/hostname: "istio.konst.fish"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "istio.konst.fish"
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: istio-ingressgateway
+            port:
+              number: 80
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: istio-ingressgateway
+            port:
+              number: 443
+      - path: "/healthz/ready"
+        pathType: Prefix
+        backend:
+          service:
+            name: istio-ingressgateway
+            port:
+              number: 15021
