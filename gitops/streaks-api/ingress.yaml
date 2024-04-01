@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: streaks-api
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-http"
+    external-dns.alpha.kubernetes.io/hostname: "obsidian.konst.fish"
+spec:
+  tls:
+  - hosts:
+    - obsidian.konst.fish
+    secretName: streaks-api-tls
+  ingressClassName: nginx
+  rules:
+  - host: "obsidian.konst.fish"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/streaks"
+        backend:
+          service:
+            name: streaks-api
+            port:
+              number: 80
