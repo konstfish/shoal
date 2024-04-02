@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: streaks-api-service
+  name: streaks-api
 spec:
   selector:
     app: streaks-api
