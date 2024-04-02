@@ -1,0 +1,51 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+
+
+patches:
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: pocketbase-sudoku
+    - op: replace
+      path: /spec/template/spec/volumes/0/persistentVolumeClaim/claimName
+      value: pocketbase-data-sudoku
+    - op: replace
+      path: /spec/template/spec/volumes/1/persistentVolumeClaim/claimName
+      value: pocketbase-public-sudoku
+  target:
+    kind: Deployment
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: sudoku-api
+    - op: replace
+      path: /metadata/annotations/external-dns.alpha.kubernetes.io~1hostname
+      value: sudoku.api.konst.fish
+    - op: replace
+      path: /spec/tls/0/hosts/0
+      value: sudoku.api.konst.fish
+    - op: replace
+      path: /spec/tls/0/secretName
+      value: pocketbase-sudoku-tls
+    - op: replace
+      path: /spec/rules/0/host
+      value: sudoku.api.konst.fish
+    - op: replace
+      path: /spec/rules/0/http/paths/0/backend/service/name
+      value: pocketbase-sudoku
+  target:
+    kind: Ingress
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: pocketbase-sudoku
+    - op: replace
+      path: /spec/selector/app
+      value: pocketbase-sudoku
+  target:
+    kind: Service
+- path: pvc.yaml
+resources:
+- ../../base
