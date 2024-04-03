@@ -13,3 +13,6 @@ resource "kubernetes_manifest" "project_storagekf" {
 resource "kubernetes_manifest" "project_streaks_api" {
   manifest = yamldecode(file("${path.module}/streaks-api.yaml"))
 }
+resource "kubernetes_manifest" "project_pocketbase_sudoku" {
+  manifest = yamldecode(file("${path.module}/pocketbase-sudoku.yaml"))
+}

@@ -1,4 +1,0 @@
-namespace: pocketbase
-
-kustomize:
-  dir: ""
