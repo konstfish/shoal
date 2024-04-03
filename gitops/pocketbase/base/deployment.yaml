@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pocketbase-$name
+  name: pocketbase-name
 spec:
   replicas: 1
   selector:
@@ -39,7 +39,7 @@ spec:
       volumes:
       - name: pb-data
         persistentVolumeClaim:
-          claimName: pocketbase-data-$name
+          claimName: pocketbase-data-name
       - name: pb-public
         persistentVolumeClaim:
-          claimName: pocketbase-public-$name
+          claimName: pocketbase-public-name

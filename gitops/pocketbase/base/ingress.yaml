@@ -4,15 +4,15 @@ metadata:
   name: pocketbase-$name
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-http"
-    external-dns.alpha.kubernetes.io/hostname: $name.api.konst.fish
+    external-dns.alpha.kubernetes.io/hostname: name.api.konst.fish
 spec:
   tls:
   - hosts:
-    - $name.api.konst.fish
+    - name.api.konst.fish
     secretName: pocketbase-$name-tls
   ingressClassName: nginx
   rules:
-  - host: $name.api.konst.fish
+  - host: name.api.konst.fish
     http:
       paths:
       - pathType: Prefix
