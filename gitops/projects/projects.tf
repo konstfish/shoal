@@ -7,7 +7,7 @@ resource "kubernetes_manifest" "project_vaultwarden" {
 }
 
 resource "kubernetes_manifest" "project_storagekf" {
-  manifest = yamldecode(file("${path.module}/storagekf.yaml"))
+  manifest = yamldecode(file("${path.module}/sdot.yaml"))
 }
 
 resource "kubernetes_manifest" "project_streaks_api" {

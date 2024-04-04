@@ -2,9 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: storagekf
-  name: storagekf
-  namespace: storagekf
+    app: sdot
+  name: sdot
 spec:
   progressDeadlineSeconds: 600
   replicas: 2
@@ -15,22 +14,22 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: storagekf
+      app: sdot
   template:
     metadata:
       labels:
-        app: storagekf
+        app: sdot
     spec:
       volumes:
       - name: config-volume
         configMap:
-          name: storagekf-config
+          name: sdot-config
       - name: nfs-mount
         hostPath:
           path: /stor/s.konst.fish
           type: Directory
       containers:
-      - name: storagekf
+      - name: sdot
         image: nginx:latest
         imagePullPolicy: Always
         ports:

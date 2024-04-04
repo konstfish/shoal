@@ -1,8 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: storagekf-config
-  namespace: storagekf
+  name: sdot-config
 data:
   default.conf: |
     server {
