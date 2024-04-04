@@ -10,6 +10,12 @@ patches:
       path: /metadata/name
       value: pocketbase-sudoku
     - op: replace
+      path: /spec/selector/matchLabels/app
+      value: pocketbase-sudoku
+    - op: replace
+      path: /spec/template/metadata/labels/app
+      value: pocketbase-sudoku
+    - op: replace
       path: /spec/template/spec/volumes/0/persistentVolumeClaim/claimName
       value: pocketbase-data-sudoku
     - op: replace
@@ -23,12 +29,6 @@ patches:
       value: pocketbase-sudoku
     - op: replace
       path: /spec/serviceName
-      value: pocketbase-sudoku
-    - op: replace
-      path: /spec/selector/matchLabels/app
-      value: pocketbase-sudoku
-    - op: replace
-      path: /spec/template/metadata/labels/app
       value: pocketbase-sudoku
     - op: replace
       path: /metadata/annotations/external-dns.alpha.kubernetes.io~1hostname
