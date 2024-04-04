@@ -16,13 +16,10 @@ patches:
       path: /spec/template/spec/volumes/1/persistentVolumeClaim/claimName
       value: pocketbase-public-sudoku
   target:
-    kind: StatefulSet
+    kind: Deployment
 - patch: |-
     - op: replace
       path: /metadata/name
-      value: pocketbase-sudoku
-    - op: replace
-      path: /spec/serviceName
       value: pocketbase-sudoku
     - op: replace
       path: /metadata/annotations/external-dns.alpha.kubernetes.io~1hostname

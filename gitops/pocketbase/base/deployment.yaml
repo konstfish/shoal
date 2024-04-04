@@ -1,9 +1,8 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: pocketbase-name
 spec:
-  serviceName: pocketbase-name
   replicas: 1
   selector:
     matchLabels:
