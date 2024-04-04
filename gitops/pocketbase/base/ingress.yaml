@@ -1,15 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: pocketbase-$name
+  name: pocketbase-name
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-http"
+    cert-manager.io/cluster-issuer: "letsencrypt-dns"
     external-dns.alpha.kubernetes.io/hostname: name.api.konst.fish
 spec:
   tls:
   - hosts:
     - name.api.konst.fish
-    secretName: pocketbase-$name-tls
+    secretName: pocketbase-name-tls
   ingressClassName: nginx
   rules:
   - host: name.api.konst.fish
