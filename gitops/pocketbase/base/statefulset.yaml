@@ -1,8 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: pocketbase-name
 spec:
+  serviceName: pocketbase-name
   replicas: 1
   selector:
     matchLabels:
@@ -16,7 +17,7 @@ spec:
       - name: pocketbase
         image: ghcr.io/muchobien/pocketbase:0.22.7
         ports:
-        - containerPort: 8080
+        - containerPort: 8090
         volumeMounts:
         - name: pb-data
           mountPath: "/pb/pb_data"
@@ -25,7 +26,7 @@ spec:
         readinessProbe:
           httpGet:
             path: /api/health
-            port: 8080
+            port: 8090
           initialDelaySeconds: 10
           periodSeconds: 5
           failureThreshold: 5

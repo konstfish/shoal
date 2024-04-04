@@ -16,11 +16,14 @@ patches:
       path: /spec/template/spec/volumes/1/persistentVolumeClaim/claimName
       value: pocketbase-public-sudoku
   target:
-    kind: Deployment
+    kind: StatefulSet
 - patch: |-
     - op: replace
       path: /metadata/name
-      value: sudoku-api
+      value: pocketbase-sudoku
+    - op: replace
+      path: /spec/serviceName
+      value: pocketbase-sudoku
     - op: replace
       path: /metadata/annotations/external-dns.alpha.kubernetes.io~1hostname
       value: sudoku.api.konst.fish
