@@ -1,6 +1,4 @@
 namespace: pocketbase
 
-targetCustomizations:
-- name: sudoku
-  kustomize:
-    dir: overlays/sudoku
+kustomize:
+  dir: ""
