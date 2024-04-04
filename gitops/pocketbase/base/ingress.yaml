@@ -19,6 +19,6 @@ spec:
         path: /
         backend:
           service:
-            name: pocketbase-$name
+            name: pocketbase-name
             port:
-              number: 8080
+              number: 8090
