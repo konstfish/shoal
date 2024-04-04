@@ -25,6 +25,12 @@ patches:
       path: /spec/serviceName
       value: pocketbase-sudoku
     - op: replace
+      path: /spec/selector/matchLabels/app
+      value: pocketbase-sudoku
+    - op: replace
+      path: /spec/template/metadata/labels/app
+      value: pocketbase-sudoku
+    - op: replace
       path: /metadata/annotations/external-dns.alpha.kubernetes.io~1hostname
       value: sudoku.api.konst.fish
     - op: replace

@@ -7,11 +7,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: pocketbase
+      app: pocketbase-name
   template:
     metadata:
       labels:
-        app: pocketbase
+        app: pocketbase-name
     spec:
       containers:
       - name: pocketbase
