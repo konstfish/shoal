@@ -3,9 +3,11 @@ namespace: pocketbase
 targetCustomizations:
 - name: sudoku
   helm:
+    chart: ./chart
     values:
       name: sudoku
 - name: test
   helm:
+    chart: ./chart
     values:
       name: test
