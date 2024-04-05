@@ -1,15 +1,8 @@
 namespace: pocketbase
 
-targetCustomizations:
-- name: sudoku
-  helm:
-    chart: ./chart
-    values:
-      name: sudoku
-  clusterSelector: {}
-- name: test
-  helm:
-    chart: ./chart
-    values:
-      name: test
-  clusterSelector: {}
+helm:
+  chart: ./chart
+  values:
+    releases:
+      - name: sudoku
+      - name: cards
