@@ -5,3 +5,7 @@ targetCustomizations:
   helm:
     values:
       name: sudoku
+- name: test
+  helm:
+    values:
+      name: test
