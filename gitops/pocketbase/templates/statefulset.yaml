@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: pocketbase-name
+  name: "pocketbase-{{ .Values.name }}"
 spec:
-  serviceName: pocketbase-name
-  replicas: 1
+  serviceName: "pocketbase-{{ .Values.name }}"
+  replicas: {{ .Values.replicaCount }}
+  labels:
+    {{- include "pocketbase.labels" . | nindent 4 }}
   selector:
     matchLabels:
-      app: pocketbase-name
+      app: "pocketbase-{{ .Values.name }}"
   template:
     metadata:
       labels:
-        app: pocketbase-name
+        app: "pocketbase-{{ .Values.name }}"
     spec:
       containers:
       - name: pocketbase
-        image: ghcr.io/muchobien/pocketbase:0.22.7
+        image: {{ .Values.image }}
         ports:
         - containerPort: 8090
         volumeMounts:
         - name: pb-data
-          mountPath: "/pb/pb_data"
-        - name: pb-public
-          mountPath: "/pb/pb_public"
+          mountPath: "/pb/"
         readinessProbe:
           httpGet:
             path: /api/health
@@ -40,7 +40,4 @@ spec:
       volumes:
       - name: pb-data
         persistentVolumeClaim:
-          claimName: pocketbase-data-name
-      - name: pb-public
-        persistentVolumeClaim:
-          claimName: pocketbase-public-name
+          claimName: "pocketbase-{{ .Values.name }}"

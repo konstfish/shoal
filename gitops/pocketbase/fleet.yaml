@@ -1,4 +1,7 @@
 namespace: pocketbase
 
-kustomize:
-  dir: ""
+targetCustomizations:
+- name: sudoku
+  helm:
+    values:
+      name: sudoku
