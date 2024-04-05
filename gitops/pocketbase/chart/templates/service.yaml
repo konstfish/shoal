@@ -1,13 +1,15 @@
+{{- $top := . -}}
+{{- range $release := .Values.releases -}}
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: "pocketbase-{{ .Values.name }}"
-  labels:
-    {{- include "pocketbase.labels" . | nindent 4 }}
+  name: "pocketbase-{{ $release.name }}"
 spec:
   selector:
-    app: "pocketbase-{{ .Values.name }}"
+    app: "pocketbase-{{ $release.name }}"
   ports:
     - protocol: TCP
       port: 8090
       targetPort: 8090
+{{ end -}}

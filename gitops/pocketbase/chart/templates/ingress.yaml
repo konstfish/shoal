@@ -1,17 +1,18 @@
+{{- $top := . -}}
+{{- range $release := .Values.releases -}}
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: "pocketbase-{{ .Values.name }}"
+  name: "pocketbase-{{ $release.name }}"
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-dns"
-    external-dns.alpha.kubernetes.io/hostname: "{{ .Values.name }}.api.konst.fish"
-  labels:
-    {{- include "pocketbase.labels" . | nindent 4 }}
+    external-dns.alpha.kubernetes.io/hostname: "{{ $release.name }}.api.konst.fish"
 spec:
   tls:
   - hosts:
-    - "{{ .Values.name }}.api.konst.fish"
-    secretName: "pocketbase-{{ .Values.name }}-tls"
+    - "{{ $release.name }}.api.konst.fish"
+    secretName: "pocketbase-{{ $release.name }}-tls"
   ingressClassName: nginx
   rules:
   - host: name.api.konst.fish
@@ -21,6 +22,7 @@ spec:
         path: /
         backend:
           service:
-            name: "pocketbase-{{ .Values.name }}"
+            name: "pocketbase-{{ $release.name }}"
             port:
               number: 8090
+{{ end -}}

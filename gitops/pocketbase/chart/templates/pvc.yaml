@@ -1,12 +1,14 @@
+{{- $top := . -}}
+{{- range $release := .Values.releases -}}
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: "pocketbase-{{ .Values.name }}"
-  labels:
-    {{- include "pocketbase.labels" . | nindent 4 }}
+  name: "pocketbase-{{ $release.name }}"
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi
+{{ end -}}
