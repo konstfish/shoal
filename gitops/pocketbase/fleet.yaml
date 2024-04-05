@@ -6,10 +6,10 @@ targetCustomizations:
     chart: ./chart
     values:
       name: sudoku
-  clusterSelector: null
+  clusterSelector: {}
 - name: test
   helm:
     chart: ./chart
     values:
       name: test
-  clusterSelector: null
+  clusterSelector: {}
