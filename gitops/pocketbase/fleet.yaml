@@ -6,8 +6,14 @@ targetCustomizations:
     chart: ./chart
     values:
       name: sudoku
+  clusterSelector:
+    matchLabels:
+      name: guppy
 - name: test
   helm:
     chart: ./chart
     values:
       name: test
+  clusterSelector:
+    matchLabels:
+      name: guppy
