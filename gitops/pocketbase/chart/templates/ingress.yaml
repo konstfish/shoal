@@ -15,7 +15,7 @@ spec:
     secretName: "pocketbase-{{ $release.name }}-tls"
   ingressClassName: nginx
   rules:
-  - host: name.api.konst.fish
+  - host: "{{ $release.name }}.api.konst.fish"
     http:
       paths:
       - pathType: Prefix
