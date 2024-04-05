@@ -1,7 +1,8 @@
 namespace: pocketbase
 
-targetCustomizations:
-- name: sudoku
-  helm:
-    values:
-      name: sudoku
+helm:
+  chart: ./chart
+  values:
+    releases:
+      - name: sudoku
+      - name: cards

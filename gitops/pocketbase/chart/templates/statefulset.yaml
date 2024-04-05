@@ -1,23 +1,24 @@
+{{- $top := . -}}
+{{- range $release := .Values.releases -}}
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: "pocketbase-{{ .Values.name }}"
+  name: "pocketbase-{{ $release.name }}"
 spec:
-  serviceName: "pocketbase-{{ .Values.name }}"
-  replicas: {{ .Values.replicaCount }}
-  labels:
-    {{- include "pocketbase.labels" . | nindent 4 }}
+  serviceName: "pocketbase-{{ $release.name }}"
+  replicas: {{ $top.Values.replicaCount }}
   selector:
     matchLabels:
-      app: "pocketbase-{{ .Values.name }}"
+      app: "pocketbase-{{ $release.name }}"
   template:
     metadata:
       labels:
-        app: "pocketbase-{{ .Values.name }}"
+        app: "pocketbase-{{ $release.name }}"
     spec:
       containers:
       - name: pocketbase
-        image: {{ .Values.image }}
+        image: {{ $top.Values.image }}
         ports:
         - containerPort: 8090
         volumeMounts:
@@ -40,4 +41,5 @@ spec:
       volumes:
       - name: pb-data
         persistentVolumeClaim:
-          claimName: "pocketbase-{{ .Values.name }}"
+          claimName: "pocketbase-{{ $release.name }}"
+{{ end -}}
