@@ -1,0 +1,16 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: operators
+  namespace: fleet-default
+spec:
+  repo: https://github.com/konstfish/shoal
+  branch: main
+  paths:
+  - gitops/pocketbase
+  targets:
+  - clusterName: tetra
+  - clusterName: guppy
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false
