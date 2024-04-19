@@ -1,15 +1,16 @@
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: angler
+  name: operators
   namespace: fleet-default
 spec:
-  repo: https://github.com/konstfish/angler
+  repo: https://github.com/konstfish/shoal
   branch: main
   paths:
-  - kubernetes/components
+  - gitops/operators-core
   targets:
   - clusterName: tetra
+  - clusterName: guppy
   insecureSkipTLSVerify: false
   correctDrift:
     enabled: false
