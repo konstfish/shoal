@@ -6,6 +6,10 @@ resource "kubernetes_manifest" "project_operators_core" {
   manifest = yamldecode(file("${path.module}/fleet/operators-core.yaml"))
 }
 
+resource "kubernetes_manifest" "project_monitoring" {
+  manifest = yamldecode(file("${path.module}/fleet/monitoring.yaml"))
+}
+
 resource "kubernetes_manifest" "project_angler" {
   manifest = yamldecode(file("${path.module}/fleet/angler.yaml"))
 }
