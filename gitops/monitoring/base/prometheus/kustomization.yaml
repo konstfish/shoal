@@ -1,0 +1,4 @@
+resources:
+  - rbac.yaml
+  - prometheus.yaml
+  - prometheus-sm.yaml

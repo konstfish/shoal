@@ -1,0 +1,4 @@
+resources:
+  - ds-prometheus.yaml
+  - ds-loki.yaml
+  - ds-tempo.yaml
