@@ -1,0 +1,15 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: monitoring
+  namespace: fleet-default
+spec:
+  repo: https://github.com/konstfish/shoal
+  branch: feature/monitoring/prometheus
+  paths:
+  - gitops/monitoring
+  targets:
+  - clusterName: tetra
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false
