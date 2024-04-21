@@ -16,4 +16,3 @@ spec:
     isDefault: false
     jsonData:
       "tlsSkipVerify": true
-      "timeInterval": "5s"

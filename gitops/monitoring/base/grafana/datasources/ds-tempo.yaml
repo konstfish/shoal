@@ -15,5 +15,10 @@ spec:
     url: http://tempo-tempo:3200
     isDefault: false
     jsonData:
-      "tlsSkipVerify": true
-      "timeInterval": "5s"
+      tlsSkipVerify: true
+      search:
+        hide: false
+      nodeGraph:
+          enabled: true
+      serviceMap:
+          datasourceUid: prometheus1
