@@ -1,0 +1,19 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: ds-tempo
+spec:
+  instanceSelector:
+    matchLabels:
+      app: "grafana"
+  datasource:
+    name: tempo
+    type: tempo
+    uid: tempo1
+    access: proxy
+    basicAuth: false
+    url: http://tempo-tempo:3200
+    isDefault: false
+    jsonData:
+      "tlsSkipVerify": true
+      "timeInterval": "5s"
