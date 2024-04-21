@@ -10,3 +10,12 @@ spec:
   resources:
     requests:
       memory: 400Mi
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: longhorn
+          resources:
+            requests:
+              storage: 20Gi
+          parameters:
+            numberOfReplicas: 1
