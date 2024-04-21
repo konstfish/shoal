@@ -1,11 +1,9 @@
-apiVersion: loki.grafana.com/v1
-kind: LokiStack
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
 metadata:
   name: loki
+  namespace: kube-system
 spec:
-  size: 1x.small
-  storage:
-    secret:
-      name: test
-      type: s3
-  storageClassName: longhorn
+  chart: loki-stack
+  repo: https://grafana.github.io/helm-charts
+  targetNamespace: monitoring

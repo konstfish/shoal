@@ -1,0 +1,14 @@
+apiVersion: tempo.grafana.com/v1alpha1
+kind: TempoMonolithic
+metadata:
+  name: sample
+spec:
+  jaegerui:
+    enabled: false
+  resources:
+    limits:
+      cpu: '2'
+      memory: 2Gi
+  storage:
+    traces:
+      backend: memory
