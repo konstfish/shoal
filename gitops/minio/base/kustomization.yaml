@@ -1,0 +1,4 @@
+resources:
+  - minio.yaml
+  - ingress.yaml
+  - ingress-console.yaml
