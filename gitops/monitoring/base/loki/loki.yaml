@@ -2,7 +2,7 @@ apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
   name: loki
-  namespace: kube-system
+  namespace: monitoring
 spec:
   chart: loki-stack
   repo: https://grafana.github.io/helm-charts

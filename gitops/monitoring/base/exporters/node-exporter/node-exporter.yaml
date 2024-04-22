@@ -1,0 +1,11 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: node-exporter
+  namespace: monitoring
+spec:
+  chart: prometheus-node-exporter
+  repo: https://prometheus-community.github.io/helm-charts
+  targetNamespace: monitoring
+  set:
+    prometheus.monitor.enabled: "true"

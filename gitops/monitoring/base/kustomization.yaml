@@ -3,3 +3,4 @@ resources:
   - loki
   - tempo
   - grafana
+  - exporters/node-exporter
