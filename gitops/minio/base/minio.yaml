@@ -9,8 +9,6 @@ metadata:
     app: minio
   name: minio
 spec:
-  configuration:
-    name: storage-configuration
   mountPath: /export
   podManagementPolicy: Parallel
   pools:
@@ -27,8 +25,6 @@ spec:
               storage: 2Gi
       volumesPerServer: 2
   requestAutoCert: false
-  users:
-    - name: storage-user
   env:
     - name: MINIO_DOMAIN
       value: "minio.konst.fish"
