@@ -9,6 +9,8 @@ metadata:
     app: minio
   name: minio
 spec:
+  credsSecret:
+    name: minio-creds-secret
   mountPath: /export
   podManagementPolicy: Parallel
   pools:
