@@ -16,10 +16,11 @@ spec:
       enabled: 'false'
     auth.proxy:
       enabled: 'true'
-      header_name: cf-access-authenticated-user-email
-      header_property: email
       auto_sign_up: 'true'
       enable_login_token: 'false'
+      header_name: X-Auth-Request-Email
+      headers: >-
+        Name:X-Auth-Request-User Email:X-Auth-Request-Email
     users:
       auto_assign_org_role: Admin
       default_theme: light
