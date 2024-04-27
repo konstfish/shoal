@@ -20,7 +20,7 @@ data "rancher2_cluster" "tetra" {
 resource "rancher2_project" "user_projects" {
   for_each = local.user_map
 
-  name       = each.value.login
+  name       = lower(each.value.login)
   cluster_id = data.rancher2_cluster.tetra.id
 
   resource_quota {
@@ -46,8 +46,8 @@ resource "rancher2_project" "user_projects" {
 resource "rancher2_project_role_template_binding" "user_projects_binding" {
   for_each = local.user_map
 
-  name              = "template-binding-${each.value.login}"
-  project_id        = rancher2_project.user_projects[each.value.login].id
+  name              = lower("template-binding-${each.value.login}")
+  project_id        = lower(rancher2_project.user_projects[each.value.login].id)
   role_template_id  = "project-owner"
   user_principal_id = "github_user://${data.github_user.org_users[each.value.login].id}"
 }
