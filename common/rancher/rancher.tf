@@ -16,38 +16,10 @@ data "rancher2_cluster" "tetra" {
   name = "tetra"
 }
 
-// projects
-resource "rancher2_project" "user_projects" {
+data "rancher2_user" "user_map" {
   for_each = local.user_map
 
-  name       = lower(each.value.login)
-  cluster_id = data.rancher2_cluster.tetra.id
-
-  resource_quota {
-    project_limit {
-      limits_cpu       = "2000m"
-      limits_memory    = "2000Mi"
-      requests_storage = "30Gi"
-    }
-    namespace_default_limit {
-      limits_cpu       = "2000m"
-      limits_memory    = "2000Mi"
-      requests_storage = "30Gi"
-    }
-  }
-  container_resource_limit {
-    limits_cpu      = "150m"
-    limits_memory   = "100Mi"
-    requests_cpu    = "50m"
-    requests_memory = "50Mi"
-  }
-}
-
-resource "rancher2_project_role_template_binding" "user_projects_binding" {
-  for_each = local.user_map
-
-  name              = lower("template-binding-${each.value.login}")
-  project_id        = lower(rancher2_project.user_projects[each.value.login].id)
-  role_template_id  = "project-owner"
-  user_principal_id = "github_user://${data.github_user.org_users[each.value.login].id}"
+  is_external = true
+  username = lower(each.value.login)
+  name = lower(each.value.login)
 }

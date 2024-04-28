@@ -1,0 +1,8 @@
+kind: BundleNamespaceMapping
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: mapping
+  namespace: fleet-{{ .Values.tenant }}
+namespaceSelector:
+  matchLabels:
+    kubernetes.io/metadata.name: {{ .Values.tenant }}

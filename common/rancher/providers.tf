@@ -33,3 +33,15 @@ resource "rancher2_bootstrap" "admin" {
   telemetry = true
 }
 */
+
+// kubernetes
+
+provider "kubernetes" {
+  config_path = "${path.module}/../../tetra/ansible/artifacts/tetra.yml"
+}
+
+provider "helm" {
+  kubernetes {
+    config_path = "${path.module}/../../tetra/ansible/artifacts/tetra.yml"
+  }
+}

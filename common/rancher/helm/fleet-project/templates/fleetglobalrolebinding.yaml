@@ -1,0 +1,13 @@
+apiVersion: management.cattle.io/v3
+kind: ClusterRoleBinding
+metadata:
+  name: fleet-{{ .Values.tenant }}
+  namespace: <namespace>
+subjects:
+- kind: User
+  name: <user-id>
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: GlobalRole
+  name: <global-role-id>
+  apiGroup: management.cattle.io
