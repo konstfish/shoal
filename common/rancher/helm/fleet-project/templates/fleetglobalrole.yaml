@@ -2,19 +2,6 @@ apiVersion: management.cattle.io/v3
 kind: GlobalRole
 metadata:
   name: fleet-{{ .Values.tenant }}
-namespacedRules:
-  fleet-{{ .Values.tenant }}:
-    - apiGroups:
-        - fleet.cattle.io
-      resources:
-        - gitrepos
-        - bundles
-        - clusterregistrationtokens
-        - gitreporestrictions
-        - clusters
-        - clustergroups
-      verbs:
-        - '*'
 rules:
   - apiGroups:
       - management.cattle.io

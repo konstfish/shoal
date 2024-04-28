@@ -16,10 +16,28 @@ data "rancher2_cluster" "tetra" {
   name = "tetra"
 }
 
-data "rancher2_user" "user_map" {
-  for_each = local.user_map
+// request https://rancher.konst.fish/v1/management.cattle.io.users?exclude=metadata.managedFields
+resource "rancher2_token" "temp_user_token" {
+  description = "temp_user_token"
+  ttl = 30
+}
 
-  is_external = true
-  username = lower(each.value.login)
-  name = lower(each.value.login)
+data "http" "api_response" {
+  url = "https://rancher.konst.fish/v1/management.cattle.io.users?exclude=metadata.managedFields"
+  request_headers = {
+    Authorization = "Bearer ${rancher2_token.temp_user_token.token}"
+    Accept        = "application/json"
+  }
+}
+
+locals {
+  users_list = jsondecode(data.http.api_response.response_body)["data"]
+  github_user_to_id_map = {
+    for user in local.users_list :
+      (one([for pid in user.principalIds : pid if can(regex("github_user://.*", pid))])) => user.id if length([for pid in user.principalIds : pid if can(regex("github_user://.*", pid))]) > 0
+  }
+}
+
+output "github_user_to_id_map" {
+  value = local.github_user_to_id_map
 }

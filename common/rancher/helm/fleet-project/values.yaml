@@ -3,6 +3,7 @@
 # Declare variables to be passed into your templates.
 
 tenant: name
+tenantId: u-123
 
 replicaCount: 1
 

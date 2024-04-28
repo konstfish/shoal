@@ -11,7 +11,3 @@ data "github_user" "org_users" {
 
   username = each.value.login
 }
-
-output "org_members" {
-  value = data.github_organization.org.users
-}

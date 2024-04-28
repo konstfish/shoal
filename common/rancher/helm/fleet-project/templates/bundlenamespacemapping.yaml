@@ -5,4 +5,7 @@ metadata:
   namespace: fleet-{{ .Values.tenant }}
 namespaceSelector:
   matchLabels:
-    kubernetes.io/metadata.name: {{ .Values.tenant }}
+    kubernetes.io/metadata.name: fleet-default
+bundleSelector:
+  matchLabels:
+    tenant: {{ .Values.tenant }}
