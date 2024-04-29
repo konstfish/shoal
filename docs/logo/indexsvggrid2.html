@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            width: 400px;
+        }
+
+        .grid div{
+            height: 200px;
+            width: 200px;
+        }
+
+        .grid div object {
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid">
+        <div class="div1">
+            <svg version="1.1" width="320" height="220" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <mask id="hole">
+                        <rect x="100" y="100" width="220" height="120" fill="white"/>
+                        <circle cx="260" cy="180" r="10" fill="black"/>
+                    </mask>
+                </defs>
+                
+                <path stroke="none" fill="currentColor" d="M110,10 v100 h-100 a120,100 0 0 0 100,-100 z" />
+                <path stroke="none" fill="currentColor" mask="url(#hole)" d="M110,110 h80 a120,100 0 0 1 120,100 h-80 a120,100 0 0 1 -120,-100 v-100 z" />
+            </svg>
+        </div>
+        <div class="div2">
+            <svg version="1.1" width="320" height="220" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <mask id="hole">
+                        <rect x="100" y="100" width="220" height="120" fill="white"/>
+                        <circle cx="260" cy="180" r="10" fill="black"/>
+                    </mask>
+                </defs>
+                
+                <path stroke="none" fill="currentColor" d="M110,10 v100 h-100 a120,100 0 0 0 100,-100 z" />
+                <path stroke="none" fill="currentColor" mask="url(#hole)" d="M110,110 h80 a120,100 0 0 1 120,100 h-80 a120,100 0 0 1 -120,-100 v-100 z" />
+            </svg>
+        </div>
+        <div class="div3">
+            <svg version="1.1" width="320" height="220" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <mask id="hole">
+                        <rect x="100" y="100" width="220" height="120" fill="white"/>
+                        <circle cx="260" cy="180" r="10" fill="black"/>
+                    </mask>
+                </defs>
+                
+                <path stroke="none" fill="currentColor" d="M110,10 v100 h-100 a120,100 0 0 0 100,-100 z" />
+                <path stroke="none" fill="currentColor" mask="url(#hole)" d="M110,110 h80 a120,100 0 0 1 120,100 h-80 a120,100 0 0 1 -120,-100 v-100 z" />
+            </svg>
+        </div>
+        <div class="div4">
+            <svg version="1.1" width="320" height="220" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <mask id="hole">
+                        <rect x="100" y="100" width="220" height="120" fill="white"/>
+                        <circle cx="260" cy="180" r="10" fill="black"/>
+                    </mask>
+                </defs>
+                
+                <path stroke="none" fill="currentColor" d="M110,10 v100 h-100 a120,100 0 0 0 100,-100 z" />
+                <path stroke="none" fill="currentColor" mask="url(#hole)" d="M110,110 h80 a120,100 0 0 1 120,100 h-80 a120,100 0 0 1 -120,-100 v-100 z" />
+            </svg>
+        </div>
+    </div>
+</body>
+</html>
