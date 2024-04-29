@@ -5,26 +5,26 @@ tags: []
 date: 2024-03-01
 ---
 
-Cosplaying PaaS
+<img alt="shoal fish" align='right' src="style/logo_static/fish.svg" width="100" style="margin: 0 0 0 24px;">
+
+> Cosplaying PaaS
 
 ## Operational
 
-### Provided
-
-#### Access
+### Access
 - [[Rancher]]
 
-#### Ingress
+### Ingress
 - [[Nginx Ingress]]
 - [[Istio Gateways]]
 
-#### Service Mesh
+### Service Mesh
 - [[Istio]]
 
-#### GitOps
+### GitOps
 - [[Fleet]]
 
-#### Observability
+### Observability
 - [[Observability]]
 
 ## Organizational
