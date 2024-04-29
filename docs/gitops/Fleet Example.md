@@ -1,4 +1,9 @@
-# Fleet Example
+---
+title: Fleet Example
+draft: false
+tags: []
+date: 2024-04-28
+---
 
 ```yaml
 apiVersion: fleet.cattle.io/v1alpha1
