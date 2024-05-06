@@ -1,0 +1,42 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: ingresshostcheck
+spec:
+  crd:
+    spec:
+      names:
+        kind: IngressHostCheck
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package kubernetes.admission
+
+        violation[{"msg": msg, "details": details}] {
+          input.review.kind.kind == "Ingress"
+          namespace := input.review.namespace
+          namespace_has_label(namespace)
+          msg := sprintf("Creation of Ingress in namespace %v with label 'tenant=true' is not allowed", [namespace])
+          details := {"forbidden_label": "tenant=true"}
+        }
+
+        violation[{"msg": msg}] {
+          input.review.kind.kind == "Ingress"
+          host := input.review.object.spec.rules[_].host
+          not allowed_domain(host)
+          msg := sprintf("Host %v is not allowed", [host])
+        }
+
+        namespace_has_label(ns) {
+          input.review.object.metadata.namespace == ns
+          labels := input.inventory.namespace[ns].metadata.labels
+          labels["tenant"] == "true"
+        }
+
+        allowed_domain(host) {
+          endswith(host, ".appdomain.shoal.konst.fish")
+        }
+
+        allowed_domain(host) {
+          not endswith(host, "konst.fish")
+        }
