@@ -1,7 +1,7 @@
 
 // https://artifacthub.io/packages/helm/gatekeeper/gatekeeper
 
-resource "helm_release" "olm" {
+resource "helm_release" "opa_gatekeeper" {
   name       = "gatekeeper"
   repository = "https://open-policy-agent.github.io/gatekeeper/charts"
   chart      = "gatekeeper"

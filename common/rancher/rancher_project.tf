@@ -25,7 +25,8 @@ resource "rancher2_project" "user_projects" {
   }
 
   labels = {
-    "tenant" = each.value.login
+    "tenant" = true
+    "user"  = each.value.login
   }
 }
 
@@ -35,12 +36,18 @@ resource "rancher2_namespace" "user_namespaces" {
   name       = lower(each.value.login)
   project_id = rancher2_project.user_projects[each.value.login].id
 
+  labels = {
+    "tenant" = true
+    "user"  = each.value.login
+    "ingress" = "true"
+    "billing" = "none"
+  }
+
   lifecycle {
     ignore_changes = [
       container_resource_limit
     ]
   }
-
 }
 
 resource "rancher2_project_role_template_binding" "user_projects_binding" {
