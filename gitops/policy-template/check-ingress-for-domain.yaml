@@ -12,12 +12,13 @@ spec:
       rego: |
         package k8svalidingress
 
-        violation[{"msg": msg, "details": {"rejected_domain": rejected_domain}}] {
+        violation[{"msg": msg, "details": {"rejected_domain": domain}}] {
           input.review.kind.kind == "Ingress"
-          namespace := input.review.object.metadata.namespace
           input.review.object.spec.rules[_].host == domain
-          endswith(domain, ".konst.fish")
-          not endswith(domain, ".appdomain.konst.fish")
-          rejected_domain := domain
-          msg := sprintf("Ingress with domain %v is not allowed", [domain])
+          ends_with(domain, ".konst.fish")  # using ends_with for better readability
+          not ends_with(domain, ".appdomain.konst.fish")
+          namespace := input.review.object.metadata.namespace
+          ns := data.inventory.namespace[namespace]
+          ns.metadata.labels["tenant"] == "true"
+          msg := sprintf("Ingress with domain %v is not allowed in namespaces labeled with tenant=true", [domain])
         }
