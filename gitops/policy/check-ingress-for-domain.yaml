@@ -7,7 +7,9 @@ spec:
     kinds:
       - apiGroups: ["networking.k8s.io"]
         kinds: ["Ingress"]
-    namespaces:
-      - labelSelector:
-          matchLabels:
-            tenant: "true"
+    namespaceSelector:
+      matchExpressions:
+      - key: tenant
+        operator: In
+        values:
+        - 'true'
