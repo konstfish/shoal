@@ -14,7 +14,7 @@ spec:
 
         violation[{"msg": msg, "details": {"rejected_domain": domain}}] {
           input.review.kind.kind == "Ingress"
-          input.review.object.spec.rules[_].host == domain
+          domain := input.review.object.spec.rules[_].host
           endswith(domain, ".konst.fish")
           not endswith(domain, ".appdomain.konst.fish")
           namespace := input.review.object.metadata.namespace
