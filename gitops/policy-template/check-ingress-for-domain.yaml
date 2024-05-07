@@ -18,7 +18,5 @@ spec:
           endswith(domain, ".konst.fish")
           not endswith(domain, ".appdomain.konst.fish")
           namespace := input.review.object.metadata.namespace
-          ns := data.inventory.namespace[namespace]
-          ns.metadata.labels["tenant"] == "true"
           msg := sprintf("Ingress with domain %v is not allowed", [domain])
         }
