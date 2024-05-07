@@ -1,0 +1,13 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: IngressKonstfishTLD
+metadata:
+  name: ingresskonstfishtld
+spec:
+  match:
+    kinds:
+      - apiGroups: ["networking.k8s.io"]
+        kinds: ["Ingress"]
+    namespaces:
+      - labelSelector:
+          matchLabels:
+            tenant: "true"

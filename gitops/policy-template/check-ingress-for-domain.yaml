@@ -1,0 +1,23 @@
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: ingresskonstfishtld
+spec:
+  crd:
+    spec:
+      names:
+        kind: IngressKonstfishTLD
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package k8svalidingress
+
+        violation[{"msg": msg, "details": {"rejected_domain": rejected_domain}}] {
+          input.review.kind.kind == "Ingress"
+          namespace := input.review.object.metadata.namespace
+          input.review.object.spec.rules[_].host == domain
+          endswith(domain, ".konst.fish")
+          not endswith(domain, ".appdomain.konst.fish")
+          rejected_domain := domain
+          msg := sprintf("Ingress with domain %v is not allowed", [domain])
+        }
