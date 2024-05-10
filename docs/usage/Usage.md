@@ -14,15 +14,15 @@ flowchart LR
     A[Web] -->|*.appdomain.konst.fish| B(Ingress)
     B -->|/api| C{{Backend Service}}
     subgraph Backend
-    C-. app=backend .-> D
-    C-. app=backend .-> E
+    C-. app=backend .-> D[Backend Pod]
+    C-. app=backend .-> E[Backend Pod]
     H(Backend Deployment) --> D
     H --> E
     end
 
     B -->|/| F{{Frontend Service}}
     subgraph Frontend
-    F-. app=frontend .-> G
+    F-. app=frontend .-> G[Frontend Pod]
     I(Frontend Deployment) --> G
     end
 
@@ -83,6 +83,9 @@ spec:
 ```
 
 ### Ingress
+
+Also see [[Nginx Ingress]]
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress

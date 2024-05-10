@@ -14,7 +14,7 @@ date: 2024-03-01
 ### Access
 - [[Rancher]]
 
-### Basic Usgae
+### Basic Usage
 - [[Usage]]
 
 ### Ingress
