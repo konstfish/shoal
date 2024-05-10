@@ -9,14 +9,16 @@ spec:
         kind: K8sAllowedStorageClasses
       validation:
         openAPIV3Schema:
+          type: object
+          description: >-
+            Requires storage classes to be specified when used.
           properties:
-            parameters:
-              type: object
-              properties:
-                allowedStorageClasses:
-                  type: array
-                  items:
-                    type: string
+            allowedStorageClasses:
+              type: array
+              description: >-
+                List of allowed storage classes.
+              items:
+                type: string
   targets:
     - target: admission.k8s.gatekeeper.sh
       rego: |
