@@ -1,7 +1,7 @@
 apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: K8sStorageClass
+kind: K8sAllowedStorageClasses
 metadata:
-  name: allowed-storageclass
+  name: allowed-storage-classes
 spec:
   match:
     kinds:
