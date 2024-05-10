@@ -22,10 +22,14 @@ spec:
       rego: |
         package k8sallowedstorageclasses
 
-        violation[{"msg": msg, "details": {"allowed": allowed}}] {
+        violation[{"msg": msg}] {
           input.review.object.kind == "PersistentVolumeClaim"
           provided := input.review.object.spec.storageClassName
           allowed := input.parameters.allowedStorageClasses
-          not provided == allowed[_]
+          not array_contains(allowed, provided)
           msg := sprintf("Storage class '%v' is not allowed. Allowed storage classes are: %v", [provided, allowed])
+        }
+
+        array_contains(arr, item) {
+          arr[_] == item
         }
