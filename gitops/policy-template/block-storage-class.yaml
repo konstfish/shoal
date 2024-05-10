@@ -9,16 +9,17 @@ spec:
         kind: K8sAllowedStorageClasses
       validation:
         openAPIV3Schema:
-          type: object
-          description: >-
-            Requires storage classes to be specified when used.
           properties:
-            allowedStorageClasses:
-              type: array
-              description: >-
-                List of allowed storage classes.
-              items:
-                type: string
+            spec:
+              type: object
+              properties:
+                parameters:
+                  type: object
+                  properties:
+                    allowedStorageClasses:
+                      type: array
+                      items:
+                        type: string
   targets:
     - target: admission.k8s.gatekeeper.sh
       rego: |
@@ -28,6 +29,6 @@ spec:
           input.review.object.kind == "PersistentVolumeClaim"
           provided := input.review.object.spec.storageClassName
           allowed := input.parameters.allowedStorageClasses
-          not any(provided == allowed[_])
+          not provided == allowed[_]
           msg := sprintf("Storage class '%v' is not allowed. Allowed storage classes are: %v", [provided, allowed])
         }
