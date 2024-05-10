@@ -24,6 +24,12 @@ spec:
 
         violation[{"msg": msg}] {
           input.review.object.kind == "PersistentVolumeClaim"
+          not input.review.object.spec.storageClassName
+          msg := "The storageClassName must be specified for PVCs."
+        }
+
+        violation[{"msg": msg}] {
+          input.review.object.kind == "PersistentVolumeClaim"
           provided := input.review.object.spec.storageClassName
           allowed := input.parameters.allowedStorageClasses
           not array_contains(allowed, provided)
