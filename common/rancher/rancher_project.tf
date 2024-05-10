@@ -25,8 +25,7 @@ resource "rancher2_project" "user_projects" {
   }
 
   labels = {
-    "tenant" = true
-    "user"  = each.value.login
+    "tenant"  = each.value.login
   }
 }
 
@@ -37,8 +36,7 @@ resource "rancher2_namespace" "user_namespaces" {
   project_id = rancher2_project.user_projects[each.value.login].id
 
   labels = {
-    "tenant" = true
-    "user"  = each.value.login
+    "tenant"  = each.value.login
     "ingress" = "true"
     "billing" = "none"
   }

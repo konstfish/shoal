@@ -9,6 +9,7 @@ terraform {
 
 provider "github" {
   token = var.gh_token
+  owner = "shoal-konst-fish"
 }
 
 provider "rancher2" {
