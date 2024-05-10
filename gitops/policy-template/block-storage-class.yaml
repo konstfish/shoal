@@ -1,0 +1,41 @@
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sallowedstorageclasses
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sAllowedStorageClasses
+      validation:
+        openAPIV3Schema:
+          type: object
+          description: >-
+            Requires storage classes to be specified when used.
+          properties:
+            allowedStorageClasses:
+              type: array
+              items:
+                type: string
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package k8sallowedstorageclasses
+
+        violation[{"msg": msg}] {
+          input.review.object.kind == "PersistentVolumeClaim"
+          not input.review.object.spec.storageClassName
+          msg := "The storageClassName must be specified for PVCs."
+        }
+
+        violation[{"msg": msg}] {
+          input.review.object.kind == "PersistentVolumeClaim"
+          provided := input.review.object.spec.storageClassName
+          allowed := input.parameters.allowedStorageClasses
+          not array_contains(allowed, provided)
+          msg := sprintf("Storage class '%v' is not allowed. Allowed storage classes are: %v", [provided, allowed])
+        }
+
+        array_contains(arr, item) {
+          arr[_] == item
+        }

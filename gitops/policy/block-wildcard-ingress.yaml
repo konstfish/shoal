@@ -1,11 +1,11 @@
 apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: IngressKonstfishTLD
+kind: K8sBlockWildcardIngress
 metadata:
-  name: check-ingress-for-domain
+  name: block-wildcard-ingress
 spec:
   match:
     kinds:
-      - apiGroups: ["networking.k8s.io"]
+      - apiGroups: ["extensions", "networking.k8s.io"]
         kinds: ["Ingress"]
     namespaceSelector:
       matchExpressions:
