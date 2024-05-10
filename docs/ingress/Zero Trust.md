@@ -7,7 +7,7 @@ date: 2024-03-01
 
 https://sso.konst.fish is an OAuth2 Proxy which authorizes any member of the shoal-konst-fish GitHub Org.
 
-´´´mermaid
+```mermaid
 flowchart TD
     A[Web] --> ing(Ingress)
     subgraph OAuth2 Flow
