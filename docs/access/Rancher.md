@@ -1,6 +1,7 @@
 ---
 title: Rancher
 draft: false
-tags: []
+tags: [rancher, rbac, usage]
 date: 2024-02-01
 ---
+

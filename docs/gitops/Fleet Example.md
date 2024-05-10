@@ -1,7 +1,7 @@
 ---
 title: Fleet Example
 draft: false
-tags: []
+tags: [usage, fleet, gitops]
 date: 2024-04-28
 ---
 

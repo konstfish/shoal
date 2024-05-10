@@ -1,7 +1,7 @@
 ---
 title: CertManager
 draft: false
-tags: []
+tags: [ingress, certificates, tls]
 date: 2024-03-01
 ---
 

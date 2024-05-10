@@ -1,10 +1,10 @@
 ---
 title: Nginx Ingress
 draft: false
-tags: []
+tags: [ingress]
 date: 2024-03-01
 ---
 
-[[ExternalDNS]]
+[[DNS]]
 
 [[CertManager]]

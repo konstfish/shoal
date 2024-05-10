@@ -1,7 +1,7 @@
 ---
 title: Istio
 draft: false
-tags: []
+tags: [service-mesh]
 date: 2024-03-01
 ---
 

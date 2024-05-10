@@ -1,8 +1,7 @@
 ---
-title: ExternalDNS
+title: DNS
 draft: false
-tags: []
+tags: [dns, ingress]
 date: 2024-03-01
 ---
 
-todo

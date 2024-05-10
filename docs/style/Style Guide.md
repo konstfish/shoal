@@ -1,7 +1,7 @@
 ---
 title: Style Guide
 draft: false
-tags: []
+tags: [style]
 date: 2024-04-29
 ---
 ## Colors

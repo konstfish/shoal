@@ -1,7 +1,7 @@
 ---
 title: Observability
 draft: false
-tags: []
+tags: [monitoring]
 date: 2024-03-01
 ---
 

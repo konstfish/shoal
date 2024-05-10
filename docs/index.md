@@ -14,6 +14,9 @@ date: 2024-03-01
 ### Access
 - [[Rancher]]
 
+### Basic Usgae
+- [[Usage]]
+
 ### Ingress
 - [[Nginx Ingress]]
 - [[Istio Gateways]]
