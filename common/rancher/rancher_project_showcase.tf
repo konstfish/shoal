@@ -1,10 +1,10 @@
 // projects
 resource "rancher2_project" "showcase_project" {
   name       = "showcase"
-  cluster_id = data.ancher2_cluster.tetra.id
+  cluster_id = data.rancher2_cluster.tetra.id
 
   labels = {
-    "tenant"  = "showcase"
+    "tenant" = "showcase"
   }
 }
 
@@ -20,6 +20,7 @@ resource "rancher2_namespace" "showcase_namespace" {
   project_id = rancher2_project.showcase_project.id
 
   labels = {
-    "tenant"  = "showcase"
+    "tenant"                      = "showcase"
+    "kubernetes.io/metadata.name" = "showcase"
   }
 }

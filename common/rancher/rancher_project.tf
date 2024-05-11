@@ -25,7 +25,7 @@ resource "rancher2_project" "user_projects" {
   }
 
   labels = {
-    "tenant"  = each.value.login
+    "tenant" = each.value.login
   }
 }
 
@@ -36,9 +36,10 @@ resource "rancher2_namespace" "user_namespaces" {
   project_id = rancher2_project.user_projects[each.value.login].id
 
   labels = {
-    "tenant"  = each.value.login
-    "ingress" = "true"
-    "billing" = "none"
+    "tenant"                      = each.value.login
+    "kubernetes.io/metadata.name" = lower(each.value.login)
+    "ingress"                     = "true"
+    "billing"                     = "none"
   }
 
   lifecycle {

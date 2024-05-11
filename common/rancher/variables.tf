@@ -35,3 +35,9 @@ variable "rancher_secret_key" {
   type        = string
   sensitive   = true
 }
+
+variable "rancher_bearer_token" {
+  description = "Rancher Bearer Token"
+  type        = string
+  sensitive   = true
+}
