@@ -8,21 +8,21 @@ resource "rancher2_auth_config_github" "github" {
 
 // clusters
 /// data for now
-/*data "rancher2_cluster" "guppy" {
+data "rancher2_cluster" "guppy" {
   name = "guppy"
 }
 
 data "rancher2_cluster" "tetra" {
   name = "tetra"
-}*/
+}
 
-resource "rancher2_cluster" "guppy" {
+/*resource "rancher2_cluster" "guppy" {
   name = "guppy"
 }
 
 resource "rancher2_cluster" "tetra" {
   name = "tetra"
-}
+}*/
 
 // settings
 resource "rancher2_setting" "show_local_clusters" {

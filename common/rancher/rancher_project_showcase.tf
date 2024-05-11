@@ -1,7 +1,7 @@
 // projects
 resource "rancher2_project" "showcase_project" {
   name       = "showcase"
-  cluster_id = rancher2_cluster.tetra.id
+  cluster_id = data.ancher2_cluster.tetra.id
 
   labels = {
     "tenant"  = "showcase"

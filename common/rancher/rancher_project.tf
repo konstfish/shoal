@@ -3,7 +3,7 @@ resource "rancher2_project" "user_projects" {
   for_each = local.user_map
 
   name       = lower(each.value.login)
-  cluster_id = rancher2_cluster.tetra.id
+  cluster_id = data.rancher2_cluster.tetra.id
 
   resource_quota {
     project_limit {
