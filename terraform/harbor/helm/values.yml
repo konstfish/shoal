@@ -1,0 +1,73 @@
+externalURL: https://harbor.konst.fish
+
+expose:
+  ingress:
+    className: nginx
+    hosts:
+      core: harbor.konst.fish
+    harbor:
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-http"
+        external-dns.alpha.kubernetes.io/hostname: "harbor.konst.fish"
+  tls:
+    secret: 
+      secretName: harbor-tls
+
+
+persistence:
+  persistentVolumeClaim:
+    registry:
+      storageClass: nfs-client
+
+nginx:
+  image:
+    repository: ghcr.io/octohelm/harbor/nginx-photon
+    tag: v2.10.1
+
+portal:
+  image:
+    repository: ghcr.io/octohelm/harbor/harbor-portal
+    tag: v2.10.1
+
+core:
+  image:
+    repository: ghcr.io/octohelm/harbor/harbor-core
+    tag: v2.10.1
+
+jobservice:
+  image:
+    repository: ghcr.io/octohelm/harbor/harbor-jobservice
+    tag: v2.10.1
+
+registry:
+  registry:
+    image:
+      repository: ghcr.io/octohelm/harbor/registry-photon
+      tag: v2.10.1
+
+  controller:
+    image:
+      repository: ghcr.io/octohelm/harbor/harbor-registryctl
+      tag: v2.10.1
+
+trivy:
+  image:
+    repository: ghcr.io/octohelm/harbor/trivy-adapter-photon
+    tag: v2.10.1
+
+database:
+  internal:
+    image:
+      repository: ghcr.io/octohelm/harbor/harbor-db
+      tag: v2.10.1
+
+redis:
+  internal:
+    image:
+      repository: redis
+      tag: 6.0.20
+
+exporter:
+  image:
+    repository: ghcr.io/octohelm/harbor/harbor-exporter
+    tag: v2.10.1
