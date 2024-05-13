@@ -7,3 +7,13 @@ controller:
   hostNetwork: true
   hostPort:
     enabled: true
+  config:
+    custom-http-errors: "404,500,503"
+
+defaultBackend:
+  enabled: true
+  image:
+    repository: ghcr.io/konstfish/custom-default-backend
+    tag: "latest"
+    pullPolicy: Always
+    readOnlyRootFilesystem: false
