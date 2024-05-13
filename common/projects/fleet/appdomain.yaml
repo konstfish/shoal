@@ -1,0 +1,15 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: appdomain
+  namespace: fleet-default
+spec:
+  repo: https://github.com/konstfish/shoal
+  branch: main
+  paths:
+  - gitops/appdomain
+  targets:
+  - clusterName: tetra
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false

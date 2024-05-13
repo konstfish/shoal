@@ -14,6 +14,10 @@ resource "kubernetes_manifest" "project_policy_template" {
   manifest = yamldecode(file("${path.module}/fleet/policy-template.yaml"))
 }
 
+resource "kubernetes_manifest" "project_appdomain" {
+  manifest = yamldecode(file("${path.module}/fleet/appdomain.yaml"))
+}
+
 resource "kubernetes_manifest" "project_monitoring" {
   manifest = yamldecode(file("${path.module}/fleet/monitoring.yaml"))
 }
