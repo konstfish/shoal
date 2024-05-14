@@ -9,6 +9,8 @@ resource "kubernetes_manifest" "fleet_project" {
       "name"      = lower("fleet-${each.value.login}")
     }
   }
+
+  depends_on = [ rancher2_project_role_template_binding.user_projects_binding ]
 }
 
 // introduce a delay to ensure the fleet project is created before the helm release

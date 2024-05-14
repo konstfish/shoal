@@ -7,7 +7,6 @@ external: false
 hidden: false
 kind: RoleTemplate
 metadata:
-  generation: 1
   name: project-tenant
 roleTemplateNames:
 - edit

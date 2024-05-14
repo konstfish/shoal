@@ -38,12 +38,12 @@ resource "rancher2_bootstrap" "admin" {
 // kubernetes
 
 provider "kubernetes" {
-  config_path = "${path.module}/../../tetra/ansible/artifacts/tetra.yml"
+  config_path = "${path.module}/../../tetra/k3s-ansible/artifacts/tetra.yml"
 }
 
 provider "helm" {
   kubernetes {
-    config_path = "${path.module}/../../tetra/ansible/artifacts/tetra.yml"
+    config_path = "${path.module}/../../tetra/k3s-ansible/artifacts/tetra.yml"
   }
 }
 
