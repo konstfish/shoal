@@ -64,7 +64,7 @@ spec:
           limits:
             memory: 128Mi
             cpu: 100m
-    volumes:
-      - name: config
-        configMap:
-          name: kube-rbac-proxy
+      volumes:
+        - name: config
+          configMap:
+            name: kube-rbac-proxy
