@@ -12,13 +12,14 @@ spec:
       labels:
         app: thanos-querier
     spec:
+      serviceAccountName: kube-rbac-proxy
       containers:
       - name: thanos-querier
         image: quay.io/thanos/thanos:v0.35.0
         args:
           - query
           - --http-address=0.0.0.0:9090
-          - --store=dnssrv+_grpc._tcp.prometheus-operated.default.svc.cluster.local
+          - --store=prometheus-operated:10901
         ports:
         - name: http
           containerPort: 9090
@@ -45,11 +46,11 @@ spec:
             mountPath: /etc/kube-rbac-proxy
         resources:
           requests:
-            memory: 64Mi
-            cpu: 50m
+            memory: 256Mi
+            cpu: 150m
           limits:
-            memory: 128Mi
-            cpu: 100m
+            memory: 1Gi
+            cpu: 500m
       - name: prom-label-enforcer
         image: quay.io/prometheuscommunity/prom-label-proxy:v0.8.1
         imagePullPolicy: Always
@@ -57,13 +58,17 @@ spec:
           - "--insecure-listen-address=127.0.0.1:8080"
           - "--upstream=http://127.0.0.1:9090/"
           - "--label=namespace"
+          - "--enable-label-apis=true"
         resources:
           requests:
-            memory: 64Mi
-            cpu: 50m
+            memory: 256Mi
+            cpu: 150m
           limits:
-            memory: 128Mi
-            cpu: 100m
+            memory: 1Gi
+            cpu: 500m
+        ports:
+        - containerPort: 8080
+          name: https
       volumes:
         - name: config
           configMap:
