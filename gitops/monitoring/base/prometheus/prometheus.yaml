@@ -8,14 +8,25 @@ spec:
   serviceMonitorSelector: {}
   podMonitorSelector: {}
   resources:
+    limits:
+      cpu: 2000m
+      memory: 5Gi
     requests:
-      memory: 400Mi
-    storage:
-      volumeClaimTemplate:
-        spec:
-          storageClassName: longhorn
-          resources:
-            requests:
-              storage: 20Gi
-          parameters:
-            numberOfReplicas: 1
+      cpu: 250m
+      memory: 500Mi
+  securityContext:
+    runAsUser: 65534
+    fsGroup: 65534
+  replicas: 1
+  retention: 180d
+  storage:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: hcloud-volumes
+        resources:
+          requests:
+            storage: 20Gi
+  thanos:
+    objectStorageConfig:
+      key: thanos.yaml
+      name: thanos-objstore-secret
