@@ -1,3 +1,4 @@
 resources:
   - querier
-# - compactor
+  - querier-frontend
+  - compactor

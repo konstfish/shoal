@@ -1,6 +1,7 @@
 resources:
+  - policies
   - prometheus
   - loki
   - tempo
   - grafana
-  - exporters/node-exporter
+  - exporters

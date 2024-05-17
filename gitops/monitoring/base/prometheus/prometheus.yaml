@@ -17,7 +17,7 @@ spec:
   securityContext:
     runAsUser: 65534
     fsGroup: 65534
-  replicas: 1
+  replicas: 2
   retention: 180d
   storage:
     volumeClaimTemplate:
@@ -25,9 +25,11 @@ spec:
         storageClassName: hcloud-volumes
         resources:
           requests:
-            storage: 20Gi
+            storage: 10Gi
   thanos:
     image: quay.io/thanos/thanos:v0.35.0
     objectStorageConfig:
       key: thanos.yaml
       name: thanos-objstore-secret
+  externalLabels:
+    cluster: tetra

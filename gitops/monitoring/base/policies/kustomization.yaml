@@ -1,0 +1,3 @@
+resources:
+  - deny-from-all.yaml
+  - allow-to-thanos-frontend.yaml

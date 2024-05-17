@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: thanos-querier
+  name: thanos-querier-frontend
 spec:
   selector:
-    app: thanos-querier
+    app: thanos-querier-frontend
   ports:
   - name: http
     port: 9090
