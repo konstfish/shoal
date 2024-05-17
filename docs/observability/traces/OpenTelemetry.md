@@ -1,0 +1,6 @@
+---
+title: OpenTelemetry
+draft: false
+tags: [observability, observability/traces]
+date: 2024-05-18
+---

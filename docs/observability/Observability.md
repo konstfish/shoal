@@ -1,16 +1,17 @@
 ---
 title: Observability
 draft: false
-tags: [monitoring]
+tags: [observability]
 date: 2024-03-01
 ---
 
-todo
+## [[Grafana]]
+Visualize metrics, logs & traces
 
-[[Grafana Operator]]
+## [[Prometheus]]
+Metric collection & processing.
 
-[[Prometheus Operator]]
+## [[Loki]]
+Clusterwide Logging
 
-[[Loki]]
-
-[[Tempo]]
+## [[Tempo]]
