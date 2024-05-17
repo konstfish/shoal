@@ -1,2 +1,3 @@
 resources:
-  - node-exporter
+  - kube-state-metrics/chart.yaml
+  - node-exporter/chart.yaml

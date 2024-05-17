@@ -1,3 +1,4 @@
 resources:
   - deny-from-all.yaml
   - allow-to-thanos-frontend.yaml
+  - allow-from-ingress-nginx.yaml

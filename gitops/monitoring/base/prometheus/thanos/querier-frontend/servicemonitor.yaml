@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: thanos-querier-frontend
+  labels:
+    app: thanos-querier-frontend
+spec:
+  selector:
+    matchLabels:
+      app: thanos-querier-frontend
+  endpoints:
+  - port: http
+    interval: 30s

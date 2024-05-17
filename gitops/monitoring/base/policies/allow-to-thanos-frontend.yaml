@@ -1,14 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-to-thanos-frontend
+  name: allow-specific-service
 spec:
   podSelector:
     matchLabels:
       app: thanos-querier-frontend
-  policyTypes:
-    - Ingress
   ingress:
-    - from:
-        - namespaceSelector: {}
-          podSelector: {}
+  - {}

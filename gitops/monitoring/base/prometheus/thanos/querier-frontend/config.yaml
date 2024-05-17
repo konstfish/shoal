@@ -9,7 +9,7 @@ data:
         byQueryParameter:
           name: "namespace"
       resourceAttributes:
-        apiVersion: v1beta1
-        apiGroup: metrics.k8s.io
-        resource: pods
+        apiVersion: v1
+        resource: namespace
+        subresource: metrics
         namespace: "{{ .Value }}"
