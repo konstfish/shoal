@@ -1,7 +1,7 @@
 ---
 title: Nginx Ingress
 draft: false
-tags: [ingress]
+tags: [ingress/nginx]
 date: 2024-03-01
 ---
 

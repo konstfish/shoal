@@ -6,12 +6,13 @@ date: 2024-03-01
 ---
 
 ## [[Grafana]]
-Visualize metrics, logs & traces
+Visualize metrics, logs & traces.
 
 ## [[Prometheus]]
 Metric collection & processing.
 
 ## [[Loki]]
-Clusterwide Logging
+Clusterwide Logging.
 
 ## [[Tempo]]
+Tracing Backend.

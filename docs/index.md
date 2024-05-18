@@ -9,26 +9,18 @@ date: 2024-03-01
 
 > Cosplaying PaaS
 
-## Operational
+TODO Intro Paragraph
 
-### Access
-- [[Rancher]]
+## [[Rancher]]
 
-### Basic Usage
-- [[Usage]]
+## [[Usage]]
 
-### Ingress
-- [[Nginx Ingress]]
-- [[Istio Gateways]]
+## [[Ingress]]
 
-### Service Mesh
-- [[Istio]]
+## [[Service Mesh]]
 
-### GitOps
-- [[Fleet]]
+## [[GitOps]]
 
-### Observability
-- [[Observability]]
+## [[Observability]]
 
-## Organizational
-- [[Style Guide]]
+## [[Organization]]
