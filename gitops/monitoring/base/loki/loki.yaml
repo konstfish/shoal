@@ -1,9 +1,10 @@
-apiVersion: helm.cattle.io/v1
-kind: HelmChart
+apiVersion: loki.grafana.com/v1
+kind: LokiStack
 metadata:
-  name: loki
-  namespace: monitoring
+  name: lokistack
 spec:
-  chart: loki-stack
-  repo: https://grafana.github.io/helm-charts
-  targetNamespace: monitoring
+  size: 1x.small
+  storage:
+    secret:
+      name: test
+  storageClassName: hcloud-volumes
