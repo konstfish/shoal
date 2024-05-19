@@ -7,5 +7,6 @@ spec:
   chart: prometheus-node-exporter
   repo: https://prometheus-community.github.io/helm-charts
   targetNamespace: monitoring
+  version: 4.34.0
   set:
     prometheus.monitor.enabled: "true"

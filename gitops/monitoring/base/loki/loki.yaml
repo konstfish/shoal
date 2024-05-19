@@ -1,10 +1,42 @@
-apiVersion: loki.grafana.com/v1
-kind: LokiStack
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
 metadata:
-  name: lokistack
+  name: loki
+  namespace: monitoring
 spec:
-  size: 1x.small
-  storage:
-    secret:
-      name: test
-  storageClassName: hcloud-volumes
+  chart: loki
+  repo: https://grafana.github.io/helm-charts
+  targetNamespace: monitoring
+  version: v6.5.2
+  set:
+    deploymentMode: SimpleScalable
+    monitoring.serviceMonitor.enabled: "true"
+  # https://github.com/grafana/loki/issues/12218
+  valuesContent: |-
+    loki:
+      storage:
+        bucketNames:
+          chunks: ${bucket}
+          ruler: ${bucket}
+          admin: ${bucket}
+        type: s3
+        s3:
+          s3: ${s3}
+          endpoint: ${endpoint}
+          secretAccessKey: "${secretAccessKey}"
+          accessKeyId: "${accessKeyId}"
+      schemaConfig:
+        configs:
+          - from: 2024-04-01
+            object_store: s3
+            store: tsdb
+            schema: v13
+            index:
+              prefix: index_
+              period: 24h
+    backend:
+      extraArgs:
+        - -config.expand-env=true
+      extraEnvFrom: 
+        - secretRef:
+            name: loki-objstore-secret

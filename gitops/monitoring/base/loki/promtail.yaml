@@ -1,0 +1,24 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: promtail
+  namespace: monitoring
+spec:
+  chart: promtail
+  repo: https://grafana.github.io/helm-charts
+  targetNamespace: monitoring
+  version: v6.15.5
+  set:
+    serviceMonitor.enabled: "true"
+  valuesContent: |-
+    config:
+      snippets:
+        pipelineStages:
+          - cri: {}
+          - match:
+              selector: '{namespace=~".+"}'
+              stages:
+                - tenant:
+                    label: "namespace"
+          - output:
+              source: message
