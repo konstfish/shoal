@@ -1,0 +1,35 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: "logs"
+  labels:
+    app: grafana
+spec:
+  instanceSelector:
+    matchLabels:
+      app: grafana
+  valuesFrom:
+    - targetPath: secureJsonData.httpHeaderValue1
+      valueFrom:
+        secretKeyRef:
+          key: token
+          name: grafana-ds-sa-token
+  datasource:
+    name: "logs"
+    type: loki
+    uid: loki1
+    access: proxy
+    url: "https://loki-querier-frontend.monitoring.svc:3100/"
+    isDefault: false
+    editable: false
+    jsonData:
+      httpHeaderName1: Authorization
+      httpHeaderName2: X-Scope-OrgID
+      queryTimeout: 5m
+      timeout: 60
+      tlsSkipVerify: false
+      manageAlerts: false
+      tlsAuthWithCACert: false
+    secureJsonData:
+      httpHeaderValue1: "Bearer ${token}"
+      httpHeaderValue2: "showcase"

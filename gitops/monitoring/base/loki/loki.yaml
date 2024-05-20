@@ -24,7 +24,6 @@ spec:
           admin: ${bucket}
         type: s3
         s3:
-          s3: ${s3}
           endpoint: ${endpoint}
           secretAccessKey: "${secretAccessKey}"
           accessKeyId: "${accessKeyId}"
