@@ -12,7 +12,7 @@ spec:
       labels:
         app: thanos-querier-frontend
     spec:
-      serviceAccountName: kube-rbac-proxy
+      serviceAccountName: prometheus-kube-rbac-proxy
       containers:
       - name: kube-rbac-proxy
         image: quay.io/brancz/kube-rbac-proxy:v0.16.1

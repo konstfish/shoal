@@ -11,9 +11,12 @@ spec:
   set:
     deploymentMode: SimpleScalable
     monitoring.serviceMonitor.enabled: "true"
-  # https://github.com/grafana/loki/issues/12218
   valuesContent: |-
     loki:
+      # kubectl get namespaces --no-headers -o custom-columns=":metadata.name" | tr '\n' '|' | sed 's/|$//'
+      auth_enabled: true
+      querier:
+        multi_tenant_queries_enabled: true
       storage:
         bucketNames:
           chunks: ${bucket}
@@ -34,7 +37,20 @@ spec:
             index:
               prefix: index_
               period: 24h
+    # https://github.com/grafana/loki/issues/12218
     backend:
+      extraArgs:
+        - -config.expand-env=true
+      extraEnvFrom: 
+        - secretRef:
+            name: loki-objstore-secret
+    read:
+      extraArgs:
+        - -config.expand-env=true
+      extraEnvFrom: 
+        - secretRef:
+            name: loki-objstore-secret
+    write:
       extraArgs:
         - -config.expand-env=true
       extraEnvFrom: 
