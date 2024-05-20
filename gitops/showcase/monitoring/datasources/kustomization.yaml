@@ -1,0 +1,7 @@
+
+resources:
+  - grafana-ds-loki.yaml
+  - grafana-ds-prom.yaml
+  - sa/role.yaml
+  - sa/sa-token.yaml
+  - sa/sa.yaml
