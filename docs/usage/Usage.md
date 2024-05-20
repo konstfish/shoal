@@ -94,7 +94,7 @@ metadata:
   labels:
     name: nginx-ingress
   annotations:
-    cert-manager.io/issuer: "appdomain-http"
+    cert-manager.io/issuer: "appdomain"
 spec:
   tls:
   - hosts:

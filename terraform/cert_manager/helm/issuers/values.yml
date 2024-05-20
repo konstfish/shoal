@@ -46,3 +46,4 @@ resources:
         - http01:
             ingress:
               class: nginx
+              serviceType: ClusterIP
