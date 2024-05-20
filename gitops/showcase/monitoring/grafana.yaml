@@ -22,7 +22,7 @@ spec:
       headers: >-
         Name:X-Auth-Request-User Email:X-Auth-Request-Email
     users:
-      auto_assign_org_role: Viewer
+      auto_assign_org_role: Editor
       default_theme: light
     log:
       mode: console
