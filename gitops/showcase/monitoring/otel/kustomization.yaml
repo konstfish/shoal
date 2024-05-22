@@ -1,0 +1,6 @@
+
+resources:
+  - collector.yaml
+  - sa/role.yaml
+  - sa/sa-token.yaml
+  - sa/sa.yaml

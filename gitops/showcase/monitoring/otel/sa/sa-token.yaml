@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: otel-sa-token
+  annotations:
+    kubernetes.io/service-account.name: otel-sa
+type: kubernetes.io/service-account-token

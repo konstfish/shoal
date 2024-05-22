@@ -1,2 +1,4 @@
 resources:
   - tempo.yaml
+  - querier-frontend
+  - ingester-frontend

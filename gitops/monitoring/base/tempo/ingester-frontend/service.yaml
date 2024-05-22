@@ -9,5 +9,5 @@ spec:
     app: tempo-ingester-frontend
   ports:
   - name: http
-    port: 4317
-    targetPort: 4317
+    port: 4318
+    targetPort: 4318
