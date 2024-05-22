@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tempo-querier-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tempo-querier-frontend
+  template:
+    metadata:
+      labels:
+        app: tempo-querier-frontend
+    spec:
+      serviceAccountName: tempo-kube-rbac-proxy
+      containers:
+      - name: kube-rbac-proxy
+        image: quay.io/brancz/kube-rbac-proxy:v0.16.1
+        args:
+          - "--secure-listen-address=0.0.0.0:3200"
+          - "--upstream=http://tempo-tempo-query-frontend:3200"
+          - "--config-file=/etc/kube-rbac-proxy/config.yaml"
+          - "--logtostderr=true"
+          - "--v=10"
+        ports:
+          - containerPort: 3200
+            name: https
+        volumeMounts:
+          - name: config
+            mountPath: /etc/kube-rbac-proxy
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 150m
+          limits:
+            memory: 1Gi
+            cpu: 500m
+      volumes:
+        - name: config
+          configMap:
+            name: tempo-kube-rbac-proxy

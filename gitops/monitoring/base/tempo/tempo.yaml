@@ -3,6 +3,8 @@ kind: TempoStack
 metadata:
   name: tempo
 spec:
+  tenants:
+    mode: "static"
   resources:
     total:
       limits:
