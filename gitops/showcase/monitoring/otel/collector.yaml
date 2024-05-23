@@ -1,9 +1,9 @@
-apiVersion: opentelemetry.io/v1alpha1
+apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
   name: otel
 spec:
-  config: |
+  config:
     receivers:
       otlp:
         protocols: 
@@ -11,17 +11,23 @@ spec:
           http: {}
 
     exporters:
-      otlp:
-        endpoint: tempo-ingester-frontend.monitoring.svc:4318
+      otlphttp:
+        endpoint: https://tempo-ingester-frontend.monitoring.svc:4318
+        tls:
+          insecure_skip_verify: true
         headers:
           X-Scope-OrgID: showcase
           Authorization: Bearer ${env:token}
+
+    processors:
+      batch: {}
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
-          exporters: [otlp]
+          exporters: [otlphttp]
+          processors: [batch]
   envFrom:
     - secretRef:
         name: otel-sa-token

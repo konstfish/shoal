@@ -8,6 +8,6 @@ spec:
   selector:
     app: tempo-ingester-frontend
   ports:
-  - name: http
+  - name: https
     port: 4318
     targetPort: 4318
