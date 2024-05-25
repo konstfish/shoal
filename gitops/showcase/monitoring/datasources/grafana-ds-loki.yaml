@@ -1,7 +1,7 @@
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource
 metadata:
-  name: "logs"
+  name: logs
   labels:
     app: grafana
 spec:
@@ -15,7 +15,7 @@ spec:
           key: token
           name: grafana-ds-sa-token
   datasource:
-    name: "logs"
+    name: logs
     type: loki
     uid: loki1
     access: proxy

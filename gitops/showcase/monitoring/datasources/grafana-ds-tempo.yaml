@@ -1,7 +1,7 @@
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource
 metadata:
-  name: metrics
+  name: traces
   labels:
     app: grafana
 spec:
@@ -15,25 +15,20 @@ spec:
           key: token
           name: grafana-ds-sa-token
   datasource:
-    name: metrics
-    type: prometheus
-    uid: prometheus1
+    name: traces
+    type: tempo
+    uid: tempo1
     access: proxy
-    url: "https://thanos-querier-frontend.monitoring.svc:9090/"
+    url: "https://tempo-querier-frontend.monitoring.svc:3200/"
     isDefault: false
     editable: false
     jsonData:
-      customQueryParameters: "namespace=showcase"
       httpHeaderName1: Authorization
-      httpMethod: GET
-      manageAlerts: false
+      httpHeaderName2: X-Scope-OrgID
       queryTimeout: 5m
-      timeInterval: 30s
+      timeout: 60
+      manageAlerts: false
       tlsSkipVerify: true
     secureJsonData:
       httpHeaderValue1: "Bearer ${token}"
-
-
-
-
-
+      httpHeaderValue2: "showcase"
