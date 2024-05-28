@@ -10,3 +10,4 @@ spec:
   version: 5.19.0
   set:
     prometheus.monitor.enabled: "true"
+    prometheus.monitor.honorLabels: "true"
