@@ -3,3 +3,4 @@ resources:
   - prometheus.yaml
   - servicemonitor.yaml
   - thanos
+  - servicemonitors
