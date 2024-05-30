@@ -1,2 +1,2 @@
 resources:
-  - kubelet-sm.yaml
+  - kubelet.yaml

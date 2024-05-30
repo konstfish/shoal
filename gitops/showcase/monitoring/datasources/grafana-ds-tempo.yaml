@@ -29,6 +29,12 @@ spec:
       timeout: 60
       manageAlerts: false
       tlsSkipVerify: true
+      nodeGraph:
+        enabled: true
+      serviceMap:
+        datasourceUid: prometheus1
+      tracesToMetrics:
+        datasourceUid: prometheus1
     secureJsonData:
       httpHeaderValue1: "Bearer ${token}"
       httpHeaderValue2: "showcase"

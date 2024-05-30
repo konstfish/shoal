@@ -1,6 +1,8 @@
 
 resources:
-  - collector.yaml
+  - collector-elaborate.yaml
+  - sm/servicemonitor-internal.yaml
+  - sm/servicemonitor.yaml
   - sa/role.yaml
   - sa/sa-token.yaml
   - sa/sa.yaml

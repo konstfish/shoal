@@ -1,0 +1,11 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: otel-collector-monitoring
+spec:
+  selector:
+    matchLabels:
+      operator.opentelemetry.io/collector-service-type: monitoring
+  endpoints:
+    - port: monitoring
+      interval: 30s
