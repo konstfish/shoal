@@ -9,3 +9,8 @@ spec:
   endpoints:
     - port: http-metrics
       interval: 30s
+      metricRelabelings:
+      - sourceLabels: [__name__]
+        targetLabel: __name__
+        regex: 'traces_spanmetrics_duration_milliseconds(_bucket|_sum|_count)?'
+        replacement: 'traces_spanmetrics_latency${1}'

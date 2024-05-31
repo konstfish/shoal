@@ -10,20 +10,15 @@ spec:
   config:
     receivers:
       otlp:
-        protocols: 
+        protocols:
           grpc: {}
           http: {}
 
     connectors:
       servicegraph:
         latency_histogram_buckets: [100ms, 250ms, 1s, 5s, 10s]
-        dimensions:
-          - dimension-1
-          - dimension-2
-        store:
-          ttl: 1s
-          max_items: 10
       spanmetrics:
+        namespace: traces.spanmetrics
         histogram:
           explicit:
             buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
@@ -33,11 +28,9 @@ spec:
           - name: http.status_code
         exemplars:
           enabled: true
-        exclude_dimensions: ['status.code']
-        dimensions_cache_size: 1000
         aggregation_temporality: "AGGREGATION_TEMPORALITY_CUMULATIVE"    
         metrics_flush_interval: 15s
-        metrics_expiration: 5m
+        metrics_expiration: 30m
         events:
           enabled: true
           dimensions:
