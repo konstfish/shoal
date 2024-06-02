@@ -12,5 +12,5 @@ spec:
       metricRelabelings:
       - sourceLabels: [__name__]
         targetLabel: __name__
-        regex: 'traces_spanmetrics_duration_milliseconds(_bucket|_sum|_count)?'
+        regex: 'traces_spanmetrics_duration_seconds(_bucket|_sum|_count)?'
         replacement: 'traces_spanmetrics_latency${1}'

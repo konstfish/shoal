@@ -20,17 +20,13 @@ spec:
       spanmetrics:
         namespace: traces.spanmetrics
         histogram:
-          explicit:
-            buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
+          unit: "s" # important so that the histogram is correctly displayed in Grafana
         dimensions:
           - name: http.method
             default: GET
           - name: http.status_code
         exemplars:
           enabled: true
-        aggregation_temporality: "AGGREGATION_TEMPORALITY_CUMULATIVE"    
-        metrics_flush_interval: 15s
-        metrics_expiration: 30m
         events:
           enabled: true
           dimensions:
