@@ -19,6 +19,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: dummy-service
+            name: ingress-nginx-defaultbackend
             port:
               number: 80

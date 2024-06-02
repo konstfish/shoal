@@ -1,6 +1,6 @@
 variable "external_ip" {
-    description = "The external IP address for the Ingress Controller."
-    type        = string
+  description = "The external IP address for the Ingress Controller."
+  type        = string
 }
 
 variable "cloudflare_api_token" {
