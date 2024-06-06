@@ -5,6 +5,8 @@ tags: [usage]
 date: 2024-03-01
 ---
 
+For an applied example, see [[Showcase]].
+
 ## Kubernetes Structure
 
 The diagram below represents a basic web application. An *Ingress* controls where traffic from the Internet is routed. Depending on the path, a *Service* is exposed, which selects *Pods*. The selection is made using *Labels* (represented as dotted lines.) *Deployments* control the *Pods*, which are wrappers for *Containers*. The *Backend Pods* communicate with the Database using the *Database Service*, which is discoverable from within the Backend Pods using DNS. The Database persists data using a *Persistent Volume Claim* (*PVC*).

@@ -1,4 +1,6 @@
 resources:
   - deny-from-all.yaml
-  - allow-to-thanos-frontend.yaml
+  - allow-egress.yaml
+  - allow-internal.yaml
+  - allow-to-querier-frontends.yaml
   - allow-from-ingress-nginx.yaml

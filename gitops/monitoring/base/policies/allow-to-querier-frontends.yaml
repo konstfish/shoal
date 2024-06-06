@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-to-querier-frontends
+spec:
+  podSelector: {}
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: thanos-querier-frontend
+    - podSelector:
+        matchLabels:
+          app: loki-querier-frontend
+    - podSelector:
+        matchLabels:
+          app: tempo-querier-frontend
+    - podSelector:
+        matchLabels:
+          app: tempo-ingester-frontend
+  policyTypes:
+  - Ingress
+  ingress:
+  - from: []

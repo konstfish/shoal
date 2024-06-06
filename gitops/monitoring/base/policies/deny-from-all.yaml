@@ -3,8 +3,6 @@ kind: NetworkPolicy
 metadata:
   name: deny-from-all
 spec:
-  podSelector:
-    matchLabels: {}
-  ingress:
-  - from:
-    - podSelector: {}
+  podSelector: {}
+  policyTypes:
+  - Ingress
