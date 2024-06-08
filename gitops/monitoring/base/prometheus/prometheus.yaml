@@ -18,7 +18,7 @@ spec:
     runAsUser: 65534
     fsGroup: 65534
   replicas: 2
-  retention: 180d
+  retention: 7d
   storage:
     volumeClaimTemplate:
       spec:

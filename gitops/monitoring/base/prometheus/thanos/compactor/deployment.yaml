@@ -19,8 +19,8 @@ spec:
           - compact
           - --data-dir=/var/thanos/compact
           - --objstore.config=$(OBJSTORE_CONFIG)
-          - --retention.resolution-raw=14d
-          - --retention.resolution-5m=30d
+          - --retention.resolution-raw=30d
+          - --retention.resolution-5m=60d
           - --retention.resolution-1h=90d
           - --delete-delay=15m
           - --wait

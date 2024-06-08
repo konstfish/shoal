@@ -9,3 +9,8 @@ variable "cloudflare_api_token" {
   sensitive   = true
 }
 
+variable "use_proxy_protocol" {
+  description = "Whether to use the PROXY protocol for the Ingress Controller."
+  type        = bool
+  default     = false
+}

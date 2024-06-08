@@ -14,6 +14,11 @@ resource "helm_release" "ingress_nginx" {
     name  = "controller.service.externalIPs[0]"
     value = var.external_ip
   }
+
+  set {
+    name = "controller.config.use-proxy-protocol"
+    value = var.use_proxy_protocol
+  }
 }
 
 resource "helm_release" "external_dns" {

@@ -7,9 +7,12 @@ controller:
   hostNetwork: true
   hostPort:
     enabled: true
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
 #  config:
 #    custom-http-errors: "404,500,503"
-
 defaultBackend:
   enabled: true
   image:

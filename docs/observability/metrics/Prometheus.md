@@ -34,3 +34,5 @@ flowchart LR
     sar -->|5| krp
     end
 ```
+
+Metrics are stored within the Prometheus TSDB for 7 days. Thanos retains them for 30 days, then downsamples points to 5 minute intervals at before 60 days & 1 hour after.
