@@ -1,0 +1,13 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: ServiceMonitorHonorLabels
+metadata:
+  name: block-servicemonitor-honor
+spec:
+  match:
+    kinds:
+      - apiGroups: ["monitoring.coreos.com"]
+        kinds: ["ServiceMonitor"]
+    namespaceSelector:
+      matchExpressions:
+        - key: tenant
+          operator: Exists

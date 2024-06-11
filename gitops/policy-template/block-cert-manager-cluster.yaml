@@ -16,7 +16,7 @@ spec:
           provided := input.review.object.metadata.annotations["cert-manager.io/cluster-issuer"]
           allowed := input.parameters.allowedClusterIssuers
           not array_contains(allowed, provided)
-          msg := sprintf("Cluster Issuers '%v' is not allowed. Allowed issuers are: %v", [provided, allowed])
+          msg := sprintf("Cluster Issuer '%v' is not allowed. Allowed issuers are: %v", [provided, allowed])
         }
 
         array_contains(arr, item) {
