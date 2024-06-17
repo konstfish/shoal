@@ -16,3 +16,17 @@ spec:
           input.review.object.spec.endpoints[_].honorLabels
           msg := sprintf("use of 'honor_labels' is not allowed in ServiceMonitor: %v", [input.review.object.metadata.name])
         }
+
+        violation[{"msg": msg, "details": {"rejected_field": "relabel_configs"}}] {
+          some i
+          endpoint := input.review.object.spec.endpoints[i]
+          some j
+          config := endpoint.relabelConfigs[j]
+          violates_namespace_label_override(config)
+          msg := sprintf("overwriting 'namespace' label is not allowed in ServiceMonitor: %v", [input.review.object.metadata.name])
+        }
+
+        violates_namespace_label_override(config) {
+          config.target_label == "namespace"
+          config.replacement != "{{ .Namespace }}"
+        }

@@ -6,21 +6,22 @@ resource "rancher2_project" "user_projects" {
   cluster_id = data.rancher2_cluster.tetra.id
 
   resource_quota {
+    // learn dynamic blocks idk
     project_limit {
-      limits_cpu       = "2000m"
-      limits_memory    = "2000Mi"
-      requests_storage = "30Gi"
+      limits_cpu = lookup(var.tenant_limits, lower(each.value.login), var.tenant_default_limit).limits_cpu
+      limits_memory = lookup(var.tenant_limits, lower(each.value.login), var.tenant_default_limit).limits_memory
+      requests_storage = lookup(var.tenant_limits, lower(each.value.login), var.tenant_default_limit).requests_storage
     }
     namespace_default_limit {
-      limits_cpu       = "2000m"
-      limits_memory    = "2000Mi"
-      requests_storage = "30Gi"
+      limits_cpu = lookup(var.tenant_limits, lower(each.value.login), var.tenant_default_limit).limits_cpu
+      limits_memory = lookup(var.tenant_limits, lower(each.value.login), var.tenant_default_limit).limits_memory
+      requests_storage = lookup(var.tenant_limits, lower(each.value.login), var.tenant_default_limit).requests_storage
     }
   }
   container_resource_limit {
-    limits_cpu      = "250m"
-    limits_memory   = "100Mi"
+    limits_cpu      = "150m"
     requests_cpu    = "50m"
+    limits_memory   = "150Mi"
     requests_memory = "50Mi"
   }
 
