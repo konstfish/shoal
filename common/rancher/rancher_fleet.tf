@@ -39,7 +39,7 @@ resource "helm_release" "fleet_project_bindings" {
     value = local.github_user_to_id_map["github_user://${data.github_user.org_users[each.value.login].id}"]
   }
 
-  depends_on = [ null_resource.fleet_delay ]
+  depends_on = [ null_resource.fleet_delay, rancher2_project.user_projects ]
 }
 
 resource "rancher2_global_role_binding" "fleet_project_bindings" {
