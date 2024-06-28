@@ -480,3 +480,17 @@ rules:
   - get
   - list
   - watch
+
+## Sealed Secrets
+- apiGroups:
+  - bitnami.com
+  resources:
+  - sealedsecrets
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
