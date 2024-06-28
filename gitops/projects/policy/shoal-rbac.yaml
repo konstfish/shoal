@@ -1,7 +1,7 @@
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: policy
+  name: shoal-rbac
   namespace: fleet-default
 spec:
   repo: https://github.com/konstfish/shoal
