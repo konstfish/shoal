@@ -12,15 +12,18 @@ date: 2024-03-01
 TODO Intro Paragraph
 
 ## [[Rancher]]
+Open-Source Kubernetes cluster management platform
 
 ## [[Usage]]
+Introductions & Guides
 
 ## [[Ingress]]
-
-## [[Service Mesh]]
+Make Applications accessible outside of the cluster
 
 ## [[GitOps]]
+Use Git as a single source of truth for declarative infrastructure and applications
 
 ## [[Observability]]
+
 
 ## [[Organization]]

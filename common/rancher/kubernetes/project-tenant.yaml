@@ -872,3 +872,17 @@ rules:
   - clusters
   verbs:
   - get
+
+## Helm Charts
+- apiGroups:
+  - helm.cattle.io
+  resources:
+  - helmcharts
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
