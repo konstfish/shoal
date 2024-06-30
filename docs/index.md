@@ -5,7 +5,9 @@ tags: []
 date: 2024-03-01
 ---
 
-<img alt="shoal fish" align='right' src="style/logo_static/fish.svg" width="100" style="margin: 0 0 0 24px;">
+<a href="https://shoal.konst.fish/style/Style-Guide">
+    <img alt="shoal fish" align='right' src="style/logo_static/fish.svg" width="100" style="margin: 0 0 0 24px;">
+</a>
 
 > Cosplaying PaaS
 

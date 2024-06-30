@@ -121,7 +121,7 @@ spec:
 
 To use a custom Issuer, which can be configured to handle DNS challenges, create an [`Issuer`](https://cert-manager.io/docs/concepts/issuer/) CRD.
 
-```
+```yaml
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
@@ -129,7 +129,7 @@ metadata:
   namespace: tenant
 spec:
   acme:
-    email: tenant-email@example.com
+    email: <tenant email>
     privateKeySecretRef:
       name: appdomain
     server: https://acme-v02.api.letsencrypt.org/directory

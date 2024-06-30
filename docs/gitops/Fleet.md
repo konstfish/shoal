@@ -5,7 +5,7 @@ tags: [fleet, gitops]
 date: 2024-04-28
 ---
 
-[Fleet](https://fleet.rancher.io/) by Rancher is a GitOps tool designed to manage large sets of Kubernetes clusters efficiently. In simple words, it can be used to take Kubernetes manifests from any Git repo & apply them to the cluster automatically. It can also manage Helm Charts, build Kustomize and even apply combinations of all 3. 
+[Fleet](https://fleet.rancher.io/) by Rancher is a GitOps tool designed to manage large sets of Kubernetes clusters efficiently. In simple words, it can be used to take Kubernetes manifests from any Git repo & apply them to the cluster automatically. It can also manage Helm Charts, build Kustomize and even apply combinations of all three. 
 
 ## Architecture
 

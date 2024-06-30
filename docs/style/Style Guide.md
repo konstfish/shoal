@@ -6,14 +6,14 @@ date: 2024-04-29
 ---
 ## Colors
 
-This is just [Nord](https://www.nordtheme.com/) tbh.
-
 <div style="display: flex; gap: 6px; flex-wrap: no-wrap;">
-<div style="height: 50px; width: 50px; border-radius: 50%; background-color: #2E3440;"></div>
-<div style="height: 50px; width: 50px; border-radius: 50%; background-color: #D8DEE9;"></div>
+<div style="height: 50px; width: 50px; border-radius: 50%; border: 1px solid #D8DEE9; background-color: #2E3440;"></div>
+<div style="height: 50px; width: 50px; border-radius: 50%; border: 1px solid #2E3440; background-color: #D8DEE9;"></div>
 <div style="height: 50px; width: 50px; border-radius: 50%; background-color: #5E81AC;"></div>
 <div style="height: 50px; width: 50px; border-radius: 50%; background-color: #B48EAD;"></div>
 </div>
+
+This is just [Nord](https://www.nordtheme.com/).
 
 ## Logos
 

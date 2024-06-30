@@ -20,5 +20,4 @@ Correctly resolve domains to the Cluster
 Protect Applications using Managed Zero Trust Architecture
 
 ## [[Istio Gateways]]
-> [!NOTE]  
-> Currently, only [[NGINX Ingress]] is supported
+Endpoint operating at the edge of the service mesh

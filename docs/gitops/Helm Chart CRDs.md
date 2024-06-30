@@ -1,5 +1,5 @@
 ---
-title: Helm CRD
+title: Helm Chart CRDs
 draft: false
 tags: [helm, gitops]
 date: 2024-03-01
