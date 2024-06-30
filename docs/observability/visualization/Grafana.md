@@ -5,11 +5,13 @@ tags: [observability, observability/visualization]
 date: 2024-05-18
 ---
 
-todo
+## Architecture
 
-## Manifests
+Using the [Grafana Operator](https://grafana.github.io/grafana-operator/) Tenants can self-manage instances of Grafana to Query the managed Observability services. 
 
-### Grafana using the Operator
+## Usage
+
+### Grafana Instance
 
 ```yaml
 apiVersion: grafana.integreatly.org/v1beta1
@@ -52,7 +54,8 @@ spec:
               image: grafana/grafana:11.0.0
 ```
 
-### Corresponding Ingress
+Expose it using an [[NGINX Ingress]] with [[Zero Trust]].
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress

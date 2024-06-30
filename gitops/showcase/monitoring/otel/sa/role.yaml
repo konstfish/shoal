@@ -6,4 +6,6 @@ rules:
 - apiGroups: [""]
   resources:
   - namespace/metrics
-  verbs: ["get", "create", "update", "delete"]
+  verbs:
+  - get
+  - create

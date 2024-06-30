@@ -526,6 +526,13 @@ rules:
   - watch
 
 ## Monitoring
+### Custom
+- apiGroups: [""]
+  resources:
+  - namespace/metrics
+  verbs:
+    - get
+    - create
 ### Alerting
 - apiGroups:
   - monitoring.coreos.com

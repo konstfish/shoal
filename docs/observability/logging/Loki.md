@@ -35,3 +35,47 @@ flowchart LR
     sar -->|5| krp
     end
 ```
+
+## Usage
+
+No work from the Tenant's side, as logs are automatically collected. To read them, first create a Service Account as described in [[Observability Usage]]. Then create a [[Grafana|Grafana Instance]] & a Loki `GrafanaDataSource`.
+
+```yaml
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: logs
+  labels:
+    app: grafana
+spec:
+  instanceSelector:
+    matchLabels:
+      app: grafana
+  valuesFrom:
+    - targetPath: secureJsonData.httpHeaderValue1
+      valueFrom:
+        secretKeyRef:
+          key: token
+          name: grafana-ds-sa-token
+  datasource:
+    name: logs
+    type: loki
+    uid: loki1
+    access: proxy
+    # central managed loki querier
+    url: "https://loki-querier-frontend.monitoring.svc:3100/"
+    isDefault: false
+    editable: false
+    jsonData:
+      # pass the Service Account JWT from the secret
+      httpHeaderName1: Authorization
+      # & the namespace 
+      httpHeaderName2: X-Scope-OrgID
+      queryTimeout: 5m
+      timeout: 60
+      manageAlerts: false
+      tlsSkipVerify: true
+    secureJsonData:
+      httpHeaderValue1: "Bearer ${token}"
+      httpHeaderValue2: "<tenant>"
+```
