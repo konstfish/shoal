@@ -24,6 +24,7 @@ Make Applications accessible outside of the cluster
 Use Git as a single source of truth for declarative infrastructure and applications
 
 ## [[Observability]]
-
+Collect & visualize metrics, traces & logs
 
 ## [[Organization]]
+Info on Shoal

@@ -4,7 +4,8 @@ draft: false
 tags: [gitops]
 date: 2024-03-01
 ---
-todo intro paragraph
+
+> Manage cluster resources using git
 
 ## [[Fleet]]
 Continuous Delivery tool for Kubernetes. Takes Manifests/Helm Charts/Kustomize from any Repository and applies them to the cluster
