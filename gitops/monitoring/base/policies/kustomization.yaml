@@ -1,6 +1,4 @@
 resources:
   - deny-from-all.yaml
-  - allow-egress.yaml
-  - allow-internal.yaml
-  - allow-to-querier-frontends.yaml
-  - allow-from-ingress-nginx.yaml
+  - allow-allow-from-ingress-nginx.yaml
+  - allow-to-querier-frontend.yaml

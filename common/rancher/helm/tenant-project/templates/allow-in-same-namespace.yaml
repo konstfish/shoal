@@ -6,7 +6,10 @@ metadata:
   labels:
     managed-by: shoal
 spec:
-  podSelector:
+  podSelector: {}
   ingress:
-  - from:
-    - podSelector: {}
+    - from:
+      - podSelector: {}
+  egress:
+    - to:
+      - podSelector: {}

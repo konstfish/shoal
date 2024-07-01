@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: tempo-ingester-frontend
+        type: querier-frontend
     spec:
       serviceAccountName: tempo-kube-rbac-proxy
       containers:

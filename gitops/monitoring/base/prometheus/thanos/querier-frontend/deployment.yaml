@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: thanos-querier-frontend
+        type: querier-frontend
     spec:
       serviceAccountName: prometheus-kube-rbac-proxy
       containers:

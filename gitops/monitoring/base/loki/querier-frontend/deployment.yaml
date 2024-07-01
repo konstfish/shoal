@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: loki-querier-frontend
+        type: querier-frontend
     spec:
       serviceAccountName: loki-kube-rbac-proxy
       containers:
