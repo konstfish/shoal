@@ -6,4 +6,6 @@ spec:
   podSelector: {}
   policyTypes:
   - Ingress
-  ingress: []
+  ingress:
+    - from:
+        - podSelector: {}

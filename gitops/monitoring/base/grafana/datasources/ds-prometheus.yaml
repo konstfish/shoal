@@ -12,7 +12,7 @@ spec:
     uid: prometheus1
     access: proxy
     basicAuth: false
-    url: http://prometheus-operated:9090
+    url: http://prometheus-operated.monitoring.svc:9090
     isDefault: true
     jsonData:
       "tlsSkipVerify": true
