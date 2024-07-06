@@ -14,3 +14,8 @@ variable "use_proxy_protocol" {
   type        = bool
   default     = false
 }
+
+variable "cluster_domain" {
+  description = "The domain name for the cluster."
+  type        = string
+}

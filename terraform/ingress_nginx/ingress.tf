@@ -10,13 +10,37 @@ resource "helm_release" "ingress_nginx" {
     file("${path.module}/helm/values.yml"),
   ]
 
-  set {
+  /*set {
     name  = "controller.service.externalIPs[0]"
+    value = var.external_ip
+  }*/
+
+  // https://github.com/kubernetes/kubernetes/issues/66607
+  // this is killing me tbh, super ugly config but this works for external-dns for now
+  // will have to find something else at some point
+
+  set {
+    name = "controller.service.annotations.external-dns\\.alpha\\.kubernetes\\.io/hostname"
+    value = var.cluster_domain
+  }
+
+  set {
+    name = "controller.service.annotations.external-dns\\.alpha\\.kubernetes\\.io/target"
     value = var.external_ip
   }
 
   set {
     name = "controller.config.use-proxy-protocol"
+    value = var.use_proxy_protocol
+  }
+
+  set {
+    name = "controller.config.compute-full-forwarded-for"
+    value = var.use_proxy_protocol
+  }
+
+  set {
+    name = "controller.config.use-forwarded-headers"
     value = var.use_proxy_protocol
   }
 }
