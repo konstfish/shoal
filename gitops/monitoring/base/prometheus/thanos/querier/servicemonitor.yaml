@@ -9,5 +9,5 @@ spec:
     matchLabels:
       app: thanos-querier
   endpoints:
-  - port: http-query
+  - port: http
     interval: 30s

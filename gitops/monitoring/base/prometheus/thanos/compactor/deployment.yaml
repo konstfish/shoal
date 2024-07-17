@@ -43,6 +43,7 @@ spec:
             cpu: 500m
         ports:
         - containerPort: 10902
+        - containerPort: 10901
       volumes:
       - name: data
         emptyDir: {}
