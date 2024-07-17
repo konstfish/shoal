@@ -7,7 +7,7 @@ resource "helm_release" "ingress_nginx" {
   create_namespace = true
 
   values = [
-    file("${path.module}/helm/values.yml"),
+    file("${path.module}/helm/values.yaml"),
   ]
 
   /*set {
@@ -50,7 +50,17 @@ resource "helm_release" "external_dns" {
   repository       = "https://charts.bitnami.com/bitnami"
   chart            = "external-dns"
   namespace        = "external-dns"
+  version =  "8.0.2"
   create_namespace = true
+
+  values = [
+    file("${path.module}/helm/external-dns-values.yaml"),
+  ]
+
+  set {
+    name  = "txtPrefix"
+    value = "extdns"
+  }
 
   set {
     name  = "provider"

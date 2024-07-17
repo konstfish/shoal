@@ -18,6 +18,7 @@ ingress:
     - ${domain}
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-dns"
+    external-dns.alpha.kubernetes.io/target: "tetra.shoal.konst.fish"
     external-dns.alpha.kubernetes.io/hostname: "${domain}"
   tls:
     - secretName: oauth-${class}-tls
