@@ -5,7 +5,6 @@ metadata:
     app.kubernetes.io/name: thanos-sidecar
     app: thanos-sidecar
   name: thanos-sidecar
-  namespace: metrics
 spec:
   type: ClusterIP
   ports:
