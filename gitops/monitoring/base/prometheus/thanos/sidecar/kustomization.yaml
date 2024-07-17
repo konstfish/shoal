@@ -1,4 +1,4 @@
 # doesn't require a deployment, part of prometheus operator
 resources:
   - service.yaml
-  - serviceaccount.yaml
+  - servicemonitor.yaml
