@@ -1,13 +1,13 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: thanos-querier
+  name: thanos-sidecar
   labels:
-    app: thanos-querier
+    app: thanos-sidecar
 spec:
   selector:
     matchLabels:
-      app: thanos-querier
+      app: thanos-sidecar
   endpoints:
-  - port: http-query
+  - port: http
     interval: 30s
