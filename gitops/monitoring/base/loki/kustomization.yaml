@@ -1,2 +1,4 @@
 resources:
   - loki.yaml
+  - promtail.yaml
+  - querier-frontend
