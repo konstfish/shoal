@@ -2,6 +2,7 @@
 resources:
   - grafana-ds-loki.yaml
   - grafana-ds-prom.yaml
+  - grafana-ds-tempo.yaml
   - sa/role.yaml
   - sa/sa-token.yaml
   - sa/sa.yaml
