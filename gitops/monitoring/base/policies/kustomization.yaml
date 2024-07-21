@@ -1,4 +1,5 @@
 resources:
   - deny-from-all.yaml
-  - allow-allow-from-ingress-nginx.yaml
+  - allow-same-namespace.yaml
+  - allow-allow-from-kube.yaml
   - allow-to-querier-frontend.yaml
