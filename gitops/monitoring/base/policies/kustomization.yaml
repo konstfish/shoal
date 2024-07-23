@@ -1,5 +1,4 @@
 resources:
-  - deny-from-all.yaml
-  - allow-same-namespace.yaml
-  - allow-allow-from-kube.yaml
+  - allow-from-kube.yaml
+  - allow-in-namespace.yaml
   - allow-to-querier-frontend.yaml
