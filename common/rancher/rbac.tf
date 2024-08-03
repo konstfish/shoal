@@ -4,4 +4,8 @@
 
 resource "kubernetes_manifest" "project_tenant_role" {
   manifest = yamldecode(file("${path.module}/kubernetes/project-tenant.yaml"))
+
+  field_manager {
+    force_conflicts = true
+  }
 }

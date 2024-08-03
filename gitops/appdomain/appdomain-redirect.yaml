@@ -9,18 +9,18 @@ metadata:
     nginx.ingress.kubernetes.io/permanent-redirect: "https://shoal.konst.fish"
 spec:
   tls:
-  - hosts:
-    - "appdomain.konst.fish"
-    secretName: appdomain-star-tls
+    - hosts:
+        - "appdomain.konst.fish"
+      secretName: appdomain-star-tls
   ingressClassName: nginx
   rules:
-  - host: "appdomain.konst.fish"
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: ingress-nginx-defaultbackend
-            port:
-              number: 80
+    - host: "appdomain.konst.fish"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: ingress-nginx-defaultbackend
+                port:
+                  number: 80
