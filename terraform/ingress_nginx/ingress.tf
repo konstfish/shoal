@@ -10,6 +10,8 @@ resource "helm_release" "ingress_nginx" {
     file("${path.module}/helm/values.yaml"),
   ]
 
+  timeout = 60
+
   /*set {
     name  = "controller.service.externalIPs[0]"
     value = var.external_ip
@@ -43,6 +45,15 @@ resource "helm_release" "ingress_nginx" {
     name = "controller.config.use-forwarded-headers"
     value = var.use_proxy_protocol
   }
+
+  // funny terraform moment
+  /*dynamic "set" {
+    for_each = var.use_proxy_protocol ? ["Local"] : ["Cluster"]
+    content {
+      name  = "controller.service.externalTrafficPolicy"
+      value = set.value
+    }
+  }*/
 }
 
 resource "helm_release" "external_dns" {

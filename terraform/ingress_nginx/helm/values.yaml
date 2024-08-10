@@ -1,18 +1,22 @@
 controller:
   nodeSelector:
     node-role.kubernetes.io/control-plane: "true"
-  kind: DaemonSet
+  replicaCount: 3
+  minAvailable: 2
   service:
     type: NodePort
-  hostNetwork: true
+    nodePorts:
+      http: 30080
+      https: 30443
+  hostNetwork: false
   hostPort:
-    enabled: true
+    enabled: false
   metrics:
     enabled: true
     serviceMonitor:
       enabled: true
 #  config:
-#    custom-http-errors: "404,500,503"
+#    custom-http-errors: "404,500,502,503"
 defaultBackend:
   enabled: true
   image:
