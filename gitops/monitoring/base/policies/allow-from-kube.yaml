@@ -18,5 +18,6 @@ spec:
                 - kube-public
                 - operators
                 - default
+        podSelector: {}
   policyTypes:
     - Ingress
