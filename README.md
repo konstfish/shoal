@@ -1,19 +1,41 @@
 # shoal
 
-Infra stuff will expand this later
+Personal Infrastructure, naming scheme based on [wikipedia.org/wiki/Shoaling_and_schooling](https://en.wikipedia.org/wiki/Shoaling_and_schooling)
 
-https://en.wikipedia.org/wiki/Shoaling_and_schooling
+```mermaid
+flowchart BT
 
-`git submodule init && git submodule update`
+    subgraph Hetzner Cloud
 
-## Tetra
-https://en.wikipedia.org/wiki/Tetra
-hetzner cluster
+        subgraph barracuda
+            ranch[Rancher]
+        end
 
-## Guppy
-https://en.wikipedia.org/wiki/Guppy
-rpi cluster
+        subgraph tetra
+            ranchatetra[Rancher Agent] --> ranch
+        end
 
-## Anchovy
-https://en.wikipedia.org/wiki/Anchovy
-oracle cluster
+    end
+
+    subgraph OnPrem
+
+        subgraph guppy
+            rancheaguppy[Rancher Agent] --> ranch
+        end
+
+    end
+
+    subgraph Oracle Cloud
+
+        subgraph anchovy
+            rancheanchovy[Rancher Agent] ---> ranch
+        end
+
+    end
+
+    subgraph Backblaze
+    end
+
+    subgraph Cloudflare
+    end
+```
