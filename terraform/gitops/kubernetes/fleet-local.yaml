@@ -6,9 +6,9 @@ metadata:
 spec:
   repo: https://github.com/konstfish/shoal
   branch: gitopsv2
+  targetNamespace: fleet-local
   paths:
-  - gitops/projects/kustomization-local.yaml
-  - gitops/projects/base
+  - gitops/projects
   insecureSkipTLSVerify: false
   correctDrift:
     enabled: false
