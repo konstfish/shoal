@@ -1,13 +1,14 @@
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: projects
+  name: aquarium
   namespace: fleet-default
 spec:
-  repo: https://github.com/konstfish/shoal
-  branch: v2
+  repo: https://github.com/konstfish/aquarium
+  targetNamespace: showcase
+  branch: main
   paths:
-  - gitops/projects
+    - kubernetes
   targets:
   - clusterName: tetra
   insecureSkipTLSVerify: false
