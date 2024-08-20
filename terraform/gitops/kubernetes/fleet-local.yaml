@@ -1,7 +1,7 @@
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: projects
+  name: projects-local
   namespace: fleet-local
 spec:
   repo: https://github.com/konstfish/shoal
