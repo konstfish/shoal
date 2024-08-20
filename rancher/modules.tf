@@ -10,3 +10,9 @@ module "rancher" {
 
   depends_on = [module.cert_manager]
 }
+
+module "gitops" {
+  source = "../terraform/gitops"
+
+  depends_on = [module.rancher]
+}
