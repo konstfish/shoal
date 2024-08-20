@@ -1,2 +1,2 @@
 resources:
-  - infra
+  - infra/operators.yaml
