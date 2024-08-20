@@ -6,3 +6,6 @@
 	path = guppy
 	url = git@github.com:konstfish/guppy.git
 	branch = main
+[submodule "barracuda/k3s-ansible"]
+	path = barracuda/k3s-ansible
+	url = https://github.com/konstfish/k3s-ansible.git
