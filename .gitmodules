@@ -1,10 +1,10 @@
 [submodule "tetra"]
 	path = tetra
-	url = git@github.com:konstfish/tetra.git
+	url = https://github.com/konstfish/tetra.git
 	branch = main
 [submodule "guppy"]
 	path = guppy
-	url = git@github.com:konstfish/guppy.git
+	url = https://github.com/konstfish/guppy.git
 	branch = main
 [submodule "barracuda/k3s-ansible"]
 	path = barracuda/k3s-ansible
