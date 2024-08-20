@@ -1,4 +1,0 @@
-namespace: fleet-local
-
-resources:
-  - base/infra/appdomain.yaml
