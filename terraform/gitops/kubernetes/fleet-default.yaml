@@ -5,9 +5,10 @@ metadata:
   namespace: fleet-default
 spec:
   repo: https://github.com/konstfish/shoal
-  branch: gitops-v2
+  branch: gitopsv2
   paths:
-  - gitops/projects/overlays/fleet-default
+  - gitops/projects/kustomization-default.yaml
+  - gitops/projects/base
   insecureSkipTLSVerify: false
   correctDrift:
     enabled: false
