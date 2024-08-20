@@ -1,2 +1,4 @@
+namespace: fleet-local
+
 resources:
   - ../../base

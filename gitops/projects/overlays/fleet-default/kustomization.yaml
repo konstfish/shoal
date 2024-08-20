@@ -1,2 +1,4 @@
+namespace: fleet-default
+
 resources:
   - ../../base

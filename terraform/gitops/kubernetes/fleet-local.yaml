@@ -7,8 +7,7 @@ spec:
   repo: https://github.com/konstfish/shoal
   branch: gitops-v2
   paths:
-  - gitops/projects
-  - overlays/fleet-local
+  - gitops/projects/overlays/fleet-local
   insecureSkipTLSVerify: false
   correctDrift:
     enabled: false
