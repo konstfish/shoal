@@ -4,8 +4,8 @@ metadata:
   name: projects
   namespace: fleet-default
 spec:
-  repo: https://github.com/konstfish/shoal
-  branch: gitops-v2
+  repo: https://github.com/konstfish/shoal.git
+  branch: gitopsv2
   paths:
   - gitops/projects/overlays/fleet-default
   insecureSkipTLSVerify: false
