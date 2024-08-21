@@ -1,4 +1,4 @@
-apiVersion: fleet.cattle.io/v1alpha1
+apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
   name: olm
