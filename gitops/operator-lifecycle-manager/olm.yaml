@@ -1,0 +1,10 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: HelmChart
+metadata:
+  name: olm
+  # todo: change namespace (https://artifacthub.io/packages/helm/olm/olm)
+  namespace: default
+spec:
+  repo: oci://ghcr.io/cloudtooling/helm-charts
+  chart: olm
+  version: 0.28.0

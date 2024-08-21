@@ -1,13 +1,13 @@
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: operators
+  name: operator-lifecycle-manager
   namespace: fleet-default
 spec:
   repo: https://github.com/konstfish/shoal
   branch: gitopsv2
   paths:
-  - gitops/operators
+  - gitops/operator-lifecycle-manager
   targets:
   - clusterName: barracuda
   - clusterName: tetra
@@ -20,13 +20,13 @@ spec:
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: operators
+  name: operator-lifecycle-manager
   namespace: fleet-local
 spec:
   repo: https://github.com/konstfish/shoal
   branch: gitopsv2
   paths:
-  - gitops/operators
+  - gitops/operator-lifecycle-manager
   insecureSkipTLSVerify: false
   correctDrift:
     enabled: false
