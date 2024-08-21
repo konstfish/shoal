@@ -10,9 +10,8 @@ module "rancher" {
 
   depends_on = [module.cert_manager]
 }
-
-module "gitops" {
-  source = "../terraform/gitops"
+resource "kubernetes_manifest" "fleet_projects" {
+  manifest = yamldecode(file("${path.module}/kubernetes/fleet-local.yaml"))
 
   depends_on = [module.rancher]
 }

@@ -1,0 +1,4 @@
+resources:
+  - ../../base/infra/metallb
+  - ../../base/observability/prometheus
+  - ../../base/observability/grafana
