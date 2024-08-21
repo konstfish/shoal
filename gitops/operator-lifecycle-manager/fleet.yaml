@@ -1,0 +1,4 @@
+
+helm:
+  chart: oci://ghcr.io/cloudtooling/helm-charts/olm
+  version: 0.28.0
