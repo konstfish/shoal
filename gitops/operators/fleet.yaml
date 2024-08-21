@@ -11,5 +11,3 @@ targetCustomizations:
     clusterName: tetra
     kustomize:
       dir: overlays/tetra
-dependsOn:
-  - name: shoal-gitops-operator-lifecycle-manager
