@@ -14,3 +14,17 @@ spec:
   insecureSkipTLSVerify: false
   correctDrift:
     enabled: false
+---
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: ingress-nginx
+  namespace: fleet-local
+spec:
+  repo: https://github.com/konstfish/shoal
+  branch: gitopsv2
+  paths:
+  - gitops/infra/ingress-nginx
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false
