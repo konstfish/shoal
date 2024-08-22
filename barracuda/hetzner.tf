@@ -1,11 +1,11 @@
 // namespace
-resource "kubernetes_namespace" "hetzner" {
+/*resource "kubernetes_namespace" "hetzner" {
   metadata {
     name = "hetzner"
   }
 
   depends_on = [
-    local_file.ansible_inventory
+    module.k3s
   ]
 
   lifecycle {
@@ -27,6 +27,6 @@ resource "kubernetes_secret" "hcloud_token" {
   }
 
   depends_on = [
-    kubernetes_namespace.hetzner
+    module.k3s
   ]
-}
+}*/
