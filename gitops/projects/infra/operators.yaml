@@ -20,7 +20,7 @@ spec:
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: operators-local
+  name: operators
   namespace: fleet-local
 spec:
   repo: https://github.com/konstfish/shoal

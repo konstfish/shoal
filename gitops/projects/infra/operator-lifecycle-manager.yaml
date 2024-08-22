@@ -20,7 +20,7 @@ spec:
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: operator-lifecycle-manager-local
+  name: operator-lifecycle-manager
   namespace: fleet-local
 spec:
   repo: https://github.com/konstfish/shoal
