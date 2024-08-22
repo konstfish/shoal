@@ -7,7 +7,7 @@ spec:
   repo: https://github.com/konstfish/shoal
   branch: main
   paths:
-  - gitops/s.konst.fish
+  - gitops/apps/s.konst.fish
   targets:
   - clusterName: guppy
   insecureSkipTLSVerify: false

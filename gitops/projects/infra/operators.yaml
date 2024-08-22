@@ -7,7 +7,7 @@ spec:
   repo: https://github.com/konstfish/shoal
   branch: gitopsv2
   paths:
-  - gitops/operators
+  - gitops/infra/operators
   targets:
   - clusterName: barracuda
   - clusterName: tetra
@@ -26,7 +26,7 @@ spec:
   repo: https://github.com/konstfish/shoal
   branch: gitopsv2
   paths:
-  - gitops/operators
+  - gitops/infra/operators
   insecureSkipTLSVerify: false
   correctDrift:
     enabled: false

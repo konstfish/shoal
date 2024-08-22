@@ -7,7 +7,7 @@ spec:
   repo: https://github.com/konstfish/shoal
   branch: main
   paths:
-  - gitops/policy-template
+  - gitops/shoal/policy-template
   targets:
   - clusterName: tetra
   insecureSkipTLSVerify: false

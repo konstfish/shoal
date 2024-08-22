@@ -7,7 +7,7 @@ spec:
   repo: https://github.com/konstfish/shoal
   branch: gitopsv2
   paths:
-  - gitops/ingress-nginx
+  - gitops/infra/ingress-nginx
   targets:
   - clusterName: local # barracuda
   - clusterName: tetra
