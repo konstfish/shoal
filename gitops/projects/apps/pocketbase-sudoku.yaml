@@ -1,15 +1,15 @@
-apiVersion: fleet.cattle.io/v1alpha1
-kind: GitRepo
-metadata:
-  name: pocketbase
-  namespace: fleet-default
-spec:
-  repo: https://github.com/konstfish/shoal
-  branch: main
-  paths:
-  - gitops/pocketbase
-  targets:
-  - clusterName: guppy
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false
+#apiVersion: fleet.cattle.io/v1alpha1
+#kind: GitRepo
+#metadata:
+#  name: pocketbase
+#  namespace: fleet-default
+#spec:
+#  repo: https://github.com/konstfish/shoal
+#  branch: main
+#  paths:
+#  - gitops/pocketbase
+#  targets:
+#  - clusterName: guppy
+#  insecureSkipTLSVerify: false
+#  correctDrift:
+#    enabled: false

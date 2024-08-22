@@ -7,7 +7,7 @@ spec:
   repo: https://github.com/konstfish/shoal
   branch: main
   paths:
-  - gitops/vaultwarden
+  - gitops/apps/vaultwarden
   targets:
   - clusterName: guppy
   insecureSkipTLSVerify: false
