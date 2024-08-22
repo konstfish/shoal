@@ -19,43 +19,30 @@ output "worker_node_list" {
   value = local.worker_nodes
 }
 
-resource "local_file" "ansible_inventory" {
-  content = templatefile("${path.module}/k3s-ansible/inventory.tpl", {
-    controller_nodes = local.controller_nodes,
-    worker_nodes     = local.worker_nodes,
 
-    ansible_user    = "root",
-    ansible_ssh_key = "./artifacts/ssh_key",
+module "k3s" {
+  source = "git::https://github.com/konstfish/k3s-ansible.git"
 
-    user_name   = "david",
-    github_user = "konstfish",
+  controller_nodes = local.controller_nodes
+  worker_nodes     = local.worker_nodes
 
-    k3s_version  = var.cluster_k3s_version,
-    k3s_token    = var.cluster_token,
-    cluster_name = "barracuda",
-    cluster_type = "hetzner",
+  ansible_user    = "root"
+  ansible_ssh_key = tls_private_key.ansible.private_key_openssh
+  ansible_ssh_key_path = "./artifacts/ssh_key"
 
-    lb_public_address   = hcloud_server.controller_nodes[0].ipv4_address // first controller nodes ip
-    lb_internal_address = hcloud_server.controller_nodes[0].ipv4_address
-    lb_interface        = "enp7s0"
-    lb_port             = 6443
+  user_name   = "david"
+  github_user = "konstfish"
 
-    extra_server_args = ""
-    cluster_cidr      = "10.44.0.0/16"
-    service_cidr      = "10.45.0.0/16"
-  })
-  filename = "${path.module}/k3s-ansible/inventory.yml"
+  cluster_k3s_version  = var.cluster_k3s_version
+  cluster_token    = var.cluster_token
+  cluster_name = "barracuda"
+  cluster_type = "hetzner"
 
-  provisioner "local-exec" {
-    command     = <<EOT
-      sleep 10 # wait for nodes to be ready
-      echo "$SSH_PRIVATE_KEY" > artifacts/ssh_key && chmod 600 artifacts/ssh_key
-      ansible-playbook -i inventory.yml playbook/install.yml --extra-vars "kubeconfig_localhost=true kubeconfig_localhost_ansible_host=false"
-    EOT
-    working_dir = "k3s-ansible"
-    environment = {
-      ANSIBLE_HOST_KEY_CHECKING = "false"
-      SSH_PRIVATE_KEY           = nonsensitive(tls_private_key.ansible.private_key_openssh)
-    }
-  }
+  lb_public_address   = hcloud_server.controller_nodes[0].ipv4_address // first controller nodes ip
+  lb_internal_address = hcloud_server.controller_nodes[0].ipv4_address
+  lb_interface        = "enp7s0"
+  lb_port             = 6443
+
+  cluster_cidr      = "10.44.0.0/16"
+  service_cidr      = "10.45.0.0/16"
 }
