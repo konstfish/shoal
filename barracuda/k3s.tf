@@ -26,23 +26,25 @@ module "k3s" {
   controller_nodes = local.controller_nodes
   worker_nodes     = local.worker_nodes
 
-  ansible_user    = "root"
-  ansible_ssh_key = tls_private_key.ansible.private_key_openssh
+  ansible_user         = "root"
+  ansible_ssh_key      = tls_private_key.ansible.private_key_openssh
   ansible_ssh_key_path = "./artifacts/ssh_key"
 
   user_name   = "david"
   github_user = "konstfish"
 
-  cluster_k3s_version  = var.cluster_k3s_version
-  cluster_token    = var.cluster_token
-  cluster_name = "barracuda"
-  cluster_type = "hetzner"
+  cluster_k3s_version = var.cluster_k3s_version
+  cluster_token       = var.cluster_token
+  cluster_name        = "barracuda"
+  cluster_type        = "hetzner"
 
   lb_public_address   = hcloud_server.controller_nodes[0].ipv4_address // first controller nodes ip
   lb_internal_address = hcloud_server.controller_nodes[0].ipv4_address
   lb_interface        = "enp7s0"
   lb_port             = 6443
 
-  cluster_cidr      = "10.44.0.0/16"
-  service_cidr      = "10.45.0.0/16"
+  cluster_cidr = "10.44.0.0/16"
+  service_cidr = "10.45.0.0/16"
+
+  extra_arguments = "--disable-cloud-controller --kubelet-arg='cloud-provider=external'"
 }
