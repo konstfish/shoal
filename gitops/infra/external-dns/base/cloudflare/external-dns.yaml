@@ -1,0 +1,19 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: external-dns
+  namespace: kube-system
+spec:
+  chart: external-dns
+  repo: https://charts.hetzner.cloud
+  targetNamespace: external-dns
+  createNamespace: true
+  version: 8.0.2
+  valuesContent: |
+    txtPrefix: extdns
+    provider: cloudflare
+    cloudflare:
+      secretName: cloudflare
+      proxied: false
+    extraArgs:
+      "annotation-filter": "external-dns.alpha.kubernetes.io/hostname"

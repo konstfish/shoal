@@ -1,0 +1,30 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: hetzner-csi-driver
+  namespace: fleet-default
+spec:
+  repo: https://github.com/konstfish/shoal
+  branch: gitopsv2
+  paths:
+  - gitops/infra/hetzner/csi-driver
+  targets:
+  - clusterName: local # barracuda
+  - clusterName: tetra
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false
+---
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: hetzner-csi-driver
+  namespace: fleet-local
+spec:
+  repo: https://github.com/konstfish/shoal
+  branch: gitopsv2
+  paths:
+  - gitops/infra/hetzner/csi-driver
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false

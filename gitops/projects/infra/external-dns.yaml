@@ -1,0 +1,30 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: external-dns
+  namespace: fleet-default
+spec:
+  repo: https://github.com/konstfish/shoal
+  branch: gitopsv2
+  paths:
+  - gitops/infra/external-dns
+  targets:
+  - clusterName: local # barracuda
+  - clusterName: tetra
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false
+---
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: external-dns
+  namespace: fleet-local
+spec:
+  repo: https://github.com/konstfish/shoal
+  branch: gitopsv2
+  paths:
+  - gitops/infra/external-dns
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false
