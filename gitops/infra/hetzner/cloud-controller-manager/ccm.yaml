@@ -7,4 +7,4 @@ spec:
   chart: hcloud-cloud-controller-manager
   repo: https://charts.hetzner.cloud
   targetNamespace: kube-system
-  version: 3.3.0
+  version: 1.20.0
