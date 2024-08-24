@@ -14,3 +14,5 @@ spec:
       service:
         annotations:
           load-balancer.hetzner.cloud/location: nbg1
+          load-balancer.hetzner.cloud/name: ingress-nginx-barracuda
+          # load-balancer.hetzner.cloud/uses-proxyprotocol: true

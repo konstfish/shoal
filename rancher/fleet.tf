@@ -1,5 +1,5 @@
-# resource "kubernetes_manifest" "fleet_projects" {
-#   manifest = yamldecode(file("${path.module}/kubernetes/fleet-local.yaml"))
+resource "kubernetes_manifest" "fleet_projects" {
+  manifest = yamldecode(file("${path.module}/kubernetes/fleet-local.yaml"))
 
-#   depends_on = [module.rancher]
-# }
+  depends_on = [module.rancher]
+}
