@@ -1,0 +1,10 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: cloud-controller-manager
+  namespace: kube-system
+spec:
+  chart: hcloud-cloud-controller-manager
+  repo: https://charts.hetzner.cloud
+  targetNamespace: kube-system
+  version: 3.3.0
