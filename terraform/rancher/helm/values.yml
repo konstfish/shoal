@@ -1,5 +1,8 @@
 hostname: rancher.konst.fish
 
+# https://slack-archive.rancher.com/t/22906695/wave-has-anyone-had-the-following-error-when-adding-a-generi
+agentTLSMode: "system-store"
+
 ingress:
   enabled: true
   tls:
