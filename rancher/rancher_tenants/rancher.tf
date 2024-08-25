@@ -8,9 +8,14 @@ resource "rancher2_auth_config_github" "github" {
 
 // clusters
 /// data for now
+//data "rancher2_cluster" "guppy" {
+//  name = "guppy"
+//}
+
 data "rancher2_cluster" "guppy" {
   name = "guppy"
 }
+
 
 data "rancher2_cluster" "tetra" {
   name = "tetra"

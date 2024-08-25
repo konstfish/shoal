@@ -38,12 +38,14 @@ resource "rancher2_bootstrap" "admin" {
 // kubernetes
 
 provider "kubernetes" {
-  config_path = "${path.module}/../../tetra/k3s-ansible/artifacts/tetra.yml"
+  config_path = "${path.module}/../barracuda/.terraform/modules/k3s/artifacts/barracuda.yml"
+  insecure    = "true"
 }
 
 provider "helm" {
   kubernetes {
-    config_path = "${path.module}/../../tetra/k3s-ansible/artifacts/tetra.yml"
+    config_path = "${path.module}/../barracuda/.terraform/modules/k3s/artifacts/barracuda.yml"
+    insecure    = "true"
   }
 }
 
