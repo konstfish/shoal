@@ -2,7 +2,7 @@ apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
   name: pool
-  namespace: kube-system
+  namespace: operators
 spec:
   addresses:
     - 10.0.1.192/27
