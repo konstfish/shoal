@@ -1,5 +1,0 @@
-resources:
-  - ns.yaml
-  - metallb.yaml
-  - pool.yaml
-  - advertisement.yaml
