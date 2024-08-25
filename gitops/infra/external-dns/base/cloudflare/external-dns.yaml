@@ -16,4 +16,5 @@ spec:
       secretName: cloudflare
       proxied: false
     extraArgs:
-      "annotation-filter": "external-dns.alpha.kubernetes.io/hostname"
+      "annotation-filter": "external-dns.alpha.kubernetes.io/hostname"s
+      "exclude-target-net": "10.0.0.0/16"
