@@ -1,0 +1,7 @@
+k3s_cluster.yml
+k3s.yaml
+.env
+.terraform*
+.DS_Store
+*tfstate*
+artifacts/*.yml
