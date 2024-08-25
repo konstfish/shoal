@@ -1,0 +1,13 @@
+
+tenant_limits = {
+  "konstfish" = {
+    limits_cpu       = "5000m"
+    limits_memory    = "5000Mi"
+    requests_storage = "100Gi"
+  }
+  "showcase" = {
+    limits_cpu       = "1000m"
+    limits_memory    = "1000Mi"
+    requests_storage = "30Gi"
+  }
+}
