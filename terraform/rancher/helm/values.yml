@@ -7,7 +7,6 @@ ingress:
   ingressClassName: nginx
   extraAnnotations:
     external-dns.alpha.kubernetes.io/hostname: "rancher.konst.fish"
-    external-dns.alpha.kubernetes.io/target: "tetra.shoal.konst.fish"
   
 letsEncrypt:
   email: david@konst.fish
