@@ -1,5 +1,6 @@
 resources:
   - ../../base
+  - ns-local.yaml
   - ingress-local.yaml
 
 patches:
