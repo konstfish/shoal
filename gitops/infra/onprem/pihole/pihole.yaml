@@ -1,0 +1,32 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: pihole
+  namespace: pihole
+spec:
+  chart: ingress-nginx
+  repo: https://mojo2600.github.io/pihole-kubernetes
+  targetNamespace: pihole
+  version: 2.26.1
+  valuesContent: |
+    DNS1:
+      1.1.1.1
+    DNS2:
+      1.0.0.1
+    persistentVolumeClaim:
+      enabled: true
+    ingress:
+      enabled: true
+      hosts:
+        - "pihole.int.konst.fish"
+    serviceWeb:
+      loadBalancerIP: 10.0.1.223
+      annotations:
+        metallb.universe.tf/allow-shared-ip: pihole-svc
+      type: LoadBalancer
+    serviceDns:
+      loadBalancerIP: 10.0.1.223
+      annotations:
+        metallb.universe.tf/allow-shared-ip: pihole-svc
+      type: LoadBalancer
+    replicaCount: 2
