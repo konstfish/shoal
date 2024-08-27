@@ -1,3 +1,0 @@
-resources:
-  - letsencrypt-dns.yaml
-  - letsencrypt-http.yaml

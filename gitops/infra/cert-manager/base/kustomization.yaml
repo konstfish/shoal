@@ -1,5 +1,3 @@
 resources:
-  - https://github.com/cert-manager/cert-manager/releases/download/v1.15.3/cert-manager.crds.yaml
-  - ns.yaml
-  - cert-manager.yaml
-  - issuers
+  - letsencrypt-dns.yaml
+  - letsencrypt-http.yaml

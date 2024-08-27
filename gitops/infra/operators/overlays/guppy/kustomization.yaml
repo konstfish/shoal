@@ -1,4 +1,5 @@
 resources:
   - ../../base/infra/metallb
+  - ../../base/infra/cert-manager
   - ../../base/observability/prometheus
   - ../../base/observability/grafana
