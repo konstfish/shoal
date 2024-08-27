@@ -5,7 +5,7 @@ metadata:
   namespace: fleet-default
 spec:
   repo: https://github.com/konstfish/shoal
-  branch: gitopsv2
+  branch: main
   paths:
   - gitops/infra/operator-lifecycle-manager
   targets:
@@ -24,7 +24,7 @@ metadata:
   namespace: fleet-local
 spec:
   repo: https://github.com/konstfish/shoal
-  branch: gitopsv2
+  branch: main
   paths:
   - gitops/infra/operator-lifecycle-manager
   insecureSkipTLSVerify: false
