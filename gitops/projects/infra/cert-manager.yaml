@@ -1,0 +1,16 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: cert-manager
+  namespace: fleet-default
+spec:
+  repo: https://github.com/konstfish/shoal
+  branch: main
+  paths:
+  - gitops/infra/cert-manager
+  targets:
+  - clusterName: guppy
+  - clusterName: tetra
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false
