@@ -1,4 +1,4 @@
 resources:
   - ns.yaml
   - pihole.yaml
-  - externaldns.yaml
+  - external-dns.yaml
