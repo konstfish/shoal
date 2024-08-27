@@ -29,4 +29,4 @@ spec:
       annotations:
         metallb.universe.tf/allow-shared-ip: pihole-svc
       type: LoadBalancer
-    replicaCount: 2
+    replicaCount: 1
