@@ -7,7 +7,7 @@ spec:
   repo: https://github.com/konstfish/shoal
   branch: main
   paths:
-  - gitops/appdomain
+  - gitops/shoal/appdomain
   targets:
   - clusterName: tetra
   insecureSkipTLSVerify: false
