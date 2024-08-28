@@ -2,6 +2,7 @@ resources:
   - ../../base
   - ns-local.yaml
   - ingress-local.yaml
+  - wildcard-internal-tls.yaml
 
 patches:
   - path: ingress-nginx.yaml
