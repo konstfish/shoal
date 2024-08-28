@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: synology
+  namespace: onprem-proxy
+spec:
+  ingressClassName: nginx-internal
+  rules:
+  - host: puffer.int.konst.fish
+    http:
+      paths:
+      - backend:
+          service:
+            name: synology
+            port:
+              name: http
+        path: /
+        pathType: ImplementationSpecific
