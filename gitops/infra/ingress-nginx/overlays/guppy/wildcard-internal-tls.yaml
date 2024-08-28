@@ -12,5 +12,3 @@ spec:
   dnsNames:
   - "*.konst.fish"
   - "*.int.konst.fish"
-  - "konst.fish"
-  - "int.konst.fish"
