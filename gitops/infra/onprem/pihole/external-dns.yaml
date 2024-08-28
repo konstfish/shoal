@@ -26,5 +26,3 @@ spec:
       name: "external-dns"
     ingressClassFilters:
       - nginx-internal
-    extraArgs:
-      "annotation-filter": "external-dns.alpha.kubernetes.io/hostname"
