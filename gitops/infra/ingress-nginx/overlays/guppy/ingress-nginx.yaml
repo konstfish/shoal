@@ -10,10 +10,5 @@ spec:
   version: 4.11.2
   valuesContent: |
     controller:
-      replicaCount: 3
-      service:
-        annotations:
-          load-balancer.hetzner.cloud/location: nbg1
-          load-balancer.hetzner.cloud/name: ingress-nginx-barracuda
-          load-balancer.hetzner.cloud/use-private-ip: true
-          # load-balancer.hetzner.cloud/uses-proxyprotocol: true
+      ingressClassByName: true
+      replicaCount: 2
