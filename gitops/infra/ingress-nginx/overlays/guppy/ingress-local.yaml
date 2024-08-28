@@ -12,6 +12,7 @@ spec:
     controller:
       ingressClassByName: true
       ingressClassResource:
+        controllerValue: k8s.io/ingress-nginx-internal
         name: nginx-internal
         default: true
       ingressClass: nginx-internal

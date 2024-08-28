@@ -11,4 +11,7 @@ spec:
   valuesContent: |
     controller:
       ingressClassByName: true
+      ingressClassResource:
+        controllerValue: k8s.io/ingress-nginx
+        name: nginx
       replicaCount: 2
