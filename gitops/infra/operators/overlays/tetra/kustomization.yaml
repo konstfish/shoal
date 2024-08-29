@@ -1,6 +1,5 @@
 resources:
   - ../../base/infra/cert-manager
-  - ../../base/infra/external-secrets
   - ../../base/observability/prometheus
   - ../../base/observability/grafana
   - ../../base/observability/tempo
