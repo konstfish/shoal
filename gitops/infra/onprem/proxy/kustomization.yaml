@@ -2,3 +2,4 @@ resources:
   - ns.yaml
   - synology
   - jellyfin
+  - medfish
