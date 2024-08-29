@@ -1,3 +1,4 @@
 resources:
+  - ../../base/infra/external-secrets
   - ../../base/observability/prometheus
   - ../../base/observability/grafana
