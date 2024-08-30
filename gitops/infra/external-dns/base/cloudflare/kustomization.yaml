@@ -1,3 +1,5 @@
+namespace: external-dns
+
 resources:
   - ns.yaml
   - secret.yaml
