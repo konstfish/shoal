@@ -1,3 +1,4 @@
 resources:
   - ns.yaml
+  - secret.yaml
   - external-dns.yaml
