@@ -1,0 +1,8 @@
+resources:
+  - ../../base/prometheus
+  - ../../base/prometheus/thanos/sidecar
+  - ../../base/prometheus/thanos/querier
+  # - ../../base/grafana
+
+patches:
+  - path: prometheus/prometheus.yaml

@@ -1,1 +1,15 @@
 defaultNamespace: monitoring
+
+targetCustomizations:
+  - name: local
+    clusterName: local # barracuda
+    kustomize:
+      dir: overlays/barracuda
+  - name: guppy
+    clusterName: guppy
+    kustomize:
+      dir: overlays/guppy
+  - name: tetra
+    clusterName: tetra
+    kustomize:
+      dir: overlays/tetra
