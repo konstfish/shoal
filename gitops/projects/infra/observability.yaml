@@ -10,6 +10,7 @@ spec:
   - gitops/infra/observability
   targets:
   - clusterName: tetra
+  - clusterName: guppy
   insecureSkipTLSVerify: false
   correctDrift:
     enabled: false
