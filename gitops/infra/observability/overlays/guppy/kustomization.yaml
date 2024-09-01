@@ -2,7 +2,8 @@ resources:
   - ../../base/prometheus
   - ../../base/prometheus/thanos/sidecar
   - ../../base/prometheus/thanos/querier
-  # - ../../base/grafana
+  - ../../base/grafana
+  - grafana/ingress.yaml
 
 patches:
   - path: prometheus/prometheus.yaml

@@ -3,20 +3,13 @@ kind: Ingress
 metadata:
   name: grafana-ingress
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-dns"
-    external-dns.alpha.kubernetes.io/hostname: "grafana.tetra.konst.fish"
-    external-dns.alpha.kubernetes.io/target: "tetra.shoal.konst.fish"
     nginx.ingress.kubernetes.io/auth-signin: https://sson.konst.fish/oauth2/start?rd=$scheme://$host$request_uri
     nginx.ingress.kubernetes.io/auth-url: https://sson.konst.fish/oauth2/auth
     nginx.ingress.kubernetes.io/auth-response-headers: X-Auth-Request-Email,X-Auth-Request-Groups,X-Auth-Request-User
 spec:
-  tls:
-  - hosts:
-    - grafana.tetra.konst.fish
-    secretName: grafana-tls
-  ingressClassName: nginx
+  ingressClassName: nginx-internal
   rules:
-  - host: "grafana.tetra.konst.fish"
+  - host: "grafana.guppy.konst.fish"
     http:
       paths:
       - pathType: Prefix
