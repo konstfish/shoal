@@ -1,2 +1,2 @@
 resources:
-  - kubernetes/k3s-cluster.yaml
+  - kubernetes

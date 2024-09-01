@@ -7,3 +7,15 @@ resources:
 
 patches:
   - path: prometheus/prometheus.yaml
+  - patch: |-
+      $patch: delete
+      apiVersion: grafana.integreatly.org/v1beta1
+      kind: GrafanaDatasource
+      metadata:
+        name: ds-tempo
+  - patch: |-
+      $patch: delete
+      apiVersion: grafana.integreatly.org/v1beta1
+      kind: GrafanaDatasource
+      metadata:
+        name: ds-loki
