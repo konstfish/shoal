@@ -15,6 +15,9 @@ spec:
         controllerValue: k8s.io/ingress-nginx-internal
         name: nginx-internal
         default: true
+      service:
+        externalIPs: 
+          - 92.62.26.112
       ingressClass: nginx-internal
       extraArgs:
         default-ssl-certificate: ingress-nginx-internal/wildcard-internal-tls

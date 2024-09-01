@@ -1,0 +1,13 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: oauth-proxy
+  namespace: oauth-proxy
+spec:
+  chart: oauth2-proxy
+  repo: https://oauth2-proxy.github.io/manifests
+  targetNamespace: ingress-nginx
+  version: 7.7.14
+  valuesContent: |
+    controller:
+      replicaCount: 3

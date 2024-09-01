@@ -14,7 +14,7 @@ spec:
     DNS2:
       1.0.0.1
     adminPassword: false
-    extraEnvVars:
+    ftl:
       BLOCK_ICLOUD_PR: false
     persistentVolumeClaim:
       enabled: true

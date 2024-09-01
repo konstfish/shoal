@@ -1,0 +1,4 @@
+resources:
+  - ns-local.yaml
+  - ingress-local.yaml
+  - wildcard-internal-tls.yaml
