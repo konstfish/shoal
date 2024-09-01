@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx-internal
   rules:
-  - host: "grafana.guppy.konst.fish"
+  - host: "grafana.int.konst.fish"
     http:
       paths:
       - pathType: Prefix
