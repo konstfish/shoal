@@ -13,6 +13,9 @@ spec:
       1.1.1.1
     DNS2:
       1.0.0.1
+    adminPassword: false
+    extraEnvVars:
+      BLOCK_ICLOUD_PR: false
     persistentVolumeClaim:
       enabled: true
     ingress:
