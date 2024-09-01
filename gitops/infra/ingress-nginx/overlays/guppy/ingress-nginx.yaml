@@ -14,4 +14,7 @@ spec:
       ingressClassResource:
         controllerValue: k8s.io/ingress-nginx
         name: nginx
+      service:
+        externalIPs: 
+          - 92.62.26.112
       replicaCount: 2
