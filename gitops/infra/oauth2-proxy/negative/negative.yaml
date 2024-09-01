@@ -8,26 +8,9 @@ spec:
   repo: https://oauth2-proxy.github.io/manifests
   targetNamespace: oauth-proxy
   version: 7.7.14
-  set:
-    - name: config.clientID
-      value: 
-        valueFrom:
-          secretKeyRef:
-            name: oauth2-proxy-negative
-            key: oauth_proxy_negative_client_id
-    - name: config.clientSecret
-      value: 
-        valueFrom:
-          secretKeyRef:
-            name: oauth2-proxy-negative
-            key: oauth_proxy_negative_client_secret
-    - name: config.cookieSecret
-      value: 
-        valueFrom:
-          secretKeyRef:
-            name: oauth2-proxy-negative
-            key: oauth_proxy_negative_cookie_secret
   valuesContent: |
+    config:
+      existingSecret: oauth2-proxy-negative
     configFile: |-
       provider="github"
       github_org="shoal-konst-fish"
