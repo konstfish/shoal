@@ -3,6 +3,9 @@ kind: GrafanaDashboard
 metadata:
   name: k3s-cluster
 spec:
+  instanceSelector:
+    matchLabels:
+      app: grafana
   json: |
     {
       "__inputs": [
