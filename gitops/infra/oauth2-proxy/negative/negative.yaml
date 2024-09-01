@@ -11,17 +11,17 @@ spec:
   valuesContent: |
     config:
       existingSecret: oauth2-proxy-negative
-    configFile: |-
-      provider="github"
-      github_org="shoal-konst-fish"
-      http_address="0.0.0.0:4180"
-      upstreams="file:///dev/null"
-      email_domains=["*"]
-      skip_provider_button=true
-      cookie_domains=[".konst.fish"]
-      whitelist_domains=[".konst.fish:*"]
-      set_xauthrequest=true
-      pass_user_headers=true
+      configFile: |-
+        provider="github"
+        github_org="shoal-konst-fish"
+        http_address="0.0.0.0:4180"
+        upstreams="file:///dev/null"
+        email_domains=["*"]
+        skip_provider_button=true
+        cookie_domains=[".konst.fish"]
+        whitelist_domains=[".konst.fish:*"]
+        set_xauthrequest=true
+        pass_user_headers=true
     ingress:
       enabled: true
       className: nginx
