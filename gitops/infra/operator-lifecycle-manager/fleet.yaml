@@ -11,3 +11,6 @@ helm:
       auditVersion: latest
       warnLevel: baseline
       warnVersion: latest
+    operator_namespace_psa: 
+      enforceLevel: privileged
+      enforceVersion: latest
