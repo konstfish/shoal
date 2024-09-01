@@ -2,6 +2,7 @@ resources:
   - ../../base/prometheus
   - ../../base/prometheus/thanos/sidecar
   - ../../base/prometheus/thanos/querier
+  - ../../base/exporters/node-exporter
   - ../../base/grafana
   - grafana/ingress.yaml
 
