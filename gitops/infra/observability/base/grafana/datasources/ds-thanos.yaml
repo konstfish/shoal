@@ -1,7 +1,7 @@
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource
 metadata:
-  name: ds-prometheus
+  name: ds-thanos
 spec:
   instanceSelector:
     matchLabels:
@@ -12,8 +12,8 @@ spec:
     uid: prometheus1
     access: proxy
     basicAuth: false
-    url: http://prometheus-operated.monitoring.svc:9090
-    isDefault: false
+    url: http://thanos-querier.monitoring.svc:9090
+    isDefault: true
     jsonData:
       "tlsSkipVerify": true
       "timeInterval": "5s"
