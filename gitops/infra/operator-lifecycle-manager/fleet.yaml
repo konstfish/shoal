@@ -5,7 +5,7 @@ helm:
   values:
     # required for metallb speaker pods
     namespace_psa: 
-      enforceLevel: baseline
+      enforceLevel: privileged
       enforceVersion: latest
       auditLevel: baseline
       auditVersion: latest
