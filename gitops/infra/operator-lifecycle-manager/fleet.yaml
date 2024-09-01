@@ -2,3 +2,12 @@
 helm:
   chart: oci://ghcr.io/cloudtooling/helm-charts/olm
   version: 0.28.0
+  values:
+    # required for metallb speaker pods
+    namespace_psa: 
+      enforceLevel: baseline
+      enforceVersion: latest
+      auditLevel: baseline
+      auditVersion: latest
+      warnLevel: baseline
+      warnVersion: latest
