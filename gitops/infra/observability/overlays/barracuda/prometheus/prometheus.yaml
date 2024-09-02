@@ -1,0 +1,28 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prometheus
+spec:
+  resources:
+    limits:
+      cpu: 1400m
+      memory: 2Gi
+    requests:
+      cpu: 250m
+      memory: 500Mi
+  replicas: 1
+  retention: 7d
+  storage:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: hcloud-volumes
+        resources:
+          requests:
+            storage: 20Gi
+  thanos:
+    image: quay.io/thanos/thanos:v0.35.0
+    objectStorageConfig:
+      key: thanos.yaml
+      name: thanos-objstore-secret
+  externalLabels:
+    cluster: barracuda

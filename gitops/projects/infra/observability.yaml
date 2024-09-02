@@ -9,8 +9,23 @@ spec:
   paths:
   - gitops/infra/observability
   targets:
+  - clusterName: local # barracuda 
   - clusterName: tetra
   - clusterName: guppy
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false
+---
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: observability
+  namespace: fleet-local
+spec:
+  repo: https://github.com/konstfish/shoal
+  branch: main
+  paths:
+  - gitops/infra/observability
   insecureSkipTLSVerify: false
   correctDrift:
     enabled: false
