@@ -1,6 +1,7 @@
 resources:
   - ../../base/prometheus
   - ../../base/prometheus/thanos/sidecar
+  - ../../base/prometheus/thanos/store-gateway
   - ../../base/prometheus/thanos/querier
   - ../../base/exporters/node-exporter
   - ../../base/exporters/kube-state-metrics
