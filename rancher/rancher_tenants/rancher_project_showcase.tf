@@ -15,7 +15,7 @@ resource "rancher2_project_role_template_binding" "showcase_project_binding" {
   user_principal_id = "github_org://${data.github_organization.org.id}"
 }
 
-resource "rancher2_namespace" "showcase_namespace" {
+/*resource "rancher2_namespace" "showcase_namespace" {
   name       = "showcase"
   project_id = rancher2_project.showcase_project.id
 
@@ -23,4 +23,4 @@ resource "rancher2_namespace" "showcase_namespace" {
     "tenant"                      = "showcase"
     "kubernetes.io/metadata.name" = "showcase"
   }
-}
+}*/

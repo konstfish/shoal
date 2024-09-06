@@ -50,6 +50,14 @@ resource "rancher2_namespace" "user_namespaces" {
   }
 }
 
+resource "rancher2_global_role_binding" "rancher_user" {
+  for_each = local.user_map
+
+  name = lower(each.value.login)
+  global_role_id = "user-base"
+  group_principal_id = "github_user://${data.github_user.org_users[each.value.login].id}"
+}
+
 resource "rancher2_project_role_template_binding" "user_projects_binding" {
   for_each = local.user_map
 
@@ -58,25 +66,5 @@ resource "rancher2_project_role_template_binding" "user_projects_binding" {
   role_template_id  = "project-tenant"
   user_principal_id = "github_user://${data.github_user.org_users[each.value.login].id}"
 
-  depends_on = [ rancher2_project.user_projects, kubernetes_manifest.project_tenant_role ]
-}
-
-resource "helm_release" "tenant_project_defaults" {
-  for_each = local.user_map
-
-  name       = lower("tenant-project-${each.value.login}")
-  repository = "./helm"
-  chart      = "tenant-project"
-
-  set {
-    name  = "tenant"
-    value = lower(each.value.login)
-  }
-
-  set {
-    name  = "tenantId"
-    value = local.github_user_to_id_map["github_user://${data.github_user.org_users[each.value.login].id}"]
-  }
-
-  depends_on = [ null_resource.fleet_delay, rancher2_project.user_projects ]
+  depends_on = [ rancher2_global_role_binding.rancher_user, rancher2_project.user_projects ] # , kubernetes_manifest.project_tenant_role ]
 }

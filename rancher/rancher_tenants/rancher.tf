@@ -6,31 +6,15 @@ resource "rancher2_auth_config_github" "github" {
   allowed_principal_ids = ["github_org://${data.github_organization.org.id}"]
 }
 
-// clusters
-/// data for now
-//data "rancher2_cluster" "guppy" {
-//  name = "guppy"
+// need to create clusters manually, since the id is "random" with terraform 
+// https://github.com/rancher/terraform-provider-rancher2/blob/master/rancher2/data_source_rancher2_cluster.go#L227
+
+// settings
+//resource "rancher2_setting" "show_local_clusters" {
+//  name  = "hide-local-cluster"
+//  value = "true"
 //}
-
-data "rancher2_cluster" "guppy" {
-  name = "guppy"
-}
-
 
 data "rancher2_cluster" "tetra" {
   name = "tetra"
-}
-
-/*resource "rancher2_cluster" "guppy" {
-  name = "guppy"
-}
-
-resource "rancher2_cluster" "tetra" {
-  name = "tetra"
-}*/
-
-// settings
-resource "rancher2_setting" "show_local_clusters" {
-  name  = "hide-local-cluster"
-  value = "true"
 }

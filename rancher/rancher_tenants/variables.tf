@@ -43,7 +43,6 @@ variable "rancher_bearer_token" {
 }
 
 // tenants
-
 variable "tenant_default_limit" {
   description = "Default Tenant Limit"
   type        = object({

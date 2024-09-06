@@ -18,33 +18,15 @@ provider "rancher2" {
   secret_key = var.rancher_secret_key
 }
 
-/*
-provider "rancher2" {
-  alias = "bootstrap"
-
-  api_url   = "https://rancher.my-domain.com"
-  bootstrap = true
-}
-
-# Create a new rancher2_bootstrap using bootstrap provider config
-resource "rancher2_bootstrap" "admin" {
-  provider = "rancher2.bootstrap"
-
-  password = "blahblah"
-  telemetry = true
-}
-*/
-
 // kubernetes
-
 provider "kubernetes" {
-  config_path = "${path.module}/../barracuda/.terraform/modules/k3s/artifacts/barracuda.yml"
+  config_path = "${path.module}/../../barracuda/.terraform/modules/k3s/artifacts/barracuda.yml"
   insecure    = "true"
 }
 
 provider "helm" {
   kubernetes {
-    config_path = "${path.module}/../barracuda/.terraform/modules/k3s/artifacts/barracuda.yml"
+    config_path = "${path.module}/../../barracuda/.terraform/modules/k3s/artifacts/barracuda.yml"
     insecure    = "true"
   }
 }

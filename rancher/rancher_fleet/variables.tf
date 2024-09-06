@@ -41,3 +41,29 @@ variable "rancher_bearer_token" {
   type        = string
   sensitive   = true
 }
+
+// tenants
+
+variable "tenant_default_limit" {
+  description = "Default Tenant Limit"
+  type        = object({
+    limits_cpu       = string
+    limits_memory    = string
+    requests_storage = string
+  })
+
+  default     = {
+    limits_cpu       = "2000m"
+    limits_memory    = "2000Mi"
+    requests_storage = "30Gi"
+  }
+}
+
+variable "tenant_limits" {
+  description = "Customizable Limits on a per-tenant basis"
+  type        = map(object({
+    limits_cpu       = string
+    limits_memory    = string
+    requests_storage = string
+  }))
+}
