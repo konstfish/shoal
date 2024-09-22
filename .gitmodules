@@ -1,4 +1,0 @@
-[submodule "tetra"]
-	path = tetra
-	url = https://github.com/konstfish/tetra.git
-	branch = main
