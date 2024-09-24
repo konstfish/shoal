@@ -20,6 +20,7 @@ spec:
       enabled: true
     ingress:
       enabled: true
+      ingressClassName: nginx-internal
       hosts:
         - "pihole.int.konst.fish"
     serviceWeb:

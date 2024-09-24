@@ -20,6 +20,7 @@ spec:
           - --http-address=0.0.0.0:9090
           - --store=prometheus-operated:10901
           - --store=thanos-store-gateway:10901
+          - --query.auto-downsampling
         ports:
         - name: http
           containerPort: 9090
