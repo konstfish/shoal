@@ -21,6 +21,8 @@ spec:
           secretKeyRef:
             name: pihole-password
             key: password
+      - name: RATE_LIMIT
+        value: 0/0
     serviceAccount:
       create: true
       name: "external-dns"

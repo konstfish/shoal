@@ -6,6 +6,7 @@ resources:
   - ../../base/exporters/node-exporter
   - ../../base/exporters/kube-state-metrics
   - ../../base/grafana
+  - ../../base/grafana/dashboards/onprem
   - grafana/ingress.yaml
 
 patches:

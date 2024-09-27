@@ -1,0 +1,10 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: pihole
+spec:
+  instanceSelector:
+    matchLabels:
+      app: grafana
+  folderRef: onprem-ref
+  url: https://grafana.com/api/dashboards/14475/revisions/4/download
