@@ -11,6 +11,7 @@ spec:
   valuesContent: |
     txtPrefix: extdns
     provider: cloudflare
+    registry: noop
     cloudflare:
       secretName: cloudflare
       proxied: false

@@ -12,7 +12,7 @@ spec:
   valuesContent: |
     provider: pihole
     policy: upsert-only
-    txtOwnerId: "kf"
+    registry: noop
     pihole:
       server: http://pihole-web.pihole.svc.cluster.local
     extraEnvVars:
