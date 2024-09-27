@@ -1,0 +1,11 @@
+defaultNamespace: kube-system
+
+targetCustomizations:
+  - name: local
+    clusterName: local # barracuda
+    kustomize:
+      dir: overlays/barracuda
+  - name: tetra
+    clusterName: tetra
+    kustomize:
+      dir: overlays/tetra

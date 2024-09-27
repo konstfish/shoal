@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: jellyfin
+  name: jellyfin-external
   namespace: onprem-proxy
 spec:
   ingressClassName: nginx
