@@ -17,9 +17,9 @@ data "rancher2_cluster" "guppy" {
 }
 
 
-data "rancher2_cluster" "tetra" {
+/*data "rancher2_cluster" "tetra" {
   name = "tetra"
-}
+}*/
 
 /*resource "rancher2_cluster" "guppy" {
   name = "guppy"
@@ -32,5 +32,5 @@ resource "rancher2_cluster" "tetra" {
 // settings
 resource "rancher2_setting" "show_local_clusters" {
   name  = "hide-local-cluster"
-  value = "true"
+  value = "false"
 }

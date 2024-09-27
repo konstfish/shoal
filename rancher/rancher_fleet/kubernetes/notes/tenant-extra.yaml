@@ -1,0 +1,40 @@
+## kiali
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - kialis.kiali.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - kiali.io
+  resources:
+  - kialis
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+
+# idk what this is
+- apiGroups:
+  - monitoring.coreos.com
+  resources:
+  - probes
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+
+# allow prometheus agents? would be fun grafana cloud integration
+- apiGroups:
+  - monitoring.coreos.com
+  resources:
+  - prometheusagents
+  verbs:
+  - create
+  - update
+  - patch
+  - delete

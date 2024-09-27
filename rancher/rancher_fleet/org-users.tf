@@ -38,7 +38,7 @@ locals {
     (one([for pid in user.principalIds : pid if can(regex("github_user://.*", pid))])) => user.id if length([for pid in user.principalIds : pid if can(regex("github_user://.*", pid))]) > 0
   }
 
-  depends_on = [ rancher2_project_role_template_binding.user_projects_binding ]
+  // depends_on = [ rancher2_project_role_template_binding.user_projects_binding ]
 }
 
 output "github_user_to_id_map" {
