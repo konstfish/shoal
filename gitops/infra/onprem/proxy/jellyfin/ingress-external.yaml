@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyfin
+  namespace: onprem-proxy
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: jellyfin.konst.fish
+    http:
+      paths:
+      - backend:
+          service:
+            name: jellyfin
+            port:
+              name: http
+        path: /
+        pathType: ImplementationSpecific

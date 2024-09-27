@@ -13,7 +13,7 @@ helm:
       domain: https://vaultwarden.konst.fish
     ingress:
       enabled: true
-      className: nginx-internal
+      className: nginx
       host: vaultwarden.konst.fish
       annotations:
         external-dns.alpha.kubernetes.io/hostname: vaultwarden.konst.fish
