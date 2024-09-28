@@ -13,3 +13,9 @@ targetCustomizations:
     clusterName: tetra
     kustomize:
       dir: overlays/tetra
+
+# Remove false Tempo Report
+ignore:
+  conditions:
+    - type: Pending
+      status: "False"
