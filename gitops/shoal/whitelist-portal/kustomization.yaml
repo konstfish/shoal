@@ -1,4 +1,5 @@
 
 resources:
+  - redis
   - deployment
   - ingress
