@@ -46,5 +46,7 @@ module "k3s" {
   cluster_cidr = "10.44.0.0/16"
   service_cidr = "10.45.0.0/16"
 
-  extra_arguments = "--disable-cloud-controller --kubelet-arg='cloud-provider=external'"
+  extra_arguments = "--kubelet-arg='cloud-provider=external'"
+  extra_arguments_server = "--disable-cloud-controller"
+  extra_arguments_agent = ""
 }
