@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: whitelist-portal
-        image: ghcr.io/konstfish/whitelist-portal:0.0.1
+        image: ghcr.io/konstfish/whitelist-portal:main
         ports:
         - containerPort: 8080
         env:
