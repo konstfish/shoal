@@ -40,7 +40,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "example.appdomain.konst.fish"
+  - host: "example.app.konst.fish"
     http:
       paths:
       - pathType: Prefix

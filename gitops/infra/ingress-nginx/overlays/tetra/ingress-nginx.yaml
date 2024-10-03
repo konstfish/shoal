@@ -21,3 +21,5 @@ spec:
           load-balancer.hetzner.cloud/name: ingress-nginx-tetra
           load-balancer.hetzner.cloud/use-private-ip: true
           load-balancer.hetzner.cloud/uses-proxyprotocol: true
+      extraArgs:
+        default-ssl-certificate: ingress-nginx/wildcard-appdomain-tls

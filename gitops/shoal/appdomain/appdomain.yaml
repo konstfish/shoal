@@ -4,16 +4,16 @@ metadata:
   name: appdomain-ingress
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-dns"
-    external-dns.alpha.kubernetes.io/hostname: "*.appdomain.konst.fish"
+    external-dns.alpha.kubernetes.io/hostname: "*.app.konst.fish"
     external-dns.alpha.kubernetes.io/target: "tetra.shoal.konst.fish"
 spec:
   tls:
   - hosts:
-    - "*.appdomain.konst.fish"
+    - "*.app.konst.fish"
     secretName: appdomain-tls
   ingressClassName: nginx 
   rules:
-  - host: "*.appdomain.konst.fish"
+  - host: "*.app.konst.fish"
     http:
       paths:
       - pathType: Prefix

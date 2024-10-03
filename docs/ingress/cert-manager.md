@@ -103,11 +103,11 @@ metadata:
 spec:
   tls:
   - hosts:
-    - example.appdomain.konst.fish
+    - example.app.konst.fish
     secretName: example-tls # is automatically populated by cert-manager
   ingressClassName: nginx
   rules:
-  - host: "example.appdomain.konst.fish"
+  - host: "example.app.konst.fish"
     http:
       paths:
       - pathType: Prefix

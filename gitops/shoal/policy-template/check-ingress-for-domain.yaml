@@ -16,7 +16,7 @@ spec:
           input.review.kind.kind == "Ingress"
           domain := input.review.object.spec.rules[_].host
           endswith(domain, ".konst.fish")
-          not endswith(domain, ".appdomain.konst.fish")
+          not endswith(domain, ".app.konst.fish")
           namespace := input.review.object.metadata.namespace
           msg := sprintf("Ingress with domain %v is not allowed", [domain])
         }

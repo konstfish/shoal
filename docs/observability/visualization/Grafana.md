@@ -62,18 +62,13 @@ kind: Ingress
 metadata:
   name: grafana-ingress
   annotations:
-    cert-manager.io/issuer: "letsencrypt-appdomain"
     nginx.ingress.kubernetes.io/auth-signin: https://sso.konst.fish/oauth2/start?rd=$scheme://$host$request_uri
     nginx.ingress.kubernetes.io/auth-url: https://sso.konst.fish/oauth2/auth
     nginx.ingress.kubernetes.io/auth-response-headers: X-Auth-Request-Email,X-Auth-Request-Groups,X-Auth-Request-User
 spec:
-  tls:
-  - hosts:
-    - grafana-tenant.appdomain.konst.fish
-    secretName: grafana-tls
   ingressClassName: nginx
   rules:
-  - host: "grafana-tenant.appdomain.konst.fish"
+  - host: "grafana-tenant.app.konst.fish"
     http:
       paths:
       - pathType: Prefix

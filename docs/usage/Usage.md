@@ -13,7 +13,7 @@ The diagram below represents a basic web application. An *Ingress* controls wher
 
 ```mermaid
 flowchart LR
-    A[Web] -->|*.appdomain.konst.fish| B(Ingress)
+    A[Web] -->|*.app.konst.fish| B(Ingress)
     B -->|/api| C{{Backend Service}}
     subgraph Backend
     C-. app=backend .-> D[Backend Pod]
@@ -100,11 +100,11 @@ metadata:
 spec:
   tls:
   - hosts:
-    - test.appdomain.konst.fish
+    - test.app.konst.fish
     secretName: test-tls
   ingressClassName: nginx
   rules:
-  - host: test.appdomain.konst.fish
+  - host: test.app.konst.fish
     http:
       paths:
       - pathType: Prefix
