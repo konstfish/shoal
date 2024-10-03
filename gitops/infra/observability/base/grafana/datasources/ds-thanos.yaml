@@ -7,9 +7,9 @@ spec:
     matchLabels:
       app: "grafana"
   datasource:
-    name: prometheus
+    name: thanos
     type: prometheus
-    uid: prometheus1
+    uid: thanos1
     access: proxy
     basicAuth: false
     url: http://thanos-querier.monitoring.svc:9090
