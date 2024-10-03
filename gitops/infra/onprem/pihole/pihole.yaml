@@ -16,6 +16,7 @@ spec:
     adminPassword: false
     ftl:
       BLOCK_ICLOUD_PR: false
+      RATE_LIMIT: 0/0
     persistentVolumeClaim:
       enabled: true
     ingress:
