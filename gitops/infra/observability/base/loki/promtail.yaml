@@ -7,7 +7,7 @@ spec:
   chart: promtail
   repo: https://grafana.github.io/helm-charts
   targetNamespace: monitoring
-  version: v6.15.5
+  version: 6.16.6
   set:
     serviceMonitor.enabled: "true"
   valuesContent: |-
