@@ -19,7 +19,7 @@ resource "helm_release" "kubewarden_controller" {
   name       = "kubewarden-controller"
   repository = "https://charts.kubewarden.io"
   chart      = "kubewarden-controller"
-  version    = "2.0.11"
+  version    = "2.4.0"
 
   values = [
     file("${path.module}/helm/values.yml")
