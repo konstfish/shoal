@@ -22,7 +22,7 @@ persistence:
 nginx:
   image:
     repository: ghcr.io/octohelm/harbor/nginx-photon
-    tag: v2.10.1
+    tag: v2.11.0
 
 portal:
   image:
