@@ -7,7 +7,7 @@ spec:
   chart: gatekeeper
   repo: https://open-policy-agent.github.io/gatekeeper/charts
   targetNamespace: gatekeeper-system
-  version: 3.15.1
+  version: 3.17.1
   valuesContent: |
     postInstall:
       labelNamespace:
