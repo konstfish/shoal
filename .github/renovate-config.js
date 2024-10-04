@@ -19,7 +19,6 @@ module.exports = {
           'lockFileMaintenance',
         ],
         dependencyDashboardApproval: false,
-        minimumReleaseAge: 0,
       },
     ],
   };
