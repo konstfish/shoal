@@ -35,7 +35,7 @@ resource "helm_release" "kubewarden_defaults" {
   name       = "kubewarden-defaults"
   repository = "https://charts.kubewarden.io"
   chart      = "kubewarden-defaults"
-  version    = "2.0.0"
+  version    = "2.4.0"
 
   values = [
     file("${path.module}/helm/values.yml")
