@@ -27,7 +27,7 @@ nginx:
 portal:
   image:
     repository: ghcr.io/octohelm/harbor/harbor-portal
-    tag: v2.10.1
+    tag: v2.11.0
 
 core:
   image:
