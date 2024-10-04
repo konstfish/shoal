@@ -53,7 +53,7 @@ registry:
 trivy:
   image:
     repository: ghcr.io/octohelm/harbor/trivy-adapter-photon
-    tag: v2.10.1
+    tag: v2.11.0
 
 database:
   internal:
