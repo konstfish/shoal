@@ -37,7 +37,7 @@ core:
 jobservice:
   image:
     repository: ghcr.io/octohelm/harbor/harbor-jobservice
-    tag: v2.10.1
+    tag: v2.11.0
 
 registry:
   registry:
