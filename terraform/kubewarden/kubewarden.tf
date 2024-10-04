@@ -5,7 +5,7 @@ resource "helm_release" "kubewarden_crds" {
   name       = "kubewarden-crds"
   repository = "https://charts.kubewarden.io"
   chart      = "kubewarden-crds"
-  version    = "1.5.0"
+  version    = "1.9.0"
 
   values = [
     file("${path.module}/helm/values.yml")
