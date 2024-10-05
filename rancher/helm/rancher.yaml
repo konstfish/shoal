@@ -10,6 +10,12 @@ ingress:
   ingressClassName: nginx
   extraAnnotations:
     external-dns.alpha.kubernetes.io/hostname: "rancher.konst.fish"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      location ~* /version|/rancherversion {
+          deny all;
+          return 403;
+      }
+
   
 letsEncrypt:
   email: david@konst.fish

@@ -15,7 +15,6 @@ spec:
         use-forwarded-headers: "true"
         compute-full-forwarded-for: "true"
         use-proxy-protocol: "true"
-        custom-http-errors: "404,500,502,503"
       service:
         annotations:
           load-balancer.hetzner.cloud/location: nbg1

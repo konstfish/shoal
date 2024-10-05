@@ -1,0 +1,13 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: hardening-rancher
+  namespace: fleet-local
+spec:
+  repo: https://github.com/konstfish/shoal
+  branch: main
+  paths:
+  - gitops/shoal/hardening/rancher
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false
