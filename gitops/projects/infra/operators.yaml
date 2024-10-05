@@ -27,6 +27,3 @@ spec:
   branch: main
   paths:
   - gitops/infra/operators
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

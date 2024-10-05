@@ -27,6 +27,3 @@ spec:
   branch: main
   paths:
   - gitops/infra/operator-lifecycle-manager
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

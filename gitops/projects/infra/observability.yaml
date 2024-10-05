@@ -26,6 +26,3 @@ spec:
   branch: main
   paths:
   - gitops/infra/observability
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

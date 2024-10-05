@@ -26,6 +26,3 @@ spec:
   branch: main
   paths:
   - gitops/infra/external-dns
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

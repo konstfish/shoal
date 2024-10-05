@@ -26,6 +26,3 @@ spec:
   branch: main
   paths:
   - gitops/infra/ingress-nginx
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

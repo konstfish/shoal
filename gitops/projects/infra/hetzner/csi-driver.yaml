@@ -25,6 +25,3 @@ spec:
   branch: main
   paths:
   - gitops/infra/hetzner/csi-driver
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false
