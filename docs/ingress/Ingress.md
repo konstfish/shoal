@@ -7,7 +7,7 @@ date: 2024-03-01
 
 > Connect applications the the outside world
 
-## [[NGINX Ingress]]
+## [[Ingress Nginx]]
 Primary Ingress Controller
 
 ## [[cert-manager]]

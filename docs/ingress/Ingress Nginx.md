@@ -22,6 +22,7 @@ flowchart LR
     subgraph tn[Tenant Namespace]
     svc{{Service}}
     ing(Ingress) --> svc
+    svc --> pod[Pod]
     end
 
     nginx --> ing
