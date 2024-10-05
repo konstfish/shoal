@@ -10,6 +10,3 @@ spec:
   - gitops/apps/vaultwarden
   targets:
   - clusterName: guppy
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

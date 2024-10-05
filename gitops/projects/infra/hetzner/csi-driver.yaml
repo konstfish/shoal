@@ -11,9 +11,6 @@ spec:
   targets:
   - clusterName: local # barracuda
   - clusterName: tetra
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false
 ---
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo

@@ -10,6 +10,3 @@ spec:
   - gitops/apps/s.konst.fish
   targets:
   - clusterName: guppy
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false
