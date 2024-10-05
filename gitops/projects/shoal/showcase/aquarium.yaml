@@ -11,6 +11,3 @@ spec:
     - kubernetes
   targets:
   - clusterName: tetra
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

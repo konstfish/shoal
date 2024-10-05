@@ -10,6 +10,3 @@ spec:
   - gitops/infra/onprem/pihole
   targets:
   - clusterName: guppy
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false
