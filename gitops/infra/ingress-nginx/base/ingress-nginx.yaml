@@ -11,3 +11,7 @@ spec:
   valuesContent: |
     controller:
       replicaCount: 3
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true

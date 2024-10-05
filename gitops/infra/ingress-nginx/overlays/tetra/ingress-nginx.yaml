@@ -15,6 +15,7 @@ spec:
         use-forwarded-headers: "true"
         compute-full-forwarded-for: "true"
         use-proxy-protocol: "true"
+        custom-http-errors: "404,500,502,503"
       service:
         annotations:
           load-balancer.hetzner.cloud/location: nbg1
@@ -23,3 +24,14 @@ spec:
           load-balancer.hetzner.cloud/uses-proxyprotocol: true
       extraArgs:
         default-ssl-certificate: ingress-nginx/wildcard-appdomain-tls
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+    defaultBackend:
+      enabled: true
+      image:
+        repository: ghcr.io/konstfish/custom-default-backend
+        tag: "latest"
+        pullPolicy: Always
+        readOnlyRootFilesystem: false
