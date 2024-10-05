@@ -1,7 +1,9 @@
 name: Build Quartz Site
 on:
- push:
-   branches: ["main"]
+  push:
+    branches: ["main"]
+    paths:
+      - docs/**
 permissions:
   contents: read
   pages: write
@@ -33,10 +35,10 @@ jobs:
         if: ${{ steps.check-changes.outputs.changed == 'true' }}
         with:
           source: docs
-          quartz_config: .github/quartz.config.ts
-          quartz_layout: .github/quartz.layout.ts
-          quartz_icon: .github/icon.png
-          quartz_banner: .github/og-image.png
+          quartz_config: .github/quartz/quartz.config.ts
+          quartz_layout: .github/quartz/quartz.layout.ts
+          quartz_icon: .github/quartz/icon.png
+          quartz_banner: .github/quartz/og-image.png
       - name: Upload artifact
         if: ${{ steps.check-changes.outputs.changed == 'true' }}
         uses: actions/upload-pages-artifact@v1
