@@ -43,7 +43,7 @@ jobs:
       - name: Deploy to GitHub Pages
         if: ${{ steps.check-changes.outputs.changed == 'true' }}
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
