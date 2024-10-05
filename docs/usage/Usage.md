@@ -86,7 +86,7 @@ spec:
 
 ### Ingress
 
-Also see [[Nginx Ingress]]
+Also see [[Ingress Nginx]]
 
 ```yaml
 apiVersion: networking.k8s.io/v1

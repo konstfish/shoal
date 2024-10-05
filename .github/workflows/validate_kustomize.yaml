@@ -3,8 +3,12 @@ name: Validate Kustomize
 on:
   push:
     branches: ['*']
+    paths:
+      - gitops/**
   pull_request:
     branches: [ main ]
+    paths:
+      - gitops/**
 
 jobs:
   validate-kustomize:
