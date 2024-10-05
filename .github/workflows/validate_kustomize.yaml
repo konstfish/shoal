@@ -1,0 +1,30 @@
+name: Validate Kustomize
+
+on:
+  push:
+    branches: ['*']
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-kustomize:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Kustomize
+      uses: imranismail/setup-kustomize@v2
+
+    - name: Validate Kustomize builds
+      run: |
+        find . -name kustomization.yaml | sort -n | tr '\n' ' ' | 
+        while IFS= read -r -d ' ' file; do
+          dir=$(dirname "$file")
+          kustomize build "$dir" > /dev/null
+          if [ $? -eq 0 ]; then
+            echo "✅ $dir" | sed 's/\.\/gitops\///'
+          else
+            echo "❌ $dir" | sed 's/\.\/gitops\///'
+            exit 1
+          fi
+        done
