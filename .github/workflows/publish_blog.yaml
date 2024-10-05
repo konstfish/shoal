@@ -32,7 +32,7 @@ jobs:
           quartz_banner: .github/quartz/og-image.png
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
 
       - name: Deploy to GitHub Pages
         id: deployment
