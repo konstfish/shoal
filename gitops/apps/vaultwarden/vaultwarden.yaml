@@ -25,7 +25,7 @@ spec:
       keepPvc: true
       accessMode: "ReadWriteOnce"
 
-    domain: "vaultwarden.konst.fish"
+    domain: "https://vaultwarden.konst.fish"
     signupsAllowed: true
     signupsVerify: false
     sendsAllowed: "false"
