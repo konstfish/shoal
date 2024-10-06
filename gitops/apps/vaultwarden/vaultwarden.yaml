@@ -44,10 +44,3 @@ spec:
         external-dns.alpha.kubernetes.io/hostname: vaultwarden.konst.fish
         cert-manager.io/cluster-issuer: letsencrypt-dns
       tlsSecret: vaultwarden-tls
-
-    vaultwarden:
-      domain: https://vaultwarden.konst.fish
-    persistence:
-      enabled: true
-      storageClass: longhorn
-      size: 10Gi

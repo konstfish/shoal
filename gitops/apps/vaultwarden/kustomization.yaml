@@ -1,4 +1,4 @@
-namespace: external-dns
+namespace: vaultwarden
 
 resources:
   - ns.yaml
