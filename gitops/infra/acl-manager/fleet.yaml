@@ -1,5 +1,3 @@
-defaultNamespace: acl-manager
-
 targetCustomizations:
   - name: local
     clusterName: local # barracuda
