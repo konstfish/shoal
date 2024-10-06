@@ -5,6 +5,7 @@ helm:
   chart: vaultwarden
 
   repo: "https://gissilabs.github.io/charts/"
+  version: "1.2.2"
 
   force: false
 
@@ -20,4 +21,4 @@ helm:
     persistence:
       enabled: true
       storageClass: longhorn
-      size: 5Gi
+      size: 10Gi
