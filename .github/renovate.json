@@ -8,5 +8,8 @@
       ],
       "datasourceTemplate": "helm"
     }
-  ]
+  ],
+  "kubernetes": {
+    "fileMatch": ["\\.yaml$", "deployment.yaml"]
+  }
 }
