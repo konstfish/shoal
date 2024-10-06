@@ -9,4 +9,4 @@ spec:
   paths:
   - gitops/shoal/whitelist-portal
   targets:
-  - clusterName: guppy
+  - clusterName: tetra

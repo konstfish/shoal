@@ -10,11 +10,10 @@ ingress:
   ingressClassName: nginx
   extraAnnotations:
     external-dns.alpha.kubernetes.io/hostname: "rancher.konst.fish"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      location ~* /version|/rancherversion {
-          deny all;
-          return 403;
-      }
+    acl-manager.konst.fish/destination: nginx.ingress.kubernetes.io/allowlist-source-range
+    acl-manager.konst.fish/list: https://whitelist.konst.fish/api/v1/list
+    acl-manager.konst.fish/list-auth: acl-secret
+    acl-manager.konst.fish/polling: "5"
 
   
 letsEncrypt:
