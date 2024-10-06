@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: whitelist-ingress-netset
   annotations:
-    nginx-ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-type: basic
     nginx.ingress.kubernetes.io/auth-secret: ingress-netset-secret
     nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
 spec:
