@@ -8,8 +8,8 @@ metadata:
 spec:
   tls:
   - hosts:
-    - grafana.tetra.konst.fish
-    secretName: grafana-tls
+    - jellyfin.konst.fish
+    secretName: jellyfin-tls
   ingressClassName: nginx
   rules:
   - host: jellyfin.konst.fish
