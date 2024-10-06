@@ -1,0 +1,23 @@
+#apiVersion: fleet.cattle.io/v1alpha1
+#kind: GitRepo
+#metadata:
+#  name: acl-manager
+#  namespace: fleet-default
+#spec:
+#  repo: https://github.com/konstfish/shoal
+#  branch: main
+#  paths:
+#  - gitops/infra/acl-manager
+#  targets:
+#  - clusterName: local # barracuda
+---
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: acl-manager
+  namespace: fleet-local
+spec:
+  repo: https://github.com/konstfish/shoal
+  branch: main
+  paths:
+  - gitops/infra/acl-manager

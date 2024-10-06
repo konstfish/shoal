@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acl-manager
+  labels:
+    app.kubernetes.io/name: acl-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: acl-manager
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: acl-manager
+    spec:
+      serviceAccountName: acl-manager
+      containers:
+        - name: acl-manager
+          image: ghcr.io/konstfish/acl-manager:0.0.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: http
+          resources:
+            limits:
+              cpu: 100m
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 128Mi
