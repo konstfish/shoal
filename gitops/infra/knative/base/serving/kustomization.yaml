@@ -1,3 +1,4 @@
 resources:
   - ns.yaml
   - serving.yaml
+  - peer.yaml

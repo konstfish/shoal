@@ -9,7 +9,13 @@ spec:
   targetNamespace: istio-ingress
   version: "1.23.2"
   valuesContent: |
+  
     defaults:
+      labels:
+        app: istio-ingress
+        istio: ingressgateway
+        Istio: ingressgateway
+        release: istio-ingress
       service:
         annotations:
           load-balancer.hetzner.cloud/location: nbg1
