@@ -2,9 +2,9 @@ apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
   name: istio-ingress
-  namespace: istio-system
+  namespace: istio-ingress
 spec:
-  chart: istio-ingress
+  chart: gateway
   repo: "https://istio-release.storage.googleapis.com/charts"
   targetNamespace: istio-ingress
   version: "1.23.2"
