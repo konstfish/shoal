@@ -10,7 +10,7 @@ spec:
     network:
       "ingress.class": "istio.ingress.networking.knative.dev"
     istio:
-      gateway.knative-serving.knative-ingress-gateway:
+      knative-ingress-gateway:
         selector:
           istio: ingressgateway
         servers:
