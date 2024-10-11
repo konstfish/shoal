@@ -2,11 +2,11 @@ apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
   name: istio-ingress
-  namespace: istio-ingress
+  namespace: istio-system
 spec:
   chart: gateway
   repo: "https://istio-release.storage.googleapis.com/charts"
-  targetNamespace: istio-ingress
+  targetNamespace: istio-system
   version: "1.23.2"
   valuesContent: |
     defaults:
@@ -18,7 +18,7 @@ spec:
       service:
         annotations:
           load-balancer.hetzner.cloud/location: nbg1
-          load-balancer.hetzner.cloud/name: ingress-nginx-tetra-istio
+          load-balancer.hetzner.cloud/name: ingress-istio-tetra
           load-balancer.hetzner.cloud/use-private-ip: "true"
           load-balancer.hetzner.cloud/uses-proxyprotocol: "false"
           # load-balancer.hetzner.cloud/hostname: functions.konst.fish
