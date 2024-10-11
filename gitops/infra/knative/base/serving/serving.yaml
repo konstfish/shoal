@@ -9,6 +9,8 @@ spec:
       "functions.konst.fish": ""
     network:
       defaultExternalScheme: "https"
+      # TODO: something like this: https://bsideup.github.io/posts/knative_custom_domains/ super cool
+      domain-template: "{{.Name}}.{{.Domain}}"
     istio:
       external-gateways: |
         - name: knative-ingress-gateway

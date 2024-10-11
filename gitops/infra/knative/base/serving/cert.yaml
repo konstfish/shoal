@@ -5,7 +5,7 @@ metadata:
   # need to reach over: https://knative.dev/docs/serving/encryption/external-domain-tls/#obtaining-a-certificate-using-a-tool
   namespace: istio-system
 spec:
-  secretName: wildcard-internal-tls
+  secretName: wildcard-functions-tls
   issuerRef:
     name: letsencrypt-dns
     kind: ClusterIssuer
