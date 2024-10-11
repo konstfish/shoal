@@ -7,26 +7,27 @@ spec:
   config:
     domain:
       "functions.konst.fish": ""
-  istio:
-    enabled: true
-    knative-ingress-gateway:
-      selector:
-        istio: ingressgateway
-      servers:
-      - hosts:
-        - "*"
-        port:
-          name: http
-          number: 80
-          protocol: HTTP
-        tls:
-          httpsRedirect: true
-      - hosts:
-        - "*"
-        port:
-          name: https
-          number: 443
-          protocol: HTTPS
-        tls:
-          mode: SIMPLE
-          credentialName: wildcard-functions-tls
+  ingress:
+    istio:
+      enabled: true
+      knative-ingress-gateway:
+        selector:
+          istio: ingressgateway
+        servers:
+        - hosts:
+          - "*"
+          port:
+            name: http
+            number: 80
+            protocol: HTTP
+          tls:
+            httpsRedirect: true
+        - hosts:
+          - "*"
+          port:
+            name: https
+            number: 443
+            protocol: HTTPS
+          tls:
+            mode: SIMPLE
+            credentialName: wildcard-functions-tls
