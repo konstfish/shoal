@@ -8,7 +8,7 @@ spec:
     domain:
       "functions.konst.fish": ""
     network:
-      http-protocol: Redirect
+      http-protocol: redirected
   ingress:
     istio:
       enabled: true
