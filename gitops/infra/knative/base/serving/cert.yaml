@@ -2,7 +2,8 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: wildcard-functions-tls
-  namespace: knative-serving
+  # need to reach over: https://knative.dev/docs/serving/encryption/external-domain-tls/#obtaining-a-certificate-using-a-tool
+  namespace: istio-system
 spec:
   secretName: wildcard-internal-tls
   issuerRef:

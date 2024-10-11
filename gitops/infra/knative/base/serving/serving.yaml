@@ -7,6 +7,8 @@ spec:
   config:
     domain:
       "functions.konst.fish": ""
+    network:
+      http-protocol: Redirect
   ingress:
     istio:
       enabled: true
@@ -20,10 +22,8 @@ spec:
             name: http
             number: 80
             protocol: HTTP
-          tls:
-            httpsRedirect: true
         - hosts:
-          - "*"
+          - "*.functions.konst.fish"
           port:
             name: https
             number: 443
