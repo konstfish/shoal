@@ -26,8 +26,8 @@ spec:
           requests:
             cpu: 50m
             memory: 64Mi
-          envFrom:
-            - secretRef:
-                name: fishbot-config
+        envFrom:
+          - secretRef:
+              name: fishbot-config
       dnsPolicy: ClusterFirst
       restartPolicy: Always
