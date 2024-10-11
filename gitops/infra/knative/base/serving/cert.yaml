@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-functions-tls
+  namespace: knative-serving
+spec:
+  secretName: wildcard-internal-tls
+  issuerRef:
+    name: letsencrypt-dns
+    kind: ClusterIssuer
+  commonName: "*.functions.konst.fish"
+  dnsNames:
+  - "*.functions.konst.fish"
