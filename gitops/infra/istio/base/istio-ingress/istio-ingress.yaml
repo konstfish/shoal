@@ -9,7 +9,6 @@ spec:
   targetNamespace: istio-ingress
   version: "1.23.2"
   valuesContent: |
-  
     defaults:
       labels:
         app: istio-ingress
