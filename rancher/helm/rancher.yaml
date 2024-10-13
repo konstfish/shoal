@@ -1,0 +1,22 @@
+hostname: rancher.konst.fish
+
+# https://slack-archive.rancher.com/t/22906695/wave-has-anyone-had-the-following-error-when-adding-a-generi
+agentTLSMode: "system-store"
+
+ingress:
+  enabled: true
+  tls:
+    source: letsEncrypt
+  ingressClassName: nginx
+  extraAnnotations:
+    external-dns.alpha.kubernetes.io/hostname: "rancher.konst.fish"
+    acl-manager.konst.fish/destination: nginx.ingress.kubernetes.io/allowlist-source-range
+    acl-manager.konst.fish/list: https://whitelist.konst.fish/api/v1/list
+    acl-manager.konst.fish/list-auth: acl-secret
+    acl-manager.konst.fish/polling: "5"
+
+  
+letsEncrypt:
+  email: david@konst.fish
+  ingress:
+    class: nginx

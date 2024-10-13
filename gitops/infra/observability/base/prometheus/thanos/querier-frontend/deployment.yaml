@@ -16,7 +16,7 @@ spec:
       serviceAccountName: prometheus-kube-rbac-proxy
       containers:
       - name: kube-rbac-proxy
-        image: quay.io/brancz/kube-rbac-proxy:v0.16.1
+        image: quay.io/brancz/kube-rbac-proxy:v0.18.1
         args:
           - "--secure-listen-address=0.0.0.0:9090"
           - "--upstream=http://127.0.0.1:8080/"
@@ -37,7 +37,7 @@ spec:
             memory: 1Gi
             cpu: 500m
       - name: prom-label-enforcer
-        image: quay.io/prometheuscommunity/prom-label-proxy:v0.8.1
+        image: quay.io/prometheuscommunity/prom-label-proxy:v0.11.0
         imagePullPolicy: Always
         args:
           - "--insecure-listen-address=127.0.0.1:8080"

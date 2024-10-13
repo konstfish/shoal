@@ -1,0 +1,46 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: vaultwarden
+  namespace: vaultwarden
+spec:
+  chart: vaultwarden
+  repo: "https://guerzon.github.io/vaultwarden"
+  targetNamespace: vaultwarden
+  version: "0.29.0"
+  valuesContent: |
+    resources:
+      limits:
+        cpu: 300m
+        memory: 1Gi
+      requests:
+        cpu: 50m
+        memory: 256Mi
+
+    data:
+      name: "vaultwarden-data"
+      size: "15Gi"
+      class: "longhorn"
+      path: "/data"
+      keepPvc: true
+      accessMode: "ReadWriteOnce"
+
+    domain: "https://vaultwarden.konst.fish"
+    signupsAllowed: true
+    signupsVerify: false
+    sendsAllowed: "false"
+
+    adminToken:
+      existingSecret: vaultwarden-admin-token
+      existingSecretKey: token
+
+    timeZone: "Europe/Vienna"
+
+    ingress:
+      enabled: true
+      class: nginx
+      hostname: vaultwarden.konst.fish
+      additionalAnnotations:
+        external-dns.alpha.kubernetes.io/hostname: vaultwarden.konst.fish
+        cert-manager.io/cluster-issuer: letsencrypt-dns
+      tlsSecret: vaultwarden-tls

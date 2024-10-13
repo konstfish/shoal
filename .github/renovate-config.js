@@ -6,10 +6,12 @@ module.exports = {
     platform: 'github',
     repositories: ['konstfish/shoal'],
     ignorePaths: ['archive/**'],
+    reviewers: ['konstfish'],
     packageRules: [
       {
         matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
         automerge: true
       }
-    ]
+    ],
+    platformAutomerge: true
   };

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: fishbot
+  name: fishbot
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fishbot
+  template:
+    metadata:
+      labels:
+        app: fishbot
+    spec:
+      containers:
+      - name: fishbot
+        image: ghcr.io/konstfish/fishbot:v0.1.0
+        imagePullPolicy: Always
+        resources: 
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 50m
+            memory: 64Mi
+        envFrom:
+          - secretRef:
+              name: fishbot-config
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always

@@ -9,7 +9,4 @@ spec:
   paths:
   - gitops/infra/oauth2-proxy
   targets:
-  - clusterName: guppy
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false
+  - clusterName: tetra

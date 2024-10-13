@@ -1,0 +1,6 @@
+namespace: vaultwarden
+
+resources:
+  - ns.yaml
+  - admin-token.yaml
+  - vaultwarden.yaml

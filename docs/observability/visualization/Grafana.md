@@ -54,7 +54,7 @@ spec:
               image: grafana/grafana:11.0.0
 ```
 
-Expose it using an [[NGINX Ingress]] with [[Zero Trust]].
+Expose it using an [[Ingress Nginx]] with [[Zero Trust]].
 
 ```yaml
 apiVersion: networking.k8s.io/v1

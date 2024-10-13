@@ -1,4 +1,0 @@
-namespace: showcase
-
-resources:
-  - https://raw.githubusercontent.com/konstfish/aquarium/main/kubernetes/aquarium.yaml

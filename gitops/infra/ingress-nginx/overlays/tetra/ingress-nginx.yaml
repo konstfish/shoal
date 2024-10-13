@@ -7,7 +7,7 @@ spec:
   chart: ingress-nginx
   repo: https://kubernetes.github.io/ingress-nginx
   targetNamespace: ingress-nginx
-  version: 4.11.2
+  version: 4.11.3
   valuesContent: |
     controller:
       replicaCount: 3
@@ -21,5 +21,17 @@ spec:
           load-balancer.hetzner.cloud/name: ingress-nginx-tetra
           load-balancer.hetzner.cloud/use-private-ip: true
           load-balancer.hetzner.cloud/uses-proxyprotocol: true
+          load-balancer.hetzner.cloud/hostname: tetra.shoal.konst.fish
       extraArgs:
         default-ssl-certificate: ingress-nginx/wildcard-appdomain-tls
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+    defaultBackend:
+      enabled: true
+      image:
+        repository: ghcr.io/konstfish/custom-default-backend
+        tag: "latest"
+        pullPolicy: Always
+        readOnlyRootFilesystem: false

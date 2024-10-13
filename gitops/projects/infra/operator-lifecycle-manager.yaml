@@ -13,9 +13,6 @@ spec:
   - clusterName: tetra
   - clusterName: guppy
   - clusterName: anchovy
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false
 ---
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
@@ -27,6 +24,3 @@ spec:
   branch: main
   paths:
   - gitops/infra/operator-lifecycle-manager
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

@@ -10,6 +10,3 @@ spec:
   - gitops/shoal/policy
   targets:
   - clusterName: tetra
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

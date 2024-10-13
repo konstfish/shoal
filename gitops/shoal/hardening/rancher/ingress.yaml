@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rancher-hardening
+  namespace: cattle-system
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: rancher.konst.fish
+    http:
+      paths:
+      - path: /version
+        backend:
+          service:
+            name: dummy-service
+            port:
+              number: 80
+        pathType: ImplementationSpecific
+      - path: /rancherversion
+        backend:
+          service:
+            name: dummy-service
+            port:
+              number: 80
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - rancher.konst.fish
+    secretName: tls-rancher-ingress
