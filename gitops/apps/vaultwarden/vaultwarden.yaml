@@ -5,7 +5,7 @@ metadata:
   namespace: vaultwarden
 spec:
   chart: vaultwarden
-  repo: "https://guerzon.github.io/vaultwarden"
+  repo: https://guerzon.github.io/vaultwarden
   targetNamespace: vaultwarden
   version: "0.29.0"
   valuesContent: |

@@ -5,7 +5,7 @@ metadata:
   namespace: istio-system
 spec:
   chart: base
-  repo: "https://istio-release.storage.googleapis.com/charts"
+  repo: https://istio-release.storage.googleapis.com/charts
   targetNamespace: istio-system
   version: "1.23.2"
   valuesContent: |
