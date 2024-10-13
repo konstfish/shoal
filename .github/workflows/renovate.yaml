@@ -17,10 +17,10 @@ jobs:
           repositories: 'shoal'
 
       - name: Checkout
-        uses: actions/checkout@v4.2.0
+        uses: actions/checkout@v4.2.1
 
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v40.2.10
+        uses: renovatebot/github-action@v40.3.3
         with:
           configurationFile: .github/renovate-config.js
           token: '${{ steps.get_token.outputs.token }}'

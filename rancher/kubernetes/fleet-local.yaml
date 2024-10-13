@@ -8,6 +8,3 @@ spec:
   branch: main
   paths:
   - gitops/projects
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

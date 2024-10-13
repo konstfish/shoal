@@ -11,6 +11,3 @@ spec:
   targets:
   - clusterName: local # barracuda
   - clusterName: tetra
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

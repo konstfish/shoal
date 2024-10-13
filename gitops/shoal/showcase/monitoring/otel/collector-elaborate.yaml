@@ -3,7 +3,7 @@ kind: OpenTelemetryCollector
 metadata:
   name: otel
 spec:
-  image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.100.0
+  image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.111.0
   ports:
     - name: http-metrics
       port: 8889

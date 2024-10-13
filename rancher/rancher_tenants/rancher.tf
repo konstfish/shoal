@@ -6,6 +6,9 @@ resource "rancher2_auth_config_github" "github" {
   allowed_principal_ids = ["github_org://${data.github_organization.org.id}"]
 }
 
+// todo: branding with iac
+// https://github.com/rancher/terraform-provider-rancher2/issues/1269
+
 // need to create clusters manually, since the id is "random" with terraform 
 // https://github.com/rancher/terraform-provider-rancher2/blob/master/rancher2/data_source_rancher2_cluster.go#L227
 

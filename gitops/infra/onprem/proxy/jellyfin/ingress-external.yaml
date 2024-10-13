@@ -3,7 +3,13 @@ kind: Ingress
 metadata:
   name: jellyfin-external
   namespace: onprem-proxy
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-dns"
 spec:
+  tls:
+  - hosts:
+    - jellyfin.konst.fish
+    secretName: jellyfin-tls
   ingressClassName: nginx
   rules:
   - host: jellyfin.konst.fish

@@ -11,6 +11,3 @@ spec:
   - gitops/shoal/showcase
   targets:
   - clusterName: tetra
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

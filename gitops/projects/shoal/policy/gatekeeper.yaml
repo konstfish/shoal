@@ -10,6 +10,3 @@ spec:
   - gitops/shoal/gatekeeper
   targets:
   - clusterName: tetra
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

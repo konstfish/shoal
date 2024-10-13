@@ -11,9 +11,6 @@ spec:
   targets:
   - clusterName: local # barracuda
   - clusterName: tetra
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false
 ---
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
@@ -25,6 +22,3 @@ spec:
   branch: main
   paths:
   - gitops/infra/hetzner/csi-driver
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false

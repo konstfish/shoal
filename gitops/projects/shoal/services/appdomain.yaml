@@ -10,6 +10,3 @@ spec:
   - gitops/shoal/appdomain
   targets:
   - clusterName: tetra
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false
