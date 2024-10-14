@@ -1,4 +1,5 @@
 resources:
+  - secret.yaml
   - loki.yaml
   - promtail.yaml
   - querier-frontend
