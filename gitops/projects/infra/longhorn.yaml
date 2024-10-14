@@ -10,3 +10,4 @@ spec:
   - gitops/infra/longhorn
   targets:
   - clusterName: guppy
+  - clusterName: tetra
