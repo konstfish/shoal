@@ -1,3 +1,4 @@
 resources:
   - ns.yaml
   - longhorn.yaml
+  - storageclass-noreplica.yaml
