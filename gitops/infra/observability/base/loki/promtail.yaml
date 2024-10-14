@@ -16,7 +16,7 @@ spec:
         pipelineStages:
           - cri: {}
           - match:
-              selector: '{namespace=~".+"}'
+              selector: '{namespace=~"showcase|kfs-playground"}'
               stages:
                 - tenant:
                     label: "namespace"
