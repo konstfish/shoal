@@ -9,4 +9,4 @@ spec:
   source: operatorhubio-catalog
   sourceNamespace: operator-lifecycle-manager
   installPlanApproval: Manual
-  startingCSV: tempo-operator.v0.12.0
+  startingCSV: tempo-operator.v0.10.0
