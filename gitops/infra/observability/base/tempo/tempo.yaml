@@ -16,6 +16,9 @@ spec:
       type: s3
   storageSize: 5Gi
   storageClassName: longhorn-noreplica
+  # will be fixed soon ideally, https://github.com/grafana/tempo-operator/pull/1029
+  #podSecurityContext:
+  #  fsGroup: 10001
   template:
     queryFrontend:
       jaegerQuery:
