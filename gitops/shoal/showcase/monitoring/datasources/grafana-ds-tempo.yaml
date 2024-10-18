@@ -44,9 +44,9 @@ spec:
         spanEndTimeShift: 1m
         spanStartTimeShift: "-1m"
       tracesToLogsV2:
-        customQuery: false
         datasourceUid: loki1
         filterByTraceID: true
+        customQuery: true
         query: '{namespace="showcase"} |="${__span.traceId}"'
         spanEndTimeShift: "1m"
         spanStartTimeShift: "-1m"
