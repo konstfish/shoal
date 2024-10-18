@@ -35,6 +35,10 @@ spec:
         datasourceUid: prometheus1
       tracesToMetrics:
         datasourceUid: prometheus1
+      tracesToLogsV2:
+        customQuery: false
+        datasourceUid: loki1
+        filterByTraceID: true
     secureJsonData:
       httpHeaderValue1: "Bearer ${token}"
       httpHeaderValue2: "showcase"
