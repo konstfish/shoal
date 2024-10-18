@@ -29,6 +29,13 @@ spec:
       timeout: 60
       manageAlerts: false
       tlsSkipVerify: true
+      derivedFields:
+        - name: Trace
+          matcherRegex: 'TraceID: (\w+)'
+          urlDisplayLabel: 'Trace'
+          url: "${__value.raw}"
+          matcherType: regex
+          datasourceUid: tempo1
     secureJsonData:
       httpHeaderValue1: "Bearer ${token}"
       httpHeaderValue2: "showcase"

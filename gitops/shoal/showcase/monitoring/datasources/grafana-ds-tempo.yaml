@@ -35,10 +35,21 @@ spec:
         datasourceUid: prometheus1
       tracesToMetrics:
         datasourceUid: prometheus1
+        tags:
+        - key: service.name
+          value: job
+        queries:
+        - query: sum(rate(gin_request_total{$__tags}[$__rate_interval]))
+          name: Gin Request Rate
+        spanEndTimeShift: 1m
+        spanStartTimeShift: "-1m"
       tracesToLogsV2:
         customQuery: false
         datasourceUid: loki1
         filterByTraceID: true
+        query: '{namespace="showcase"} |="${__span.traceId}"'
+        spanEndTimeShift: "1m"
+        spanStartTimeShift: "-1m"
     secureJsonData:
       httpHeaderValue1: "Bearer ${token}"
       httpHeaderValue2: "showcase"
