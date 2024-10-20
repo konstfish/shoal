@@ -1,0 +1,11 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  set:
+    - name: defaultSettings.backupTargetCredentialSecret
+      value: longhorn-backup-secret
+    - name: defaultSettings.backupTarget
+      value: s3://shoal-longhorn@eu-central-003/guppy
