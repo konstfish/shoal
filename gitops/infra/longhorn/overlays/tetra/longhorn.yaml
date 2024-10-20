@@ -5,7 +5,5 @@ metadata:
   namespace: longhorn-system
 spec:
   set:
-    - name: defaultSettings.backupTargetCredentialSecret
-      value: longhorn-backup-secret
-    - name: defaultSettings.backupTarget
-      value: s3://shoal-longhorn@eu-central-003/tetra
+    defaultSettings.backupTargetCredentialSecret: longhorn-backup-secret
+    defaultSettings.backupTarget: s3://shoal-longhorn@eu-central-003/tetra
