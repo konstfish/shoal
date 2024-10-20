@@ -4,3 +4,4 @@ resources:
   - ns.yaml
   - admin-token.yaml
   - vaultwarden.yaml
+  - ingress-internal.yaml

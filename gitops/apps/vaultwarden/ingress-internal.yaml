@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vaultwarden-internal
+  namespace: vaultwarden
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/connection-proxy-header: keep-alive
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx-internal
+  rules:
+  - host: vaultwarden.konst.fish
+    http:
+      paths:
+      - backend:
+          service:
+            name: vaultwarden
+            port:
+              name: http
+        path: /
+        pathType: ImplementationSpecific
