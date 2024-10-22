@@ -1,156 +1,76 @@
-// Hetzner
-variable "hcloud_token" {
-  description = "Hetzner Cloud API Token"
+// github
+variable "gh_token" {
+  description = "GitHub API Token"
   type        = string
   sensitive   = true
 }
 
-// Cluster Settings
-/// General
-variable "cluster_group" {
-  description = "The name of the group."
-  type        = string
-  default     = "shoal"
-}
-
-variable "cluster_name" {
-  description = "The name of the cluster."
-  type        = string
-  default     = "tetra"
-}
-
-variable "cluster_short_name" {
-  description = "The short name of the cluster."
-  type        = string
-  default     = "tetra"
-}
-
-variable "cluster_k3s_version" {
-  description = "Cluster version"
-  type        = string
-  default     = "v1.29.7+k3s1"
-}
-
-// REPLACE WITH YOUR OWN TOKEN
-variable "cluster_token" {
-  description = "Cluster token"
-  type        = string
-  default     = "asdf"
-}
-
-/// Nodes
-variable "cluster_node_count" {
-  description = "The number of worker nodes in the cluster."
-  type        = number
-  default     = 2
-}
-
-variable "cluster_controller_node_count" {
-  description = "The number of controller nodes in the cluster."
-  type        = number
-  default     = 1
-}
-
-variable "cluster_node_type" {
-  description = "The type of worker nodes in the cluster."
-  type        = string
-  default     = "cax11"
-}
-
-variable "cluster_controller_node_type" {
-  description = "The type of controller nodes in the cluster."
-  type        = string
-  default     = "cax21"
-}
-
-variable "cluster_node_image" {
-  description = "The image of worker nodes in the cluster."
-  type        = string
-  default     = "ubuntu-22.04"
-}
-
-variable "cluster_node_labels" {
-  description = "The labels for the worker nodes in the cluster."
-  type        = map(string)
-  default     = {}
-}
-
-variable "cluster_node_public_net" {
-  description = "The public network configuration for the worker nodes in the cluster."
-  type        = map(string)
-  default = {
-    "ipv4_enabled" = true
-    "ipv6_enabled" = true
-  }
-}
-
-/// Network
-variable "cluster_network_range" {
-  description = "The CIDR for the cluster network."
-  type        = string
-  default     = "10.10.0.0/16"
-}
-
-variable "cluster_network_subnet_range" {
-  description = "The CIDR for the cluster network."
-  type        = string
-  default     = "10.10.0.0/24"
-}
-
-/// Load Balancer
-variable "cluster_load_balancer_type" {
-  description = "The type of load balancer to create."
-  type        = string
-  default     = "lb11"
-}
-
-/// Firewall
-variable "cluster_firewall_allow_ips" {
-  description = "The list of ports to allow in the firewall."
-  type        = list(string)
-  default     = []
-}
-
-// Hetzner General
-variable "hetzner_location" {
-  description = "The location/region where the resources will be created."
-  type        = string
-  default     = "nbg1"
-}
-
-variable "hetzner_network_zone" {
-  description = "The network zone where the resources will be created."
-  type        = string
-  default     = "eu-central"
-}
-
-variable "hetzner_labels" {
-  description = "The labels for the worker nodes in the cluster."
-  type        = map(string)
-  default = {
-    "created_by" = "terraform"
-  }
-}
-
-// Cloudflare
-variable "cloudflare_api_token" {
-  description = "The API Token for Cloudflare."
+variable "gh_oauth_client_id" {
+  description = "GitHub OAuth Client ID"
   type        = string
   sensitive   = true
 }
 
-variable "cloudflare_acount_id" {
-  description = "The Cloudflare Account ID."
+variable "gh_oauth_client_secret" {
+  description = "GitHub OAuth Client Secret"
   type        = string
+  sensitive   = true
 }
 
-variable "cloudflare_zone" {
-  description = "The Cloudflare Zone."
+// rancher
+variable "rancher_api_url" {
+  description = "Rancher API URL"
   type        = string
+  default     = "https://rancher.konst.fish"
 }
 
-variable "cloudflare_domain" {
-  description = "Cloudflare TLD"
+variable "rancher_access_key" {
+  description = "Rancher Access Key"
   type        = string
-  default     = "konst.fish"
+  sensitive   = true
+}
+
+variable "rancher_secret_key" {
+  description = "Rancher Secret Key"
+  type        = string
+  sensitive   = true
+}
+
+variable "rancher_bearer_token" {
+  description = "Rancher Bearer Token"
+  type        = string
+  sensitive   = true
+}
+
+// tenants
+variable "tenant_list" {
+  description = "List of Tenants"
+  type = map(object({
+    shortname  = string
+    github_uid = string
+    namespaces = map(object({
+      name = string
+      resources = map(object({
+        limits_cpu       = string
+        limits_memory    = string
+        requests_storage = string
+      }))
+    }))
+  }))
+  default = null
+}
+
+variable "playground_resources" {
+  description = "Default Tenant Limit"
+  type = object({
+    limits_cpu       = string
+    limits_memory    = string
+    requests_storage = string
+  })
+
+  default = {
+    limits_cpu       = "2000m"
+    limits_memory    = "2000Mi"
+    requests_storage = "30Gi"
+  }
 }

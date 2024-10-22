@@ -1,30 +1,23 @@
-// core
-resource "helm_release" "cert_manager" {
-  name       = "cert-manager"
-  repository = "https://charts.jetstack.io"
-  chart      = "cert-manager"
-  version    = "v1.16.1"
+// auth config
+/*resource "rancher2_auth_config_github" "github" {
+  client_id             = var.gh_oauth_client_id
+  client_secret         = var.gh_oauth_client_secret
+  access_mode           = "required"
+  allowed_principal_ids = ["github_org://${data.github_organization.org.id}"]
+}*/
 
-  namespace        = "cert-manager"
-  create_namespace = true
+// todo: branding with iac
+// https://github.com/rancher/terraform-provider-rancher2/issues/1269
 
-  set {
-    name  = "installCRDs"
-    value = "true"
-  }
-}
+// need to create clusters manually, since the id is "random" with terraform 
+// https://github.com/rancher/terraform-provider-rancher2/blob/master/rancher2/data_source_rancher2_cluster.go#L227
 
-resource "helm_release" "rancher" {
-  name             = "rancher"
-  repository       = "https://releases.rancher.com/server-charts/latest"
-  chart            = "rancher"
-  namespace        = "cattle-system"
-  version          = "2.9.2"
-  create_namespace = true
+// settings
+//resource "rancher2_setting" "show_local_clusters" {
+//  name  = "hide-local-cluster"
+//  value = "true"
+//}
 
-  values = [
-    file("${path.module}/helm/rancher.yaml")
-  ]
-  
-  depends_on = [helm_release.cert_manager]
+data "rancher2_cluster" "tetra" {
+  name = "tetra"
 }

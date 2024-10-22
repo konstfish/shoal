@@ -18,13 +18,6 @@ resource "rancher2_project" "user_projects" {
       requests_storage = lookup(var.tenant_limits, lower(each.value.login), var.tenant_default_limit).requests_storage
     }
   }
-  container_resource_limit {
-    limits_cpu      = "150m"
-    requests_cpu    = "50m"
-    limits_memory   = "150Mi"
-    requests_memory = "50Mi"
-  }
-
   labels = {
     "tenant" = each.value.login
   }

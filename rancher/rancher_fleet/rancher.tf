@@ -1,10 +1,10 @@
 // auth config
-resource "rancher2_auth_config_github" "github" {
+/* resource "rancher2_auth_config_github" "github" {
   client_id             = var.gh_oauth_client_id
   client_secret         = var.gh_oauth_client_secret
   access_mode           = "required"
   allowed_principal_ids = ["github_org://${data.github_organization.org.id}"]
-}
+} */
 
 // clusters
 /// data for now

@@ -1,6 +1,7 @@
 resources:
   - ../../base/infra/cert-manager
   - ../../base/infra/knative
+  - ../../base/observability/kiali
   - ../../base/observability/prometheus
   - ../../base/observability/grafana
   - ../../base/observability/tempo
