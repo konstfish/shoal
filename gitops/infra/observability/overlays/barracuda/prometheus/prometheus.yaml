@@ -11,7 +11,7 @@ spec:
       cpu: 250m
       memory: 500Mi
   replicas: 1
-  retention: 7d
+  retention: 3d
   storage:
     volumeClaimTemplate:
       spec:
