@@ -16,6 +16,12 @@ spec:
   valuesContent: |-
     global:
       storageClass: "longhorn-noreplica"
+    write:
+      persistence: 
+        storageClass: longhorn-noreplica
+    backend:
+      persistence: 
+        storageClass: longhorn-noreplica
     loki:
       # kubectl get namespaces --no-headers -o custom-columns=":metadata.name" | tr '\n' '|' | sed 's/|$//'
       auth_enabled: true
