@@ -14,6 +14,8 @@ spec:
     tableManager.retention_deletes_enabled: "true"
     tableManager.retention_period: 720h
   valuesContent: |-
+    global:
+      storageClass: "longhorn-noreplica"
     loki:
       # kubectl get namespaces --no-headers -o custom-columns=":metadata.name" | tr '\n' '|' | sed 's/|$//'
       auth_enabled: true
