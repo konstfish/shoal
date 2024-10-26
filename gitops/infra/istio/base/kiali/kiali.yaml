@@ -16,7 +16,6 @@ spec:
   deployment:
     view_only_mode: true
     ingress:
-      class_name: "nginx"
       enabled: true
       override_yaml:
         metadata:
@@ -27,6 +26,7 @@ spec:
             nginx.ingress.kubernetes.io/auth-url: https://sson.konst.fish/oauth2/auth
             nginx.ingress.kubernetes.io/auth-response-headers: X-Auth-Request-Email,X-Auth-Request-Groups,X-Auth-Request-User
         spec:
+          ingressClassName: nginx
           tls:
           - hosts:
             - kiali.tetra.konst.fish
