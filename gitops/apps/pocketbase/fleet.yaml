@@ -1,8 +1,7 @@
 namespace: pocketbase
 
-helm:
-  chart: ./chart
-  values:
-    releases:
-      - name: sudoku
-      - name: cards
+targetCustomizations:
+  - name: sudoku
+    clusterName: tetra
+    kustomize:
+      dir: overlays/sudoku

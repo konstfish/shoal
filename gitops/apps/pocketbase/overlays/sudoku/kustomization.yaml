@@ -1,0 +1,20 @@
+namePrefix:
+  sudoku-
+
+commonLabels:
+  app: pocketbase-sudoku
+
+resources:
+  - ../../base
+
+patches:
+- target:
+    kind: Ingress
+    name: pocketbase
+  patch: |-
+    - op: replace
+      path: /spec/rules/0/http/paths/0/path
+      value: /sudoku(/|$)(.*)
+    - op: replace
+      path: /spec/rules/0/http/paths/1/path
+      value: /sudoku/_

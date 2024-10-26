@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pocketbase
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-dns
+    external-dns.alpha.kubernetes.io/hostname: api.konst.fish
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  tls:
+  - hosts:
+    - api.konst.fish
+    secretName: pocketbase-tls
+  ingressClassName: nginx
+  rules:
+  - host: api.konst.fish
+    http:
+      paths:
+      - pathType: Prefix
+        path: /xxx(/|$)(.*)
+        backend:
+          service:
+            name: pocketbase
+            port:
+              number: 8090
+      - pathType: Prefix
+        path: /xxx/_
+        backend:
+          service:
+            name: pocketbase-blackhole
+            port:
+              number: 80

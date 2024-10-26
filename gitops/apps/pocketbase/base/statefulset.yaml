@@ -1,29 +1,26 @@
-{{- $top := . -}}
-{{- range $release := .Values.releases -}}
----
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: "pocketbase-{{ $release.name }}"
+  name: pocketbase
 spec:
-  serviceName: "pocketbase-{{ $release.name }}"
-  replicas: {{ $top.Values.replicaCount }}
+  serviceName: pocketbase
+  replicas: 1
   selector:
     matchLabels:
-      app: "pocketbase-{{ $release.name }}"
+      app: pocketbase
   template:
     metadata:
       labels:
-        app: "pocketbase-{{ $release.name }}"
+        app: pocketbase
     spec:
       containers:
       - name: pocketbase
-        image: {{ $top.Values.image }}
+        image: ghcr.io/muchobien/pocketbase:0.22.21
         ports:
         - containerPort: 8090
         volumeMounts:
         - name: pb-data
-          mountPath: "/pb/"
+          mountPath: /pb/
         readinessProbe:
           httpGet:
             path: /api/health
@@ -33,13 +30,12 @@ spec:
           failureThreshold: 5
         resources:
           limits:
-            cpu: 1000m
+            cpu: 500m
             memory: 512Mi
           requests:
-            cpu: 500m
+            cpu: 250m
             memory: 256Mi
       volumes:
       - name: pb-data
         persistentVolumeClaim:
-          claimName: "pocketbase-{{ $release.name }}"
-{{ end -}}
+          claimName: pocketbase

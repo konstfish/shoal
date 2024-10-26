@@ -1,6 +1,0 @@
-
-replicaCount: 1
-image: ghcr.io/muchobien/pocketbase:0.22.21
-
-releases:
-  - name: default
