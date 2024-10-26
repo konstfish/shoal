@@ -17,6 +17,7 @@ spec:
                 - kube-system
                 - kube-public
                 - operators
+                - istio-system
                 - default
         podSelector: {}
   policyTypes:
