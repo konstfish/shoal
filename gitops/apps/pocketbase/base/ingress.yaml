@@ -23,10 +23,3 @@ spec:
             name: pocketbase
             port:
               number: 8090
-      - pathType: Prefix
-        path: /xxx/_
-        backend:
-          service:
-            name: pocketbase-blackhole
-            port:
-              number: 80
