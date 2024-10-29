@@ -5,6 +5,10 @@ metadata:
   namespace: istio-system
 spec:
   external_services:
+    istio:
+      root_namespace: istio-system
+      ingress_gateway_namespace: istio-ingress
+      egress_gateway_namespace: istio-egress
     prometheus:
       url: "http://thanos-querier.monitoring.svc:9090"
     grafana:
