@@ -3,8 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: pocketbase
 spec:
+  storageClassName: hcloud-volumes
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 10Gi
