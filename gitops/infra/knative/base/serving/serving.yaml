@@ -15,7 +15,7 @@ spec:
       external-gateways: |
         - name: knative-ingress-gateway
           namespace: knative-serving
-          service: istio-ingress.istio-system.svc.cluster.local
+          service: istio-ingress.istio-ingress.svc.cluster.local
   ingress:
     istio:
       enabled: true
