@@ -10,6 +10,3 @@ spec:
   - gitops/apps/pocketbase
   targets:
   - clusterName: tetra
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false
