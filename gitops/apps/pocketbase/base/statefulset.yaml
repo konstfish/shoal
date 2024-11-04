@@ -20,11 +20,7 @@ spec:
         - containerPort: 8090
         volumeMounts:
         - name: pb-data
-          mountPath: /pb_data
-        - name: pb-data
-          mountPath: /pb_public
-        - name: pb-data
-          mountPath: /pb_hooks
+          mountPath: /pocketbase
         readinessProbe:
           httpGet:
             path: /api/health
@@ -39,6 +35,13 @@ spec:
           requests:
             cpu: 250m
             memory: 256Mi
+        command:
+          - "/usr/local/bin/pocketbase"
+          - "serve"
+          - "--http=0.0.0.0:8090"
+          - "--dir=/pocketbase/pb_data"
+          - "--publicDir=/pocketbase/pb_public"
+          - "--hooksDir=/pocketbase/pb_hooks"
       volumes:
       - name: pb-data
         persistentVolumeClaim:
