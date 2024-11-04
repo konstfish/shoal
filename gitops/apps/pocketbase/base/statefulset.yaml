@@ -20,7 +20,11 @@ spec:
         - containerPort: 8090
         volumeMounts:
         - name: pb-data
-          mountPath: /pb/
+          mountPath: /pb_data
+        - name: pb-data
+          mountPath: /pb_public
+        - name: pb-data
+          mountPath: /pb_hooks
         readinessProbe:
           httpGet:
             path: /api/health
