@@ -7,7 +7,7 @@ spec:
   chart: loki
   repo: https://grafana.github.io/helm-charts
   targetNamespace: monitoring
-  version: 6.18.0
+  version: 6.19.0
   set:
     deploymentMode: SimpleScalable
     monitoring.serviceMonitor.enabled: "true"
