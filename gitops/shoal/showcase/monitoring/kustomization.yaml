@@ -3,4 +3,5 @@ resources:
   - grafana.yaml
   - ingress.yaml
   - datasources
+  - dashboards
   - otel

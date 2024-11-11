@@ -1,0 +1,4 @@
+
+resources:
+  - aquarium-dashboard.yaml
+  - go-metrics.yaml

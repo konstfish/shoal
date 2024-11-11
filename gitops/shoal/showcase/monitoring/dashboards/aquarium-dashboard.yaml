@@ -1,0 +1,9 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: aquarium-dashboard
+spec:
+  instanceSelector:
+    matchLabels:
+      app: grafana
+  url: https://raw.githubusercontent.com/konstfish/aquarium/refs/heads/main/kubernetes/dashboard/general.json
