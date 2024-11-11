@@ -11,5 +11,6 @@ terraform.tfstate*
 ssh_key
 etc
 all.yml
+temp
 artifacts/*.yml
 *backup

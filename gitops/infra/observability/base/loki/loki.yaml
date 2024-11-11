@@ -14,14 +14,6 @@ spec:
     tableManager.retention_deletes_enabled: "true"
     tableManager.retention_period: 720h
   valuesContent: |-
-    global:
-      storageClass: "longhorn-noreplica"
-    write:
-      persistence: 
-        storageClass: longhorn-noreplica
-    backend:
-      persistence: 
-        storageClass: longhorn-noreplica
     loki:
       # kubectl get namespaces --no-headers -o custom-columns=":metadata.name" | tr '\n' '|' | sed 's/|$//'
       auth_enabled: true
@@ -48,6 +40,8 @@ spec:
               period: 24h
     # https://github.com/grafana/loki/issues/12218
     backend:
+      persistence: 
+        storageClass: longhorn-noreplica
       extraArgs:
         - -config.expand-env=true
       extraEnvFrom: 
@@ -65,3 +59,5 @@ spec:
       extraEnvFrom: 
         - secretRef:
             name: loki-objstore-secret
+      persistence: 
+        storageClass: longhorn-noreplica
