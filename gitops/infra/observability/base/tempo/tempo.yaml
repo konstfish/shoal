@@ -19,12 +19,19 @@ spec:
   # will be fixed soon ideally, https://github.com/grafana/tempo-operator/pull/1029
   #podSecurityContext:
   #  fsGroup: 10001
+  replicationFactor: 1
   template:
     queryFrontend:
+      replicas: 2
       jaegerQuery:
         enabled: false
+    querier:
+      replicas: 2
+    ingester:
+      replicas: 3
+    distributor:
+      replicas: 3
   observability:
     metrics:
       createPrometheusRules: false
       createServiceMonitors: true
-  replicationFactor: 3
