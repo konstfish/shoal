@@ -22,7 +22,8 @@ spec:
   replicationFactor: 1
   template:
     queryFrontend:
-      replicas: 2
+      component:
+        replicas: 2
       jaegerQuery:
         enabled: false
     querier:
@@ -30,7 +31,8 @@ spec:
     ingester:
       replicas: 3
     distributor:
-      replicas: 3
+      component:
+        replicas: 2
   observability:
     metrics:
       createPrometheusRules: false
