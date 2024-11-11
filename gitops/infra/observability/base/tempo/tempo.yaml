@@ -23,3 +23,8 @@ spec:
     queryFrontend:
       jaegerQuery:
         enabled: false
+  observability:
+    metrics:
+      createPrometheusRules: false
+      createServiceMonitors: true
+  replicationFactor: 3
