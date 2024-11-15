@@ -1,0 +1,25 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaNotificationPolicy
+metadata:
+  name: main
+spec:
+  instanceSelector:
+    matchLabels:
+      app: grafana
+  route:
+    receiver: telegram
+    group_by:
+      - grafana_folder
+      - alertname
+    routes:
+      - receiver: telegram
+        object_matchers:
+          - - severity
+            - =
+            - high
+        repeat_interval: 15m
+      - receiver: telegram-group
+        object_matchers:
+          - - affects
+            - =
+            - tenants

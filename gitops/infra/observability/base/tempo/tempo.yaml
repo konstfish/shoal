@@ -35,5 +35,5 @@ spec:
         replicas: 2
   observability:
     metrics:
-      createPrometheusRules: false
       createServiceMonitors: true
+      # createPrometheusRules: false

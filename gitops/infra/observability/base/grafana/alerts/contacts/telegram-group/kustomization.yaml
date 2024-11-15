@@ -1,0 +1,3 @@
+resources:
+  - telegram-group-secret.yaml
+  - telegram-group.yaml

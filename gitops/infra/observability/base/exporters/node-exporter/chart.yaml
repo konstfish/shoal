@@ -8,5 +8,12 @@ spec:
   repo: https://prometheus-community.github.io/helm-charts
   targetNamespace: monitoring
   version: 4.42.0
-  set:
-    prometheus.monitor.enabled: "true"
+  valuesContent: |
+    prometheus:
+      monitor:
+        enabled: true
+        relabelings:
+        - sourceLabels: 
+            - __meta_kubernetes_pod_node_name
+          targetLabel: node
+          action: replace
