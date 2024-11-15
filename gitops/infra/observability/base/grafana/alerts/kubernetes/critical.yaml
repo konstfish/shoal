@@ -8,6 +8,7 @@ spec:
     matchLabels:
       app: grafana
   interval: 1m
+  resyncPeriod: 10m0s
   rules:
   - uid: de4206z03zd34c
     title: Kubernetes Node Status
@@ -32,23 +33,23 @@ spec:
         datasourceUid: __expr__
         model:
           conditions:
-              - evaluator:
-                  params:
-                      - 0
-                      - 0
-                  type: gt
-                operator:
-                  type: and
-                query:
-                  params: []
-                reducer:
-                  params: []
-                  type: avg
-                type: query
+            - evaluator:
+                params:
+                  - 0
+                  - 0
+                type: gt
+              operator:
+                type: and
+              query:
+                params: []
+              reducer:
+                params: []
+                type: avg
+              type: query
           datasource:
-              name: Expression
-              type: __expr__
-              uid: __expr__
+            name: Expression
+            type: __expr__
+            uid: __expr__
           expression: $A != 1
           hide: false
           intervalMs: 1000
