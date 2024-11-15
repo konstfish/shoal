@@ -13,11 +13,12 @@ spec:
       - alertname
     routes:
       - receiver: telegram
+        continue: true
         object_matchers:
           - - severity
             - =
             - high
-        repeat_interval: 15m
+        repeat_interval: 1h
       - receiver: telegram-group
         object_matchers:
           - - affects

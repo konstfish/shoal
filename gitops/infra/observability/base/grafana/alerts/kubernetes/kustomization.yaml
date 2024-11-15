@@ -1,0 +1,3 @@
+resources:
+  - critical.yaml
+  - moderate.yaml
