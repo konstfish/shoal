@@ -11,10 +11,6 @@ variable "oicd_region" {
   default = "eu-frankfurt-1"
 }
 
-variable "" {
-  
-}
-
 variable "amd_shape" {
   default = "VM.Standard.E2.1.Micro"
 }

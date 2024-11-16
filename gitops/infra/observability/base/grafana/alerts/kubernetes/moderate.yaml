@@ -165,7 +165,7 @@ spec:
     title: Kubernetes Memory Usage
     uid: ce426ijbwtyioc
   - annotations:
-      summary: PVC usage > 95%
+      summary: PVC usage >95% on {{ $labels.persistentvolumeclaim }}
     condition: B
     data:
     - datasourceUid: prometheus1

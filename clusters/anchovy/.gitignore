@@ -1,1 +1,5 @@
 export
+talosconfig
+controlplane.yaml
+worker.yaml
+run.priv.sh
