@@ -15,7 +15,7 @@ spec:
       - receiver: telegram
         continue: true
         object_matchers:
-          - - severity
+          - - repeat
             - =
-            - high
+            - enabled
         repeat_interval: 1h

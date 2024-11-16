@@ -1,65 +1,219 @@
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaAlertRuleGroup
 metadata:
-  name: moderate
+  name: kube-moderate
 spec:
   folderRef: kubernetes-ref
   instanceSelector:
     matchLabels:
       app: grafana
-  interval: 5m
+  interval: 5m0s
   resyncPeriod: 10m0s
   rules:
-    - uid: ce426ijbwtyioe
-      title: Kubernetes Node Disk Usage
-      condition: B
-      for: 0s
-      data:
-        - refId: A
-          relativeTimeRange:
-            from: 600
-            to: 0
-          datasourceUid: thanos1
-          model:
-            editorMode: code
-            expr: (1 - sum by(node) (node_filesystem_avail_bytes{mountpoint="/"}) / sum by(node) (node_filesystem_size_bytes{mountpoint="/"})) * 100
-            instant: true
-            intervalMs: 1000
-            legendFormat: __auto
-            maxDataPoints: 43200
-            range: false
-            refId: A
-        - refId: B
-          datasourceUid: __expr__
-          model:
-            conditions:
-              - evaluator:
-                  params:
-                      - 0
-                      - 0
-                  type: gt
-                operator:
-                  type: and
-                query:
-                  params: []
-                reducer:
-                  params: []
-                  type: avg
-                type: query
-            datasource:
-              name: Expression
-              type: __expr__
-              uid: __expr__
-            expression: $A > 85
-            intervalMs: 1000
-            maxDataPoints: 43200
-            refId: B
-            type: math
-      noDataState: NoData
-      execErrState: Error
-      annotations:
-        summary: Node Disk Capacity >85%
-      labels:
-        severity: moderate
-        type: kubernetes
-      isPaused: false
+  - annotations:
+      summary: Node Disk Capacity >85%
+    condition: B
+    data:
+    - datasourceUid: prometheus1
+      model:
+        editorMode: code
+        expr: (1 - sum by(node) (node_filesystem_avail_bytes{mountpoint="/"}) / sum
+          by(node) (node_filesystem_size_bytes{mountpoint="/"})) * 100
+        instant: true
+        intervalMs: 1000
+        legendFormat: __auto
+        maxDataPoints: 43200
+        range: false
+        refId: A
+      refId: A
+      relativeTimeRange:
+        from: 600
+    - datasourceUid: __expr__
+      model:
+        conditions:
+        - evaluator:
+            params:
+            - 0
+            - 0
+            type: gt
+          operator:
+            type: and
+          query:
+            params: []
+          reducer:
+            params: []
+            type: avg
+          type: query
+        datasource:
+          name: Expression
+          type: __expr__
+          uid: __expr__
+        expression: $A > 85
+        intervalMs: 1000
+        maxDataPoints: 43200
+        refId: B
+        type: math
+      refId: B
+    execErrState: Error
+    for: 0s
+    labels:
+      severity: moderate
+      type: kubernetes
+    noDataState: NoData
+    title: Kubernetes Node Disk Usage
+    uid: ce426ijbwtyioe
+  - annotations:
+      summary: Node CPU Usage >85%
+    condition: B
+    data:
+    - datasourceUid: prometheus1
+      model:
+        editorMode: code
+        expr: (1 - avg by(node) (rate(node_cpu_seconds_total{mode="idle"}[5m]))) * 100
+        instant: true
+        intervalMs: 1000
+        legendFormat: __auto
+        maxDataPoints: 43200
+        range: false
+        refId: A
+      refId: A
+      relativeTimeRange:
+        from: 600
+    - datasourceUid: __expr__
+      model:
+        conditions:
+        - evaluator:
+            params:
+            - 0
+            - 0
+            type: gt
+          operator:
+            type: and
+          query:
+            params: []
+          reducer:
+            params: []
+            type: avg
+          type: query
+        datasource:
+          name: Expression
+          type: __expr__
+          uid: __expr__
+        expression: $A > 85
+        intervalMs: 1000
+        maxDataPoints: 43200
+        refId: B
+        type: math
+      refId: B
+    execErrState: Error
+    for: 5m0s
+    labels:
+      severity: moderate
+      type: kubernetes
+    noDataState: NoData
+    title: Kubernetes CPU Usage
+    uid: ce426ijbwtyiob
+  - annotations:
+      summary: Node Memory Usage >85%
+    condition: B
+    data:
+    - datasourceUid: prometheus1
+      model:
+        editorMode: code
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100
+        instant: true
+        intervalMs: 1000
+        legendFormat: __auto
+        maxDataPoints: 43200
+        range: false
+        refId: A
+      refId: A
+      relativeTimeRange:
+        from: 600
+    - datasourceUid: __expr__
+      model:
+        conditions:
+        - evaluator:
+            params:
+            - 0
+            - 0
+            type: gt
+          operator:
+            type: and
+          query:
+            params: []
+          reducer:
+            params: []
+            type: avg
+          type: query
+        datasource:
+          name: Expression
+          type: __expr__
+          uid: __expr__
+        expression: $A > 85
+        intervalMs: 1000
+        maxDataPoints: 43200
+        refId: B
+        type: math
+      refId: B
+    execErrState: Error
+    for: 5m0s
+    labels:
+      severity: moderate
+      type: kubernetes
+    noDataState: NoData
+    title: Kubernetes Memory Usage
+    uid: ce426ijbwtyioc
+  - annotations:
+      summary: PVC usage > 95%
+    condition: B
+    data:
+    - datasourceUid: prometheus1
+      model:
+        editorMode: code
+        expr: (kubelet_volume_stats_used_bytes / kubelet_volume_stats_capacity_bytes) * 100
+        instant: true
+        intervalMs: 1000
+        legendFormat: __auto
+        maxDataPoints: 43200
+        range: false
+        refId: A
+      refId: A
+      relativeTimeRange:
+        from: 600
+    - datasourceUid: __expr__
+      model:
+        conditions:
+        - evaluator:
+            params:
+            - 0
+            - 0
+            type: gt
+          operator:
+            type: and
+          query:
+            params: []
+          reducer:
+            params: []
+            type: avg
+          type: query
+        datasource:
+          name: Expression
+          type: __expr__
+          uid: __expr__
+        expression: $A > 95
+        hide: false
+        intervalMs: 1000
+        maxDataPoints: 43200
+        refId: B
+        type: math
+      refId: B
+    execErrState: Error
+    for: 0s
+    labels:
+      severity: moderate
+      repeat: enabled
+      type: kubernetes
+    noDataState: NoData
+    title: Kuberntes PVC Usage
+    uid: de4206z03zd34h
