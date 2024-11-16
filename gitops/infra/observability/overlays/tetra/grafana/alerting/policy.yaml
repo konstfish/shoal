@@ -19,3 +19,8 @@ spec:
             - =
             - high
         repeat_interval: 1h
+      - receiver: telegram-group
+        object_matchers:
+          - - affects
+            - =
+            - tenants

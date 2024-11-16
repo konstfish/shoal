@@ -1,5 +1,8 @@
 resources:
   - ../../base
   - ../../base/prometheus/thanos
-  - ../../base/grafana/alerts/contacts/telegram-group
   - grafana/ingress.yaml
+  - grafana/alerting/telegram-group
+
+patches:
+  - path: grafana/alerting/policy.yaml

@@ -35,7 +35,7 @@ spec:
 
       {{ define "alerts.summarize" -}}
         {{ range . -}}
-        - {{ if .Labels.node }}[{{ .Labels.node }}]{{ end }} {{ index .Annotations "summary" }}
+          - {{ if .Labels.node }}[{{ .Labels.node }}]{{ end }} {{ index .Annotations "summary" }}
         {{ end }}
       {{ end }}
 
