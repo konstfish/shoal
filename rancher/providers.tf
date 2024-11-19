@@ -20,13 +20,13 @@ provider "rancher2" {
 
 // kubernetes
 provider "kubernetes" {
-  config_path = "${path.module}/../../barracuda/.terraform/modules/k3s/artifacts/barracuda.yml"
+  config_path = "${path.module}/../clusters/barracuda/.terraform/modules/k3s/artifacts/barracuda.yml"
   insecure    = "true"
 }
 
 provider "helm" {
   kubernetes {
-    config_path = "${path.module}/../../barracuda/.terraform/modules/k3s/artifacts/barracuda.yml"
+    config_path = "${path.module}/../clusters/barracuda/.terraform/modules/k3s/artifacts/barracuda.yml"
     insecure    = "true"
   }
 }

@@ -25,11 +25,22 @@ variable "tenant_name" {
   type        = string
 }
 
+variable "tenant_id" {
+  description = "github uid"
+  type = string
+}
+
 // labels
 variable "billing" {
   description = "Billing label"
   type        = string
   default     = "false"
+}
+
+variable "extra_labels" {
+  description = "additional namespace labels"
+  type        = map(string)
+  default     = {}
 }
 
 // resources

@@ -1,6 +1,6 @@
 // projects
 resource "rancher2_project" "default" {
-  name       = lower("${var.project_prefix}${var.project_name}")
+  name       = lower("${var.project_prefix}-${var.project_name}")
   cluster_id = var.cluster_id
 }
 

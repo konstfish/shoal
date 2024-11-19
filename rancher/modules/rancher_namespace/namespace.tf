@@ -7,34 +7,44 @@ resource "rancher2_namespace" "user_namespaces" {
 
   name = local.namespace_name
 
-  labels = {
+  labels = merge({
     "kubernetes.io/metadata.name" = local.namespace_name
     "tenant"                      = var.tenant_name
     "ingress"                     = "true"
     "billing"                     = var.billing
 
-    "pod-security.kubernetes.io/enforce" = "restricted"
+    "pod-security.kubernetes.io/enforce" = "baseline"
     "pod-security.kubernetes.io/audit"   = "baseline"
     "pod-security.kubernetes.io/warn"    = "restricted"
-  }
-
-  /*resource_quota {
-    limit {
-      limits_cpu       = var.namespace_resources.limits_cpu
-      limits_memory    = var.namespace_resources.limits_memory
-      requests_storage = var.namespace_resources.requests_storage
-    }
-  }
-  container_resource_limit {
-    limits_cpu      = var.container_resources.limits_cpu
-    limits_memory   = var.container_resources.limits_memory
-    requests_cpu    = var.container_resources.requests_cpu
-    requests_memory = var.container_resources.requests_memory
-  }*/
+  }, var.extra_labels)
 
   lifecycle {
     ignore_changes = [
-      container_resource_limit
+      container_resource_limit,
+      labels["*"] // todo: change this in the future
     ]
   }
 }
+
+/*resource "helm_release" "user_namespace_provision" {
+  name       = lower("shoal-tenant-${each.value.login}")
+  repository = "./helm"
+  chart      = "tenant-project"
+  namespace = "shoal-mgmt"
+
+  set {
+    name = "targetNamespace"
+    value = rancher2_namespace.user_namespaces.name
+  }
+
+  set {
+    name  = "tenant"
+    value = var.tenant_name
+  }
+
+  set {
+    name  = "tenantId"
+    value = "github_user://${var.tenant_id}"
+  }
+}
+*/

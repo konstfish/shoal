@@ -43,11 +43,10 @@ variable "rancher_bearer_token" {
 }
 
 // tenants
-variable "tenant_list" {
-  description = "List of Tenants"
+/*variable "tenant_index" {
+
   type = map(object({
-    shortname  = string
-    github_uid = string
+    short  = string
     namespaces = map(object({
       name = string
       resources = map(object({
@@ -58,19 +57,4 @@ variable "tenant_list" {
     }))
   }))
   default = null
-}
-
-variable "playground_resources" {
-  description = "Default Tenant Limit"
-  type = object({
-    limits_cpu       = string
-    limits_memory    = string
-    requests_storage = string
-  })
-
-  default = {
-    limits_cpu       = "2000m"
-    limits_memory    = "2000Mi"
-    requests_storage = "30Gi"
-  }
-}
+}*/
