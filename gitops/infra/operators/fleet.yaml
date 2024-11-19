@@ -11,3 +11,11 @@ targetCustomizations:
     clusterName: tetra
     kustomize:
       dir: overlays/tetra
+  - name: anchovy
+    clusterName: anchovy
+    kustomize:
+      dir: overlays/anchovy
+  - name: anchovy
+    clusterName: anchovy
+    kustomize:
+      dir: overlays/anchovy
