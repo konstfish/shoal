@@ -7,16 +7,30 @@ locals {
   tenant_index = yamldecode(file("tenants.yaml"))
   defaults = local.tenant_index.defaults
 
-  tenant_index_merged = {
-    for name, tenant in local.tenant_index.tenants : name => {
-      short = tenant.short
-      namespaces = try(tenant.namespaces, local.defaults.namespaces)
-    }
-  }
+  tenant_namespaces = flatten([
+    for tenant, tenant_config in local.tenant_index.tenants : [
+      for ns_name, ns_config in lookup(tenant_config, "namespaces", {}) : 
+        "${tenant}-${ns_name}"
+    ]
+  ])
+
+  all_tenants = keys(local.tenant_index.tenants)
+
+  default_namespace_combinations = flatten([
+    for tenant in local.all_tenants : [
+      for default_ns, _ in local.defaults.namespaces :
+        "${tenant}-${default_ns}"
+    ]
+  ])
+
+  all_namespaces = distinct(concat(
+    local.tenant_namespaces,
+    local.default_namespace_combinations
+  ))
 }
 
-output "tenant_index_merged" { 
-  value = local.tenant_index_merged
+output "namespace_list" {
+  value = local.all_namespaces
 }
 
 resource "kubernetes_namespace" "mgmt_namespace" {
@@ -37,33 +51,18 @@ module "tenant_projects" {
 }
 
 module "tenant_namespaces" {
-  for_each = local.tenant_index_merged
+  for_each = toset(local.all_namespaces)
   source = "./modules/rancher_namespace"
 
-  project_id        = module.tenant_projects[each.key].project_id
+  project_id        = module.tenant_projects[split("-", each.key)[0]].project_id
 
-  tenant_id         = local.project_user_map[each.key]
-  tenant_name       = each.key
+  tenant_id         = local.project_user_map[split("-", each.key)[0]]
+  tenant_name       = split("-", each.key)[0]
 
-  namespace_prefix  = local.tenant_index[each.key]["short"]
-  namespace_name    = "playground"
+  namespace_prefix  = local.tenant_index.tenants[split("-", each.key)[0]]["short"]
+  namespace_name    = split("-", each.key)[1]
+
+  // TODO: defaults, labels, etc
 
   depends_on = [module.tenant_projects, kubernetes_namespace.mgmt_namespace]
-}
-
-module "workspace" {
-  source =""
-  for_each = {
-    for tenant in flatten([
-      for namespace in local.yaml_data : [
-        for workspace in team.workspaces : {
-          workspace = workspace
-          team      = team
-        }
-      ]
-    ])
-    : item.workspace.workspace_name => item
-  }
-
-  something = module.team[each.value.team.team_name].something
 }

@@ -1,5 +1,5 @@
 locals {
-  namespace_name = lower("${var.namespace_prefix}${var.namespace_name}${var.namespace_postfix}")
+  namespace_name = lower("${var.namespace_prefix}-${var.namespace_name}${var.namespace_postfix}")
 }
 
 resource "rancher2_namespace" "user_namespaces" {
