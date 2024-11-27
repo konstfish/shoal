@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: default
-  namespace: {{ .Values.tenant }}
+  namespace: {{ .Values.targetNamespace }}
   labels:
     managed-by: shoal
 spec:
@@ -10,6 +10,7 @@ spec:
   policyTypes:
     - Egress
   egress:
+    # dns
     - to:
         - namespaceSelector: {}
           podSelector:
@@ -18,6 +19,17 @@ spec:
       ports:
         - port: 53
           protocol: UDP
+    
+    # istio
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: istio-system
+          podSelector:
+            matchLabels:
+              app: istiod
+    
+    # monitoring/public
     - to:
       - namespaceSelector:
           matchExpressions:
@@ -26,6 +38,8 @@ spec:
               values:
                 - kube-public
                 - monitoring
+    
+    # external
     - to:
         - podSelector: {}
     - to:

@@ -1,2 +1,4 @@
+targetNamespace: namespace
+
 tenant: name
 tenantId: u-123

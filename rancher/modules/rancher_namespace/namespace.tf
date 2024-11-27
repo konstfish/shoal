@@ -16,20 +16,20 @@ resource "rancher2_namespace" "user_namespaces" {
     "pod-security.kubernetes.io/enforce" = "baseline"
     "pod-security.kubernetes.io/audit"   = "baseline"
     "pod-security.kubernetes.io/warn"    = "restricted"
-  }, var.extra_labels)
+  }, lookup(var.namespace_config, "labels", {}))
 
   lifecycle {
     ignore_changes = [
       container_resource_limit,
-      labels["*"] // todo: change this in the future
+      labels["*"]
     ]
   }
 }
 
-/*resource "helm_release" "user_namespace_provision" {
-  name       = lower("shoal-tenant-${each.value.login}")
-  repository = "./helm"
-  chart      = "tenant-project"
+resource "helm_release" "user_namespace_provision" {
+  name       = lower("shoal-tenant-${local.namespace_name}")
+  repository = "${path.module}/helm"
+  chart      = "tenant-namespace"
   namespace = "shoal-mgmt"
 
   set {
@@ -47,4 +47,3 @@ resource "rancher2_namespace" "user_namespaces" {
     value = "github_user://${var.tenant_id}"
   }
 }
-*/

@@ -37,6 +37,12 @@ resource "kubernetes_namespace" "mgmt_namespace" {
   metadata {
     name = "shoal-mgmt"
   }
+
+  lifecycle {
+    ignore_changes = [
+      metadata,
+    ]
+  }
 }
 
 // this has to run at the start, since we need to pre-provision users
@@ -50,6 +56,7 @@ module "tenant_projects" {
   cluster_id     = data.rancher2_cluster.tetra.id
 }
 
+// todo: find a way to clean this up, actually unreadable
 module "tenant_namespaces" {
   for_each = toset(local.all_namespaces)
   source = "./modules/rancher_namespace"
@@ -61,6 +68,13 @@ module "tenant_namespaces" {
 
   namespace_prefix  = local.tenant_index.tenants[split("-", each.key)[0]]["short"]
   namespace_name    = split("-", each.key)[1]
+
+  // honestly this might be the best thing i've ever written
+  namespace_config  = lookup(
+    lookup(local.tenant_index.tenants[split("-", each.key)[0]], "namespaces", {}),
+    split("-", each.key)[1],
+    local.defaults["namespaces"]["playground"],
+  )
 
   // TODO: defaults, labels, etc
 
