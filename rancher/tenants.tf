@@ -45,6 +45,15 @@ resource "kubernetes_namespace" "mgmt_namespace" {
   }
 }
 
+resource "kubernetes_manifest" "project_tenant_role" {
+  provider = kubernetes.barracuda
+
+  manifest = yamldecode(file("${path.module}/kubernetes/project-tenant.yaml"))
+  field_manager {
+    force_conflicts = true
+  }
+}
+
 // this has to run at the start, since we need to pre-provision users
 module "tenant_projects" {
   for_each = local.project_user_map
@@ -54,6 +63,8 @@ module "tenant_projects" {
   project_name   = each.key
   tenant_map     = { (each.key) = each.value }
   cluster_id     = data.rancher2_cluster.tetra.id
+
+  depends_on = [ kubernetes_manifest.project_tenant_role ]
 }
 
 // todo: find a way to clean this up, actually unreadable

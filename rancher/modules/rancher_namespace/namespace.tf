@@ -36,14 +36,16 @@ resource "helm_release" "user_namespace_provision" {
     name = "targetNamespace"
     value = rancher2_namespace.user_namespaces.name
   }
-
   set {
     name  = "tenant"
     value = var.tenant_name
   }
-
   set {
     name  = "tenantId"
     value = "github_user://${var.tenant_id}"
   }
+
+  values = [
+    yamlencode(var.namespace_config)
+  ]
 }

@@ -2,3 +2,7 @@ targetNamespace: namespace
 
 tenant: name
 tenantId: u-123
+
+resources:
+  cpu: 1000m
+  memory: 1Gi
