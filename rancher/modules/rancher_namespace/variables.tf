@@ -27,7 +27,7 @@ variable "tenant_name" {
 
 variable "tenant_id" {
   description = "github uid"
-  type = string
+  type        = string
 }
 
 // labels

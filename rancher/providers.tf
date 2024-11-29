@@ -38,5 +38,13 @@ provider "helm" {
   }
 }
 
+provider "helm" {
+  alias = "barracuda"
+  kubernetes {
+    config_path = "${path.module}/../clusters/barracuda/.terraform/modules/k3s/artifacts/barracuda.yml"
+    insecure    = "true"
+  }
+}
+
 provider "http" {
 }

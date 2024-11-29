@@ -30,10 +30,10 @@ resource "helm_release" "user_namespace_provision" {
   name       = lower("shoal-tenant-${local.namespace_name}")
   repository = "${path.module}/helm"
   chart      = "tenant-namespace"
-  namespace = "shoal-mgmt"
+  namespace  = "shoal-mgmt"
 
   set {
-    name = "targetNamespace"
+    name  = "targetNamespace"
     value = rancher2_namespace.user_namespaces.name
   }
   set {

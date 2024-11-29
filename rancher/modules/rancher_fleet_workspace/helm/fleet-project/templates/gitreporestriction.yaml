@@ -1,0 +1,8 @@
+kind: GitRepoRestriction
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: restriction
+  namespace: fleet-tenant-{{ .Values.tenant }}
+
+allowedTargetNamespaces:
+  - {{ .Values.tenant }}

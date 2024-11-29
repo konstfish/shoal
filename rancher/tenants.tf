@@ -5,12 +5,12 @@ locals {
   }
 
   tenant_index = yamldecode(file("tenants.yaml"))
-  defaults = local.tenant_index.defaults
+  defaults     = local.tenant_index.defaults
 
   tenant_namespaces = flatten([
     for tenant, tenant_config in local.tenant_index.tenants : [
-      for ns_name, ns_config in lookup(tenant_config, "namespaces", {}) : 
-        "${tenant}-${ns_name}"
+      for ns_name, ns_config in lookup(tenant_config, "namespaces", {}) :
+      "${tenant}-${ns_name}"
     ]
   ])
 
@@ -19,7 +19,7 @@ locals {
   default_namespace_combinations = flatten([
     for tenant in local.all_tenants : [
       for default_ns, _ in local.defaults.namespaces :
-        "${tenant}-${default_ns}"
+      "${tenant}-${default_ns}"
     ]
   ])
 
@@ -27,6 +27,11 @@ locals {
     local.tenant_namespaces,
     local.default_namespace_combinations
   ))
+
+  rancher_user_map = {
+    for tenant, tenant_config in local.tenant_index.tenants :
+    tenant => tenant_config["rancher"]
+  }
 }
 
 output "namespace_list" {
@@ -57,31 +62,31 @@ resource "kubernetes_manifest" "project_tenant_role" {
 // this has to run at the start, since we need to pre-provision users
 module "tenant_projects" {
   for_each = local.project_user_map
-  source = "./modules/rancher_project"
+  source   = "./modules/rancher_project"
 
   project_prefix = "tenant"
   project_name   = each.key
   tenant_map     = { (each.key) = each.value }
   cluster_id     = data.rancher2_cluster.tetra.id
 
-  depends_on = [ kubernetes_manifest.project_tenant_role ]
+  depends_on = [kubernetes_manifest.project_tenant_role]
 }
 
 // todo: find a way to clean this up, actually unreadable
 module "tenant_namespaces" {
   for_each = toset(local.all_namespaces)
-  source = "./modules/rancher_namespace"
+  source   = "./modules/rancher_namespace"
 
-  project_id        = module.tenant_projects[split("-", each.key)[0]].project_id
+  project_id = module.tenant_projects[split("-", each.key)[0]].project_id
 
-  tenant_id         = local.project_user_map[split("-", each.key)[0]]
-  tenant_name       = split("-", each.key)[0]
+  tenant_id   = local.project_user_map[split("-", each.key)[0]]
+  tenant_name = split("-", each.key)[0]
 
-  namespace_prefix  = local.tenant_index.tenants[split("-", each.key)[0]]["short"]
-  namespace_name    = split("-", each.key)[1]
+  namespace_prefix = local.tenant_index.tenants[split("-", each.key)[0]]["short"]
+  namespace_name   = split("-", each.key)[1]
 
   // honestly this might be the best thing i've ever written
-  namespace_config  = lookup(
+  namespace_config = lookup(
     lookup(local.tenant_index.tenants[split("-", each.key)[0]], "namespaces", {}),
     split("-", each.key)[1],
     local.defaults["namespaces"]["playground"],
@@ -90,4 +95,20 @@ module "tenant_namespaces" {
   // TODO: defaults, labels, etc
 
   depends_on = [module.tenant_projects, kubernetes_namespace.mgmt_namespace]
+}
+
+// fleet
+module "tenant_fleet_workspaces" {
+  for_each = local.rancher_user_map
+  source   = "./modules/rancher_fleet_workspace"
+
+  tenant_name = each.key
+  tenant_id   = each.value
+
+  providers = {
+    kubernetes = kubernetes.barracuda
+    helm       = helm.barracuda
+  }
+
+  depends_on = [module.tenant_projects]
 }
