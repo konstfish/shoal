@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: thanos-compactor
-        image: quay.io/thanos/thanos:v0.37.1
+        image: quay.io/thanos/thanos:v0.37.2
         args:
           - compact
           - --data-dir=/var/thanos/compact
