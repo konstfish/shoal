@@ -5,7 +5,7 @@ tags: [usage]
 date: 2024-03-01
 ---
 
-For an applied example, see [[Showcase]].
+These manifests should help you get started with Kubernetes. For an applied example, see [[Showcase]].
 
 ## Kubernetes Structure
 
@@ -131,5 +131,3 @@ spec:
       storage: 10Gi
   storageClassName: hcloud-volumes
 ```
-
-### Deployments

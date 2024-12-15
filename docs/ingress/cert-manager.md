@@ -1,7 +1,7 @@
 ---
 title: cert-manager
 draft: false
-tags: [ingress, certificates, tls]
+tags: [ingress, certificates, tls, dns]
 date: 2024-03-01
 ---
 
@@ -91,47 +91,21 @@ flowchart LR
 
 ## Usage
 
-A simple Ingress using cert-manager looks like the following:
+To use another domain besides `*.app.konst.fish`, create a CNAME record that points to the clusters canonical domain `app.konst.fish`. [[Ingress Nginx]] will then correctly route traffic originating from the custom domain. 
 
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: example-ingress
-  annotations:
-    cert-manager.io/cluster-issuer: "appdomain"
-spec:
-  tls:
-  - hosts:
-    - example.app.konst.fish
-    secretName: example-tls # is automatically populated by cert-manager
-  ingressClassName: nginx
-  rules:
-  - host: "example.app.konst.fish"
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: example-service
-            port:
-              number: 3000
-```
-
-To use a custom Issuer, which can be configured to handle DNS challenges, create an [`Issuer`](https://cert-manager.io/docs/concepts/issuer/) CRD.
+First create an [`Issuer`](https://cert-manager.io/docs/concepts/issuer/) CRD. These can be created for any challenge, the following example uses http. See a complete list of available solvers [here](https://cert-manager.io/docs/configuration/acme/). 
 
 ```yaml
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: letsencrypt-http
+  name: letsencrypt-<tenant>-http
   namespace: tenant
 spec:
   acme:
     email: <tenant email>
     privateKeySecretRef:
-      name: appdomain
+      name: <sample-secret-name-this-can-be-anything>
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
     - http01:
@@ -140,7 +114,7 @@ spec:
           serviceType: ClusterIP
 ```
 
-See a complete list of available solvers [here](https://cert-manager.io/docs/configuration/acme/). To use a custom Issuer, adjust the Ingress like the following.
+Once this issuer has been created, adjust the Ingress like the following.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -148,5 +122,13 @@ kind: Ingress
 metadata:
   name: example-ingress
   annotations:
-    cert-manager.io/issuer: "letsencrypt-http"
+    cert-manager.io/issuer: "letsencrypt-<tenant>-http"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - example.com
+    secretName: example-tls # note, this can be any name, it's the secret cert-manager will use to populate the cert into
+  rules:
+  - host: "example.com"
 ```

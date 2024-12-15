@@ -8,13 +8,10 @@ date: 2024-03-01
 > Connect applications the the outside world
 
 ## [[Ingress Nginx]]
-Primary Ingress Controller
+Primary Ingress Controller, serves appdomains & custom domains.
 
 ## [[cert-manager]]
 Issue Certificates directly on the Cluster
-
-## [[DNS]]
-Correctly resolve domains to the Cluster
 
 ## [[Zero Trust]]
 Protect Applications using Managed Zero Trust Architecture

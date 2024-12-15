@@ -7,5 +7,3 @@ date: 2024-03-01
 
 > [!WARNING]  
 > WIP
-
-[[Istio Gateways]]
