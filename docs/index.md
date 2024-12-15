@@ -11,8 +11,6 @@ date: 2024-03-01
 
 > Cosplaying PaaS
 
-TODO Intro Paragraph
-
 ## [[Rancher]]
 Open-Source Kubernetes cluster management platform
 

@@ -15,6 +15,3 @@ Issue Certificates directly on the Cluster
 
 ## [[Zero Trust]]
 Protect Applications using Managed Zero Trust Architecture
-
-## [[Istio Gateways]]
-Endpoint operating at the edge of the service mesh
