@@ -50,6 +50,7 @@ resource "kubernetes_namespace" "mgmt_namespace" {
   }
 }
 
+// primary rbac
 resource "kubernetes_manifest" "project_tenant_role" {
   provider = kubernetes.barracuda
 
@@ -86,13 +87,12 @@ module "tenant_namespaces" {
   namespace_name   = split("-", each.key)[1]
 
   // honestly this might be the best thing i've ever written
+  // note from 3 weeks later, i have no clue what i did here or how this works on first glance
   namespace_config = lookup(
     lookup(local.tenant_index.tenants[split("-", each.key)[0]], "namespaces", {}),
     split("-", each.key)[1],
     local.defaults["namespaces"]["playground"],
   )
-
-  // TODO: defaults, labels, etc
 
   depends_on = [module.tenant_projects, kubernetes_namespace.mgmt_namespace]
 }
@@ -104,6 +104,13 @@ module "tenant_fleet_workspaces" {
 
   tenant_name = each.key
   tenant_id   = each.value
+
+  namespace_prefix = local.tenant_index.tenants[each.key]["short"]
+  tenant_namespaces = [
+    for ns in local.all_namespaces: 
+    split("-", ns)[1]
+    if startswith(ns, each.key)
+  ]
 
   providers = {
     kubernetes = kubernetes.barracuda

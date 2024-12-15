@@ -48,13 +48,13 @@ metadata:
   labels:
     tenant: <tenant>
   name: <project>
-  namespace: fleet-<tenant>
+  namespace: fleet-tenant-<tenant>
 spec:
   branch: main
   paths:
     - /path/to/manifests
   repo: https://github.com/user/repo
-  targetNamespace: <tenant>
+  targetNamespace: <namespace>
   targets:
     - clusterName: tetra
 ```

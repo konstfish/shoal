@@ -1,2 +1,3 @@
 tenant: name
 tenantId: u-123
+allowedNamespaces: []

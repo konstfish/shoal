@@ -3,7 +3,7 @@ kind: GlobalRole
 metadata:
   name: fleet-tenant-{{ .Values.tenant }}
 namespacedRules:
-  {{ printf "fleet-%s" .Values.tenant }}:
+  {{ printf "fleet-tenant-%s" .Values.tenant }}:
     - apiGroups:
         - fleet.cattle.io
       resources:

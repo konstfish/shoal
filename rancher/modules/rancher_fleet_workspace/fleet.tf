@@ -1,10 +1,19 @@
+locals {
+  prefixed_namespaces = [
+    for ns in var.tenant_namespaces:
+    "${var.namespace_prefix}-${ns}"
+  ]
+
+  allowed_namespaces = jsonencode(local.prefixed_namespaces)
+}
+
 // fleet projects
 resource "kubernetes_manifest" "fleet_project" {
   manifest = {
     "apiVersion" = "management.cattle.io/v3"
     "kind"       = "FleetWorkspace"
     "metadata" = {
-      "name" = lower("fleet-${var.tenant_name}")
+      "name" = lower("fleet-tenant-${var.tenant_name}")
     }
   }
 }
@@ -12,7 +21,7 @@ resource "kubernetes_manifest" "fleet_project" {
 // introduce a delay to ensure the fleet project is created before the helm release
 resource "null_resource" "fleet_delay" {
   provisioner "local-exec" {
-    command = "sleep 10"
+    command = "sleep 15"
   }
 
   depends_on = [kubernetes_manifest.fleet_project]
@@ -33,6 +42,12 @@ resource "helm_release" "fleet_project_bindings" {
     value = var.tenant_id
   }
 
+  values = [
+    yamlencode({
+      allowedNamespaces = local.prefixed_namespaces
+    })
+  ]
+  
   depends_on = [null_resource.fleet_delay]
 }
 
