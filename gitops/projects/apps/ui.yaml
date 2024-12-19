@@ -10,7 +10,7 @@ spec:
   - kubernetes
   targets:
   - clusterName: tetra
-  targetNamespace: konstfish-ui
+  defaultNamespace: konstfish-ui
   insecureSkipTLSVerify: false
   correctDrift:
     enabled: false
