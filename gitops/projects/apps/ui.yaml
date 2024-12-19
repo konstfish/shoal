@@ -1,0 +1,16 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: konstfish-ui
+  namespace: fleet-default
+spec:
+  repo: https://github.com/konstfish/ui
+  branch: main
+  paths:
+  - kubernetes
+  targets:
+  - clusterName: tetra
+  targetNamespace: konstfish-ui
+  insecureSkipTLSVerify: false
+  correctDrift:
+    enabled: false
