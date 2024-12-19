@@ -13,8 +13,6 @@ spec:
       domain-template: "{{.Name}}.{{.Domain}}"
       autocreate-cluster-domain-claims: "true"
     istio:
-      local-gateway.knative-serving.knative-local-gateway: "knative-local-gateway.istio-ingress.svc.cluster.local"
-      gateway.knative-serving.knative-ingress-gateway: "istio-ingress.istio-ingress.svc.cluster.local"
       external-gateways: |
         - name: knative-ingress-gateway
           namespace: knative-serving
@@ -41,6 +39,3 @@ spec:
           tls:
             mode: SIMPLE
             credentialName: wildcard-functions-tls
-      knative-local-gateway:
-        selector:
-          istio: ingressgateway
