@@ -13,14 +13,10 @@ spec:
       domain-template: "{{.Name}}.{{.Domain}}"
       autocreate-cluster-domain-claims: "true"
     istio:
-      gateway.knative-serving.knative-ingress-gateway: "istio-ingress.istio-ingress.svc.cluster.local"
       local-gateway.knative-serving.knative-local-gateway: "knative-local-gateway.istio-ingress.svc.cluster.local"
+      gateway.knative-serving.knative-ingress-gateway: "istio-ingress.istio-ingress.svc.cluster.local"
       external-gateways: |
         - name: knative-ingress-gateway
-          namespace: knative-serving
-          service: istio-ingress.istio-ingress.svc.cluster.local
-      local-gateways: |
-        - name: knative-local-gateway
           namespace: knative-serving
           service: istio-ingress.istio-ingress.svc.cluster.local
   ingress:
