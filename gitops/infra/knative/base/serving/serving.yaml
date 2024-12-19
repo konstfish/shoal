@@ -17,6 +17,10 @@ spec:
         - name: knative-ingress-gateway
           namespace: knative-serving
           service: istio-ingress.istio-ingress.svc.cluster.local
+      local-gateways: |
+        - name: knative-local-gateway
+          namespace: knative-serving
+          service: istio-ingress.istio-ingress.svc.cluster.local
   ingress:
     istio:
       enabled: true
@@ -39,3 +43,13 @@ spec:
           tls:
             mode: SIMPLE
             credentialName: wildcard-functions-tls
+      knative-local-gateway:
+        selector:
+          istio: ingressgateway
+        servers:
+        - port:
+            number: 80
+            name: http
+            protocol: HTTP
+          hosts:
+          - "*"
