@@ -4,13 +4,9 @@ metadata:
   name: konstfish-ui
   namespace: fleet-default
 spec:
-  repo: https://github.com/konstfish/ui
+  repo: https://github.com/konstfish/shoal
   branch: main
   paths:
-  - kubernetes
+  - gitops/apps/ui-gallery
   targets:
   - clusterName: tetra
-  defaultNamespace: konstfish-ui
-  insecureSkipTLSVerify: false
-  correctDrift:
-    enabled: false
