@@ -1,4 +1,4 @@
-namespace: knative-serving
+namespace: knative-eventing
 
 resources:
   - ns.yaml
