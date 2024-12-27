@@ -1,6 +1,8 @@
 resources:
   - ../../base
   - ../../base/prometheus/thanos
+  - ../../base/grafana/dashboards/knative
+  
   - grafana/ingress.yaml
   - grafana/alerting/telegram-group
 
