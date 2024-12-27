@@ -12,6 +12,8 @@ spec:
       # TODO: something like this: https://bsideup.github.io/posts/knative_custom_domains/ super cool
       domain-template: "{{.Name}}.{{.Domain}}"
       autocreate-cluster-domain-claims: "true"
+    observability:
+      metrics.backend-destination: "prometheus"
     istio:
       external-gateways: |
         - name: knative-ingress-gateway
