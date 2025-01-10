@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: pocketbase
-        image: ghcr.io/muchobien/pocketbase:0.24.1
+        image: ghcr.io/muchobien/pocketbase:0.24.2
         ports:
         - containerPort: 8090
         volumeMounts:
