@@ -19,6 +19,7 @@ spec:
       RATE_LIMIT: 0/0
     persistentVolumeClaim:
       enabled: true
+      size: 1Gi
     ingress:
       enabled: true
       ingressClassName: nginx-internal
