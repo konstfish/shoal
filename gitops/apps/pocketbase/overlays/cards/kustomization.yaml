@@ -1,0 +1,17 @@
+namePrefix:
+  cards-
+
+commonLabels:
+  app: pocketbase-cards
+
+resources:
+  - ../../base
+
+patches:
+- target:
+    kind: Ingress
+    name: pocketbase
+  patch: |-
+    - op: replace
+      path: /spec/rules/0/http/paths/0/path
+      value: /cards(/|$)(.*)

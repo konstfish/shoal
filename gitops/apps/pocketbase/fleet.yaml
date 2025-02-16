@@ -5,3 +5,7 @@ targetCustomizations:
     clusterName: tetra
     kustomize:
       dir: overlays/sudoku
+  - name: cards
+    clusterName: tetra
+    kustomize:
+      dir: overlays/cards
