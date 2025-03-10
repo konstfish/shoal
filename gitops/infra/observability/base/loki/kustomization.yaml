@@ -1,5 +1,5 @@
 resources:
   - loki-objstore-secret.yaml
   - loki.yaml
-  - promtail.yaml
+  - alloy.yaml
   - querier-frontend

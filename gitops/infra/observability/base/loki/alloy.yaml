@@ -1,0 +1,118 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: alloy
+  namespace: monitoring
+spec:
+  chart: alloy
+  repo: https://grafana.github.io/helm-charts
+  targetNamespace: monitoring
+  version: 0.12.3
+  valuesContent: |-
+    alloy:
+      configMap:
+        create: true
+        content: |
+          discovery.kubernetes "pod" {
+            role = "pod"
+          }
+
+          discovery.relabel "pod_logs" {
+            targets = discovery.kubernetes.pod.targets
+
+            // only scrape logs from pods with logging enabled label
+            rule {
+              source_labels = ["__meta_kubernetes_pod_label_logging"]
+              regex = "enabled"
+              action = "keep"
+            }
+
+            rule {
+              source_labels = ["__meta_kubernetes_pod_node_name"]
+              action = "replace"
+              target_label = "node_name"
+            }
+
+            rule {
+              source_labels = ["__meta_kubernetes_namespace"]
+              action = "replace"
+              target_label = "namespace"
+            }
+
+            rule {
+              source_labels = ["namespace", "app"]
+              action = "replace"
+              target_label = "job"
+              separator = "/"
+              replacement = "$1"
+            }
+
+            rule {
+              source_labels = ["__meta_kubernetes_pod_name"]
+              action = "replace"
+              target_label = "pod"
+            }
+
+            rule {
+              source_labels = ["__meta_kubernetes_pod_container_name"]
+              action = "replace"
+              target_label = "container"
+            }
+
+            rule {
+              source_labels = ["__meta_kubernetes_pod_uid", "__meta_kubernetes_pod_container_name"]
+              action = "replace"
+              target_label = "__path__"
+              separator = "/"
+              replacement = "/var/log/pods/*$1/*.log"
+            }
+
+            rule {
+              source_labels = ["__meta_kubernetes_pod_annotationpresent_kubernetes_io_config_hash", 
+                               "__meta_kubernetes_pod_annotation_kubernetes_io_config_hash", 
+                               "__meta_kubernetes_pod_container_name"]
+              action = "replace"
+              target_label = "__path__"
+              regex = "true/(.*)/(.*)"
+              replacement = "/var/log/pods/*$1/*.log"
+            }
+          }
+
+          // super basic loki config
+          loki.write "default" {
+            endpoint {
+              url = "http://loki-gateway/loki/api/v1/push"
+            }
+          }
+
+          loki.source.kubernetes "pod_logs" {
+            targets = discovery.relabel.pod_logs.output
+            forward_to = [loki.process.pod_logs.receiver]
+          }
+
+          loki.process "pod_logs" {
+            stage.cri {}
+
+            // set tenant
+            stage.match {
+              selector = "{namespace=~\".+\"}"
+              stage.tenant {
+                label = "namespace"
+              }
+            }
+
+            forward_to = [loki.write.default.receiver]
+          }
+
+    controller:
+      type: daemonset
+
+    serviceMonitor:
+      enabled: true
+
+    rbac:
+      create: true
+
+    mounts:
+      varlog: false
+      dockercontainers: true
