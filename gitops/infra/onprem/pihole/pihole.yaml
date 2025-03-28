@@ -7,7 +7,7 @@ spec:
   chart: pihole
   repo: https://mojo2600.github.io/pihole-kubernetes
   targetNamespace: pihole
-  version: 2.27.0
+  version: 2.29.1
   valuesContent: |
     DNS1:
       1.1.1.1
