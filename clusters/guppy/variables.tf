@@ -15,7 +15,7 @@ variable "cluster_name" {
 variable "cluster_k3s_version" {
   description = "Cluster version"
   type        = string
-  default     = "v1.29.7+k3s1"
+  default     = "v1.32.3+k3s1"
 }
 
 // REPLACE WITH YOUR OWN TOKEN
