@@ -19,7 +19,7 @@ resource "helm_release" "rancher" {
   repository       = "https://releases.rancher.com/server-charts/latest"
   chart            = "rancher"
   namespace        = "cattle-system"
-  version          = "2.10.2"
+  version          = "2.11.0"
   create_namespace = true
 
   values = [
