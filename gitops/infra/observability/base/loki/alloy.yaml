@@ -7,7 +7,7 @@ spec:
   chart: alloy
   repo: https://grafana.github.io/helm-charts
   targetNamespace: monitoring
-  version: 1.0.1
+  version: 1.0.2
   valuesContent: |-
     alloy:
       configMap:
