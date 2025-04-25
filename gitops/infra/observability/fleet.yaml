@@ -23,3 +23,6 @@ ignore:
   conditions:
     - type: Pending
       status: "False"
+# https://github.com/rancher/fleet/issues/3342
+    - type: "Failed"
+      status: "False"

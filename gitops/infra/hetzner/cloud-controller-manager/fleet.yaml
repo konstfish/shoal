@@ -9,3 +9,9 @@ targetCustomizations:
     clusterName: tetra
     kustomize:
       dir: overlays/tetra
+
+# https://github.com/rancher/fleet/issues/3342
+ignore:
+  conditions:
+    - type: "Failed"
+      status: "False"
