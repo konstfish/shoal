@@ -8,7 +8,7 @@ spec:
   repo: https://charts.bitnami.com/bitnami
   targetNamespace: pihole
   createNamespace: true
-  version: 8.7.12
+  version: 8.8.0
   valuesContent: |
     provider: pihole
     policy: upsert-only
