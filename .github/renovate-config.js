@@ -15,7 +15,7 @@ module.exports = {
     }
   ],
   platformAutomerge: true,
-  dependencyDashboard: true,
+  dependencyDashboard: false,
   prCreation: 'immediate',
   prHourlyLimit: 0,
   automergeType: 'pr',
