@@ -7,7 +7,7 @@ spec:
   chart: hcloud-cloud-controller-manager
   repo: https://charts.hetzner.cloud
   targetNamespace: kube-system
-  version: 1.24.0
+  version: 1.25.0
   valuesContent: |
     networking:
       enabled: true
